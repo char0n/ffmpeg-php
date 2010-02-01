@@ -81,7 +81,6 @@ class FFmpegAnimaterGif implements Serializable {
         $this->frameRate   = $frameRate;
         $this->loopCount   = ($loopCount < -1) ? 0 : $loopCount;
         $this->frames      = array();
-        $this->gifData     = 'GIF89a';
         $this->counter     = -1;        
     }
     
@@ -111,6 +110,7 @@ class FFmpegAnimaterGif implements Serializable {
         if (ord($this->frames[0]{10}) & 0x80) {
             $cmap = 3 * (2 << (ord($this->frames[0]{10}) & 0x07));
 
+            $this->gifData  = 'GIF89a';
             $this->gifData .= substr($this->frames[0], 6, 7);
             $this->gifData .= substr($this->frames[0], 13, $cmap);
             $this->gifData .= "!\377\13NETSCAPE2.0\3\1".$this->getGifWord($this->loopCount)."\0";
@@ -241,22 +241,25 @@ class FFmpegAnimaterGif implements Serializable {
         // No images to proces
         if (count($this->frames) == 0) return false;
         
-        // Process images as animation
+        return file_put_contents($this->outFilePath, $this->getAnimation(), LOCK_EX);
+    } 
+    
+    /**
+    * Getting animation binary data
+    * 
+    * @return string|boolean 
+    */
+    public function getAnimation() {
+        // No images to proces
+        if (count($this->frames) == 0) return false;
+        
+        // Process images as animation        
         $this->addGifHeader();           
         for ($i = 0; $i < count($this->frames); $i++) {
             $this->addFrameData($i, (1 / $this->frameRate * 100));
         } 
         $this->addGifFooter();
         
-        return file_put_contents($this->outFilePath, $this->gifData, LOCK_EX);
-    } 
-    
-    /**
-    * Getting animation binary data
-    * 
-    * @return string 
-    */
-    public function getAnimation() {
         return $this->gifData;
     }
     
