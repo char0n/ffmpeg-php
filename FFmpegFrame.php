@@ -165,6 +165,13 @@ class FFmpegFrame implements Serializable {
         $this->pts     = $data[1];
     }
     
+    public function __clone() {
+        ob_start();
+        imagegd2($this->gdImage);
+        $data = ob_get_clean();
+        $this->gdImage = imagecreatefromstring($data);
+    }
+    
     public function __destruct() {
         if (is_resource($this->gdImage)) {
             imagedestroy($this->gdImage);
