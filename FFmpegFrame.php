@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license GNU GPL
-* @version 1.0b1
+* @version 1.0b2
 */
 class FFmpegFrame implements Serializable {
     

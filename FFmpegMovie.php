@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license GNU GPL
-* @version 1.0b1
+* @version 1.0b2
 */
 class FFmpegMovie implements Serializable {
 
@@ -222,7 +222,7 @@ class FFmpegMovie implements Serializable {
     * @return int movie duration in seconds
     */
     public function getDuration() {
-        if ($this->duration == null) {
+        if ($this->duration === null) {
             $match = array();
             preg_match(self::$REGEX_DURATION, $this->ffmpegOut, $match);
             if (array_key_exists(1, $match) && array_key_exists(2, $match) && array_key_exists(3, $match)) {                
@@ -248,7 +248,7 @@ class FFmpegMovie implements Serializable {
     * @return int
     */
     public function getFrameCount() {
-        if ($this->frameCount == null) {
+        if ($this->frameCount === null) {
             $this->frameCount = (int) ($this->getDuration() * $this->getFrameRate());            
         }
         
@@ -261,7 +261,7 @@ class FFmpegMovie implements Serializable {
     * @return float 
     */
     public function getFrameRate() {
-        if ($this->frameRate == null) {
+        if ($this->frameRate === null) {
             $match = array();
             preg_match(self::$REGEX_FRAME_RATE, $this->ffmpegOut, $match);
             $this->frameRate = (float) ((array_key_exists(1, $match)) ? $match[1] : 0.0);
@@ -285,7 +285,7 @@ class FFmpegMovie implements Serializable {
     * @return string 
     */
     public function getComment() {
-        if ($this->comment == null) {
+        if ($this->comment === null) {
              $match = array();
              preg_match(self::$REGEX_COMMENT, $this->ffmpegOut, $match);
              $this->comment = (array_key_exists(1, $match)) ? trim($match[1]) : '';
@@ -557,7 +557,7 @@ class FFmpegMovie implements Serializable {
                     case 'mono':
                         $this->audioChannels = 1; break;
                     case 'stereo':
-                        $this->audioChannels = 1; break;
+                        $this->audioChannels = 2; break;
                     case '5.1':
                         $this->audioChannels = 6; break;
                     case '5:1':
