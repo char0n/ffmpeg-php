@@ -114,7 +114,7 @@ class FFmpegAnimaterGif implements Serializable {
             $this->gifData .= substr($this->frames[0], 6, 7);
             $this->gifData .= substr($this->frames[0], 13, $cmap);
             $this->gifData .= "!\377\13NETSCAPE2.0\3\1".$this->getGifWord($this->loopCount)."\0";
-        }
+        }        
     }
     
     /**
