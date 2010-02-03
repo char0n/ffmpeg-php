@@ -10,8 +10,8 @@
 * 
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
-* @license GNU GPL
-* @version 1.0b2
+* @license New BSD 
+* @version 1.0b3
 */
 class FFmpegAnimaterGif implements Serializable {
 
