@@ -202,7 +202,7 @@ class FFmpegMovie implements Serializable {
         
         // Get information about file from ffmpeg
         $output = array();
-        exec('ffmpeg -i '.$this->movieFile.' 2>&1', $output, $retVar);        
+        exec('ffmpeg -i '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);        
         $this->ffmpegOut = join(PHP_EOL, $output);
         
         // No ffmpeg installed
@@ -609,7 +609,7 @@ class FFmpegMovie implements Serializable {
              
         $frameFilePath = sys_get_temp_dir().uuid().'.jpg';
         $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
-        exec('ffmpeg -i '.$this->movieFile.' -vframes 1 -ss '.$frameTime.' '.$frameFilePath.' 2>&1', $out);
+        exec('ffmpeg -i '.escapeshellarg($this->movieFile).' -vframes 1 -ss '.$frameTime.' '.$frameFilePath.' 2>&1', $out);
         
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
