@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD
-* @version 1.0b3
+* @version 1.0b4
 */
 class FFmpegMovie implements Serializable {
 
@@ -16,10 +16,10 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_NO_FFMPEG         = '/FFmpeg version/';
     protected static $REGEX_UNKNOWN_FORMAT    = '/[^:]+: Unknown format/';
     protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
-    protected static $REGEX_FRAME_RATE        = '/frame rate: [0-9]+\.[0-9]+ \([0-9]+\/[0-9]*\) \-> ([0-9]+\.[0-9]*)/';
+    protected static $REGEX_FRAME_RATE        = '/([0-9\.]+)\stbr/';    
     protected static $REGEX_COMMENT           = '/comment\s*:\s*(.+)/i';
     protected static $REGEX_TITLE             = '/title\s*:\s*(.+)/i';
-    protected static $REGEX_ARTIST            = '/artist\s*:\s*(.+)/i';
+    protected static $REGEX_ARTIST            = '/(artist|author)\s*:\s*(.+)/i';
     protected static $REGEX_COPYRIGHT         = '/copyright\s*:\s*(.+)/i';
     protected static $REGEX_GENRE             = '/genre\s*:\s*(.+)/i';
     protected static $REGEX_TRACK_NUMBER      = '/track\s*:\s*(.+)/i';
@@ -183,7 +183,7 @@ class FFmpegMovie implements Serializable {
     */
     public function __construct($moviePath) {
         $this->movieFile   = $moviePath;
-        $this->frameNumber = 1;
+        $this->frameNumber = 0;
         
         $this->getFFmpegOutput();
     }
@@ -318,7 +318,7 @@ class FFmpegMovie implements Serializable {
         if ($this->artist === null) {
             $match = array();
             preg_match(self::$REGEX_ARTIST, $this->ffmpegOut, $match);
-            $this->artist = (array_key_exists(1, $match)) ? trim($match[1]) : '';
+            $this->artist = (array_key_exists(2, $match)) ? trim($match[2]) : '';
         }
         
         return $this->artist;
@@ -510,7 +510,7 @@ class FFmpegMovie implements Serializable {
     * @return int 
     */
     public function getFrameNumber() {
-        return $this->frameNumber;
+        return ($this->frameNumber == 0) ? 1 : $this->frameNumber;
     }
     
     /**
@@ -553,7 +553,7 @@ class FFmpegMovie implements Serializable {
             $match = array();
             preg_match(self::$REGEX_AUDIO_CHANNELS, $this->ffmpegOut, $match);
             if (array_key_exists(1, $match)) {
-                switch ($match[1]) {
+                switch (trim($match[1])) {
                     case 'mono':
                         $this->audioChannels = 1; break;
                     case 'stereo':
@@ -607,9 +607,9 @@ class FFmpegMovie implements Serializable {
             return false;
         }        
              
-        $frameFilePath = sys_get_temp_dir().uuid().'.jpg';
+        $frameFilePath = sys_get_temp_dir().uniqid('frame', true).'.jpg';
         $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
-        exec('ffmpeg -i '.escapeshellarg($this->movieFile).' -vframes 1 -ss '.$frameTime.' '.$frameFilePath.' 2>&1', $out);
+        exec('ffmpeg -i '.escapeshellarg($this->movieFile).' -vframes 1 -ss '.$frameTime.' '.$frameFilePath.' 2>&1');
         
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {

@@ -11,7 +11,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD 
-* @version 1.0b3
+* @version 1.0b4
 */
 class FFmpegAnimaterGif implements Serializable {
 
