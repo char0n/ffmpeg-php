@@ -53,6 +53,21 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->fail('Expected exception with code 334562 has not been raised');
     }
     
+    public function testPersistentResourceSimulation() {
+        PHPUnit_Util_Timer::start();
+        $movie   = new FFmpegMovie('data/test.mp4', true);
+        $movie   = new FFmpegMovie('data/test.mp4', true);
+        $movie   = new FFmpegMovie('data/test.mp4', true);
+        $elapsed = PHPUnit_Util_Timer::stop();
+        
+        PHPUnit_Util_Timer::start();
+        $movie   = new FFmpegMovie('data/test.mp4');
+        $movie   = new FFmpegMovie('data/test.mp4');
+        $movie   = new FFmpegMovie('data/test.mp4');        
+        $elapsed1 = PHPUnit_Util_Timer::stop();
+        $this->assertGreaterThan($elapsed, $elapsed1, 'Persistent resource simulation should be faster');
+    }
+    
     public function testGetDuration() {
         $this->assertType('float', self::$movie->getDuration(), 'Duration is of float type');
         $this->assertEquals(32.13, self::$movie->getDuration(), 'Duration should be float(32.13)');
