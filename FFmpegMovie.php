@@ -207,7 +207,7 @@ class FFmpegMovie implements Serializable {
     */
     protected function getFFmpegOutput() {
         // Persistent opening
-        if ($this->persistent == true && in_array($this->movieFile, self::$persistentBuffer)) {
+        if ($this->persistent == true && array_key_exists($this->movieFile, self::$persistentBuffer)) {
             $this->ffmpegOut = self::$persistentBuffer[$this->movieFile];
             return;
         }
@@ -234,8 +234,8 @@ class FFmpegMovie implements Serializable {
         
         // Storing persistent opening
         if ($this->persistent == true) {
-           self::$persistentBuffer[$this->movieFile] = $this->ffmpegOut;
-        }
+            self::$persistentBuffer[$this->movieFile] = $this->ffmpegOut;            
+        }        
     }
     
     /**
@@ -585,7 +585,7 @@ class FFmpegMovie implements Serializable {
                     case '5:1':
                         $this->audioChannels = 6; break;
                     default: 
-                        $this->audioChannels = 0;
+                        $this->audioChannels = (int) $match[1];
                 }                 
             } else {
                 $this->audioChannels = 0;

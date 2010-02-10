@@ -20,9 +20,11 @@ require_once '../FFmpegAnimatedGif.php';
 class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
 
     protected static $movie;
+    protected static $audio;
     
     public static function setUpBeforeClass() {
         self::$movie = new FFmpegMovie('data/test.mp4');
+        self::$audio = new FFmpegMovie('data/test.wav');
     }    
     
     public function testFileDoesNotExistException() {
@@ -71,6 +73,9 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     public function testGetDuration() {
         $this->assertType('float', self::$movie->getDuration(), 'Duration is of float type');
         $this->assertEquals(32.13, self::$movie->getDuration(), 'Duration should be float(32.13)');
+        
+        $this->assertType('float', self::$audio->getDuration(), 'Duration is of float type');
+        $this->assertEquals(15.88, self::$audio->getDuration(), 'Duration should be float(15.88)');
     }
     
     public function testGetFrameCount() {
@@ -149,6 +154,11 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(296000, self::$movie->getBitRate(), 'BitRate should be int(296000)');
     }            
     
+    public function testGetBitRate_Audio() {
+        $this->assertType('int', self::$audio->getBitRate(), 'BitRate is of integer type');
+        $this->assertEquals(178000, self::$audio->getBitRate(), 'BitRate should be int(178000)');
+    }
+    
     public function testGetVideoBitRate() {
         $this->assertType('int', self::$movie->getVideoBitRate(), 'Video BitRate is of integer type');
         $this->assertEquals(224000, self::$movie->getVideoBitRate(), 'Video BitRate should be int(224000)');
@@ -163,6 +173,11 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->assertType('int', self::$movie->getAudioSampleRate(), 'Audio SampleRate is of integer type');
         $this->assertEquals(44100, self::$movie->getAudioSampleRate(), 'Audio SampleRate should be int(44100)');
     }      
+    
+    public function testGetAudioSampleRate_Audio() {
+        $this->assertType('int', self::$audio->getAudioSampleRate(), 'Audio SampleRate is of integer type');
+        $this->assertEquals(22050, self::$audio->getAudioSampleRate(), 'Audio SampleRate should be int(22050)');
+    }
     
     public function testGetFrameNumber() {
         $this->assertType('int', self::$movie->getFrameNumber(), 'Frame number is of integer type');
@@ -184,10 +199,20 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(2, self::$movie->getAudioChannels(), 'Audio channels should be int(2)');
     }      
     
+    public function testGetAudioChannels_Audio() {
+        $this->assertType('int', self::$audio->getAudioChannels(), 'Audio channels is of integer type');
+        $this->assertEquals(2, self::$audio->getAudioChannels(), 'Audio channels should be int(2)');        
+    }
+    
     public function testHasAudio() {
         $this->assertType('boolean', self::$movie->hasAudio(), 'HasAudio is of boolean type');
         $this->assertEquals(true, self::$movie->hasAudio(), 'HasAudio should be boolean(true)');
     }      
+    
+    public function testHasAudio_Audio() {
+        $this->assertType('boolean', self::$audio->hasAudio(), 'HasAudio is of boolean type');
+        $this->assertEquals(true, self::$audio->hasAudio(), 'HasAudio should be boolean(true)');             
+    }
     
     public function testHasVideo() {
         $this->assertType('boolean', self::$movie->hasVideo(), 'HasVideo is of boolean type');
@@ -217,6 +242,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public static function tearDownAfterClass() {
         self::$movie = null;
+        self::$audio = null;
     }    
 }  
 ?>
