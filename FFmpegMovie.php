@@ -13,6 +13,8 @@ class FFmpegMovie implements Serializable {
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
     protected static $EX_CODE_UNKNOWN_FORMAT = 334562;
     
+    protected static $persistentBuffer        = array();
+    
     protected static $REGEX_NO_FFMPEG         = '/FFmpeg version/';
     protected static $REGEX_UNKNOWN_FORMAT    = '/[^:]+: Unknown format/';
     protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
@@ -40,6 +42,13 @@ class FFmpegMovie implements Serializable {
     * @var string
     */
     protected $movieFile;
+                          
+    /**
+    * Whether to open this media as a persistent resource
+    *                           
+    * @var boolean
+    */
+    protected $persistent;
     /**
     * ffmpeg command output
     * 
@@ -178,11 +187,13 @@ class FFmpegMovie implements Serializable {
     * Open a video or audio file and return it as an FFmpegMovie object. 
     * 
     * @param string $moviePath full path to the movie file
+    * @param boolean $persistent Whether to open this media as a persistent resource
     * @throws Exception
     * @return FFmpegMovie
     */
-    public function __construct($moviePath) {
+    public function __construct($moviePath, $persistent = false) {
         $this->movieFile   = $moviePath;
+        $this->persistent  = $persistent;
         $this->frameNumber = 0;
         
         $this->getFFmpegOutput();
@@ -195,6 +206,12 @@ class FFmpegMovie implements Serializable {
     * @return void
     */
     protected function getFFmpegOutput() {
+        // Persistent opening
+        if ($this->persistent == true && in_array($this->movieFile, self::$persistentBuffer)) {
+            $this->ffmpegOut = self::$persistentBuffer[$this->movieFile];
+            return;
+        }
+        
         // File doesn't exist
         if (!file_exists($this->movieFile)) {
             throw new Exception('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
@@ -213,6 +230,11 @@ class FFmpegMovie implements Serializable {
         // File is not video file
         if (preg_match(self::$REGEX_UNKNOWN_FORMAT, $this->ffmpegOut)) {
             throw new Exception('Unknown movie format', self::$EX_CODE_UNKNOWN_FORMAT);
+        }
+        
+        // Storing persistent opening
+        if ($this->persistent == true) {
+           self::$persistentBuffer[$this->movieFile] = $this->ffmpegOut;
         }
     }
     
@@ -635,19 +657,25 @@ class FFmpegMovie implements Serializable {
         $data = serialize(array(
             $this->movieFile,
             $this->ffmpegOut,
-            $this->frameNumber
-        ));
+            $this->frameNumber,
+            $this->persistent
+        ));                  
         
         return $data;
     }
     
     public function unserialize($serialized) {
-        list($this->movieFile, $this->ffmpegOut, $this->frameNumber) = unserialize($serialized);
+        list($this->movieFile,
+             $this->ffmpegOut,
+             $this->frameNumber,
+             $this->persistent
+        ) = unserialize($serialized);
         
     }
     
     public function __destruct() {
         $this->movieFile       = null;
+        $this->persistent      = null;
         $this->ffmpegOut       = null;
     
         $this->duration        = null;
