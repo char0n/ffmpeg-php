@@ -73,7 +73,9 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     public function testGetDuration() {
         $this->assertType('float', self::$movie->getDuration(), 'Duration is of float type');
         $this->assertEquals(32.13, self::$movie->getDuration(), 'Duration should be float(32.13)');
-        
+    }
+    
+    public function testGetDuration_Audio() {
         $this->assertType('float', self::$audio->getDuration(), 'Duration is of float type');
         $this->assertEquals(15.88, self::$audio->getDuration(), 'Duration should be float(15.88)');
     }
@@ -182,6 +184,14 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     public function testGetFrameNumber() {
         $this->assertType('int', self::$movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, self::$movie->getFrameNumber(), 'Frame number should be int(1)');
+        
+        $this->assertType('FFmpegFrame', self::$movie->getNextKeyFrame());
+        $this->assertType('int', self::$movie->getFrameNumber(), 'Frame number is of integer type');
+        $this->assertEquals(1, self::$movie->getFrameNumber(), 'Frame number should be int(1)');        
+        
+        $this->assertType('FFmpegFrame', self::$movie->getNextKeyFrame());
+        $this->assertType('int', self::$movie->getFrameNumber(), 'Frame number is of integer type');
+        $this->assertEquals(2, self::$movie->getFrameNumber(), 'Frame number should be int(2)');                
     }      
     
     public function testGetVideoCodec() {
@@ -229,7 +239,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public function testGetNextKeyFrame() {
         $this->assertType('FFmpegFrame', self::$movie->getNextKeyFrame(), 'Next key frame is of FFmpegFrame type');
-        $this->assertEquals(1, self::$movie->getFrameNumber(), 'Frame number should be int(1)');
+        $this->assertEquals(3, self::$movie->getFrameNumber(), 'Frame number should be int(3)');
     }      
     
     public function testSerializeUnserialize() {

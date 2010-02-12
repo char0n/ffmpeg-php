@@ -650,7 +650,11 @@ class FFmpegMovie implements Serializable {
     * @return FFmpegFrame|boolean 
     */
     public function getNextKeyFrame() {
-        return $this->getFrame($this->frameNumber++);
+    	$nextFrameNumber   = $this->frameNumber + 1;
+        $frame             = $this->getFrame($nextFrameNumber);
+        $this->frameNumber = ($frame === false) ? $this->frameNumber : $nextFrameNumber;
+        
+        return $frame;
     }
     
     public function serialize() {
