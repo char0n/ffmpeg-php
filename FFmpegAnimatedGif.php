@@ -11,9 +11,9 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD 
-* @version 1.0b5
+* @version 1.0rc1
 */
-class FFmpegAnimaterGif implements Serializable {
+class FFmpegAnimatedGif implements Serializable {
 
     /**
     * Location in the filesystem where the animated gif will be written. 
@@ -70,9 +70,9 @@ class FFmpegAnimaterGif implements Serializable {
     * @param string $outFilePath Location in the filesystem where the animated gif will be written.  
     * @param int $width Width of the animated gif.
     * @param int $height Height of the animated gif.   
-    * @param int $frameRate Number of times to loop the animation. Put a zero here to loop forever or omit this parameter to disable looping.
-    * @param int $loopCount Binary data of gif files to create animation
-    * @return FFmpegAnimaterGif
+    * @param int $frameRate Frame rate of the animated gif in frames per second.
+    * @param int $loopCount Number of times to loop the animation. Put a zero here to loop forever or omit this parameter to disable looping.
+    * @return FFmpegAnimatedGif
     */
     public function __construct($outFilePath, $width, $height, $frameRate, $loopCount) {
         $this->outFilePath = $outFilePath;
@@ -241,7 +241,7 @@ class FFmpegAnimaterGif implements Serializable {
         // No images to proces
         if (count($this->frames) == 0) return false;
         
-        return file_put_contents($this->outFilePath, $this->getAnimation(), LOCK_EX);
+        return (boolean) file_put_contents($this->outFilePath, $this->getAnimation(), LOCK_EX);
     } 
     
     /**

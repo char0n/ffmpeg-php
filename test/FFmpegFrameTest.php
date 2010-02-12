@@ -24,10 +24,23 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     public static function setUpBeforeClass() {
         $movie       = new FFmpegMovie('data/test.mp4');
         self::$frame = $movie->getFrame(1);
-    }    
+    }
+    
+    public function testConstructor() {
+        try {
+    		$frame = new FFmpegFrame('test', 0.0);
+        } catch (Exception $ex) {
+    	    if ($ex->getCode() == 334563) {
+    		    return;
+    	    } else {
+    		    $this->fail('Expected exception raised with wrong code');
+    	    }
+        }
+        $this->fail('An expected exception with code 334561 has not been raised');
+    }
     
     public function testFrameExtracted() {
-    	$this->assertType('FFmpegFrame', self::$frame);
+        $this->assertType('FFmpegFrame', self::$frame);
     }
     
     public function testGetWidth() {

@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD
-* @version 1.0b5
+* @version 1.0rc1
 */
 class FFmpegMovie implements Serializable {
 
@@ -650,7 +650,7 @@ class FFmpegMovie implements Serializable {
     * @return FFmpegFrame|boolean 
     */
     public function getNextKeyFrame() {
-    	$nextFrameNumber   = $this->frameNumber + 1;
+        $nextFrameNumber   = $this->frameNumber + 1;
         $frame             = $this->getFrame($nextFrameNumber);
         $this->frameNumber = ($frame === false) ? $this->frameNumber : $nextFrameNumber;
         
