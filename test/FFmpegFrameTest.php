@@ -28,13 +28,13 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     
     public function testConstructor() {
         try {
-    		$frame = new FFmpegFrame('test', 0.0);
+            $frame = new FFmpegFrame('test', 0.0);
         } catch (Exception $ex) {
-    	    if ($ex->getCode() == 334563) {
-    		    return;
-    	    } else {
-    		    $this->fail('Expected exception raised with wrong code');
-    	    }
+            if ($ex->getCode() == 334563) {
+                return;
+            } else {
+                $this->fail('Expected exception raised with wrong code');
+            }
         }
         $this->fail('An expected exception with code 334561 has not been raised');
     }
@@ -65,15 +65,15 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     }            
     
     public function testResize() {
-    	$oldWidth  = self::$frame->getWidth();
-    	$oldHeight = self::$frame->getHeight();
-    	
-    	self::$frame->resize(300, 300);
+        $oldWidth  = self::$frame->getWidth();
+        $oldHeight = self::$frame->getHeight();
+        
+        self::$frame->resize(300, 300);
         $this->assertType('int', self::$frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(300, self::$frame->getWidth(), 'Frame width should be int(300)');
         $this->assertType('int', self::$frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(300, self::$frame->getHeight(), 'Frame height should be int(300)');
-		self::$frame->resize($oldWidth, $oldHeight);            	
+        self::$frame->resize($oldWidth, $oldHeight);                
         $this->assertType('int', self::$frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, self::$frame->getWidth(), 'Frame width should be int(640)');
         $this->assertType('int', self::$frame->getHeight(), 'Frame height is of integer type');
@@ -81,23 +81,23 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testCrop() {
-    	$oldWidth  = self::$frame->getWidth();
-    	$oldHeight = self::$frame->getHeight();
-    	
-    	self::$frame->crop(100);
+        $oldWidth  = self::$frame->getWidth();
+        $oldHeight = self::$frame->getHeight();
+        
+        self::$frame->crop(100);
         $this->assertType('int', self::$frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, self::$frame->getWidth(), 'Frame width should be int(300)');
         $this->assertType('int', self::$frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(172, self::$frame->getHeight(), 'Frame height should be int(172)');
-		self::$frame->resize($oldWidth, $oldHeight);            	
+        self::$frame->resize($oldWidth, $oldHeight);                
         $this->assertType('int', self::$frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, self::$frame->getWidth(), 'Frame width should be int(640)');
         $this->assertType('int', self::$frame->getHeight(), 'Frame height is of integer type');
-        $this->assertEquals(272, self::$frame->getHeight(), 'Frame height should be int(272)');    	
+        $this->assertEquals(272, self::$frame->getHeight(), 'Frame height should be int(272)');     
     }
     
     public function testToGdImage() {
-    	$this->assertType('resource', self::$frame->toGdImage(), 'GdImage is of resource(gd2) type');
+        $this->assertType('resource', self::$frame->toGdImage(), 'GdImage is of resource(gd2) type');
     }
     
     public function testSerializeUnserialize() {
@@ -107,14 +107,14 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
         $this->assertType('int', self::$frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, self::$frame->getWidth(), 'Frame width should be int(640)');
         $this->assertType('int', self::$frame->getHeight(), 'Frame height is of integer type');
-        $this->assertEquals(272, self::$frame->getHeight(), 'Frame height should be int(272)');    	
+        $this->assertEquals(272, self::$frame->getHeight(), 'Frame height should be int(272)');     
     }    
     
-    public function testClone() {    	
-    	$uoid   = (string) self::$frame->toGdImage();
-    	$cloned = clone self::$frame;
-    	$cuoid  = (string) $cloned->toGdImage();
-     	$this->assertNotEquals($uoid, $cuoid);
+    public function testClone() {       
+        $uoid   = (string) self::$frame->toGdImage();
+        $cloned = clone self::$frame;
+        $cuoid  = (string) $cloned->toGdImage();
+        $this->assertNotEquals($uoid, $cuoid);
     }
     
     public static function tearDownAfterClass() {
