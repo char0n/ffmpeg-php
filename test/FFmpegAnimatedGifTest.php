@@ -20,18 +20,25 @@ require_once '../FFmpegAnimatedGif.php';
 class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
 
     protected static $outFilePath;
+    protected static $moviePath;
+    protected static $movie;
+    protected static $frame1;
+    protected static $frame2;
     protected static $anim;
     
     public static function setUpBeforeClass() {
         self::$outFilePath = sys_get_temp_dir().uniqid('anim', true).'.gif';        
+        self::$moviePath   = 'data/test.mp4';
+        self::$movie       = new FFmpegMovie(self::$moviePath);
+        self::$frame1      = self::$movie->getFrame(1);
+        self::$frame2      = self::$movie->getFrame(2);
     }    
     
     public function testAddFrame() {
-        $movie        = new FFmpegMovie('data/test.mp4');
-        $frame        = $movie->getFrame(1);
+        $frame        = self::$movie->getFrame(3);
         $memoryBefore = memory_get_usage();
 
-        self::$anim        = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);     
+        self::$anim   = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);     
         self::$anim->addFrame($frame);
         
         $memoryAfter  = memory_get_usage();
@@ -40,26 +47,18 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testGetAnimation() {
-        $movie        = new FFmpegMovie('data/test.mp4');
-        $frame1       = $movie->getFrame(1);        
-        $frame2       = $movie->getFrame(2);
-        
         self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame($frame1); $frame1 = null;
-        self::$anim->addFrame($frame2); $frame2 = null;
+        self::$anim->addFrame(self::$frame1); 
+        self::$anim->addFrame(self::$frame2); 
         
         $animData = self::$anim->getAnimation();
         $this->assertEquals(20526, strlen($animData), 'Animation binary size should be int(20526)');
     }
     
     public function testSave() {
-        $movie        = new FFmpegMovie('data/test.mp4');
-        $frame1       = $movie->getFrame(1);        
-        $frame2       = $movie->getFrame(2);
-        
         self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame($frame1); $frame1 = null;
-        self::$anim->addFrame($frame2); $frame2 = null;
+        self::$anim->addFrame(self::$frame1);
+        self::$anim->addFrame(self::$frame2);
 
         $saveResult = self::$anim->save();
         $this->assertEquals(true, $saveResult, 'Save result should be true');
@@ -72,14 +71,9 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testSerializeUnserialize() {
-        $movie        = new FFmpegMovie('data/test.mp4');
-        $frame1       = $movie->getFrame(1);        
-        $frame2       = $movie->getFrame(2);
-        
         self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame($frame1); $frame1 = null;
-        self::$anim->addFrame($frame2); $frame2 = null;
-        
+        self::$anim->addFrame(self::$frame1); 
+        self::$anim->addFrame(self::$frame2);
         
         $serialized  = serialize(self::$anim);
         self::$anim = null;
@@ -98,6 +92,11 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
     public static function tearDownAfterClass() {
         self::$anim        = null;
         self::$outFilePath = null;
+        self::$moviePath   = null;
+        self::$movie       = null;
+        self::$frame1      = null;
+        self::$frame2      = null;
+        self::$anim        = null;        
     }    
 }  
 ?>

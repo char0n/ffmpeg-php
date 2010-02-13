@@ -1,4 +1,4 @@
-FFmpegPHP 1.0rc1
+FFmpegPHP 1.0rc2
 
 FFmpegPHP is a pure OO PHP port of ffmpeg-php writter in C. It adds an easy to use,
 object-oriented API for accessing and retrieving information from video and audio files.
