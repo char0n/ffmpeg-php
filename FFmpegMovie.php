@@ -9,7 +9,7 @@
 */
 class FFmpegMovie implements Serializable {
 
-    protected statiC $EX_CODE_NO_FFMPEG      = 334560;
+    protected static $EX_CODE_NO_FFMPEG      = 334560;
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
     protected static $EX_CODE_UNKNOWN_FORMAT = 334562;
     
