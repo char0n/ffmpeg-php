@@ -19,11 +19,14 @@ require_once '../FFmpegAnimatedGif.php';
 
 class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
 
+    protected static $moviePath;
+    protected static $movie;
     protected static $frame;
     
     public static function setUpBeforeClass() {
-        $movie       = new FFmpegMovie('data/test.mp4');
-        self::$frame = $movie->getFrame(1);
+        self::$moviePath   = 'data/test.mp4';
+        self::$movie       = new FFmpegMovie(self::$moviePath);
+        self::$frame       = self::$movie->getFrame(1);
     }
     
     public function testConstructor() {
@@ -118,7 +121,9 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     }
     
     public static function tearDownAfterClass() {
-        self::$frame = null;
+        self::$moviePath = null;
+        self::$movie     = null;
+        self::$frame     = null;
     }    
 }  
 ?>
