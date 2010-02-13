@@ -610,7 +610,7 @@ class FFmpegMovie implements Serializable {
     * @return boolean 
     */
     public function hasVideo() {
-        return ($this->getVideoBitRate() === null) ? false : true;
+        return (boolean) $this->getVideoBitRate();
     }
     
     /**
