@@ -200,7 +200,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         
         $this->assertType('FFmpegFrame', self::$movie->getNextKeyFrame());
         $this->assertType('int', self::$movie->getFrameNumber(), 'Frame number is of integer type');
-        $this->assertEquals(2, self::$movie->getFrameNumber(), 'Frame number should be int(2)');                
+        $this->assertEquals(2, self::$movie->getFrameNumber(), 'Frame number should be int(2)');       
     }      
     
     public function testGetVideoCodec() {
@@ -240,20 +240,22 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public function testHasVideo_Audio() {
         $this->assertType('boolean', self::$audio->hasVideo(), 'HasVideo of audio file is of boolean type');
-        $this->assertEquals(true, self::$audio->hasVideo(), 'HasVideo of audio file is of should be boolean(true)');    
+        $this->assertEquals(false, self::$audio->hasVideo(), 'HasVideo of audio file is of should be boolean(false)');    
     } 
     
     public function testGetFrame() {
         $this->assertType('FFmpegFrame', self::$movie->getFrame(), 'Frame is of FFmpegFrame type');
-    }      
-    
-    public function testGetFrame1() {
-        $this->assertType('FFmpegFrame', self::$movie->getFrame(1), 'Frame is of FFmpegFrame type');
+        $this->assertEquals(3, self::$movie->getFrameNumber(), 'Frame number should be int(3)');
+        
+        $this->assertType('FFmpegFrame', self::$movie->getFrame(25), 'Frame is of FFmpegFrame type');
+        
+        $this->assertType('FFmpegFrame', self::$movie->getFrame(), 'Frame is of FFmpegFrame type');
+        $this->assertEquals(4, self::$movie->getFrameNumber(), 'Frame number should be int(4)');        
     }      
     
     public function testGetNextKeyFrame() {
         $this->assertType('FFmpegFrame', self::$movie->getNextKeyFrame(), 'Next key frame is of FFmpegFrame type');
-        $this->assertEquals(3, self::$movie->getFrameNumber(), 'Frame number should be int(3)');
+        $this->assertEquals(5, self::$movie->getFrameNumber(), 'Frame number should be int(5)');
     }      
     
     public function testSerializeUnserialize() {
