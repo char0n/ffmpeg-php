@@ -58,12 +58,12 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     
     public function testGetPts() {
         $this->assertType('float', self::$frame->getPts(), 'Pts is of integer type');
-        $this->assertEquals(0.04, self::$frame->getPts(), 'Pts should be float(0.04)');
+        $this->assertEquals(0.0, self::$frame->getPts(), 'Pts should be float(0.0)');
     }        
     
     public function testGetPresentationTimestamp() {
         $this->assertType('float', self::$frame->getPresentationTimestamp(), 'Presentation timestamp is of integer type');
-        $this->assertEquals(0.04, self::$frame->getPresentationTimestamp(), 'Presentation timestamp should be float(0.04)');        
+        $this->assertEquals(0.0, self::$frame->getPresentationTimestamp(), 'Presentation timestamp should be float(0.0)');        
         $this->assertEquals(self::$frame->getPts(), self::$frame->getPresentationTimestamp(), 'Presentation timestamp should equal Pts');        
     }            
     

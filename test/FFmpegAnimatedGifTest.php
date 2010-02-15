@@ -52,7 +52,7 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
         self::$anim->addFrame(self::$frame2); 
         
         $animData = self::$anim->getAnimation();
-        $this->assertEquals(20526, strlen($animData), 'Animation binary size should be int(20526)');
+        $this->assertEquals(20503, strlen($animData), 'Animation binary size should be int(20503)');
     }
     
     public function testSave() {
@@ -63,7 +63,7 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
         $saveResult = self::$anim->save();
         $this->assertEquals(true, $saveResult, 'Save result should be true');
         $this->assertEquals(true, file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');      
-        $this->assertEquals(20526, filesize(self::$outFilePath), 'Animation binary size should be int(20526)');
+        $this->assertEquals(20503, filesize(self::$outFilePath), 'Animation binary size should be int(20503)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
@@ -82,7 +82,7 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
         $saveResult = self::$anim->save();
         $this->assertEquals(true, $saveResult, 'Save result should be true');
         $this->assertEquals(true, file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');      
-        $this->assertEquals(20526, filesize(self::$outFilePath), 'Animation binary size should be int(20526)');
+        $this->assertEquals(20503, filesize(self::$outFilePath), 'Animation binary size should be int(20503)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');

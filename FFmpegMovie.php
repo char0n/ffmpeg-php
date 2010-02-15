@@ -623,7 +623,7 @@ class FFmpegMovie implements Serializable {
     */
     public function getFrame($framenumber = null) {
         // Set frame position for frame extraction
-        $framePos = ($framenumber === null) ? $this->frameNumber : ((int) $framenumber);    
+        $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
         // Frame position out of range
         if (!is_numeric($framePos) || $framePos < 0 || $framePos > $this->getFrameCount()) {
