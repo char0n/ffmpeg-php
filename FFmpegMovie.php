@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD
-* @version 1.0rc3
+* @version 1.0rc1
 */
 class FFmpegMovie implements Serializable {
 
@@ -623,7 +623,7 @@ class FFmpegMovie implements Serializable {
     */
     public function getFrame($framenumber = null) {
         // Set frame position for frame extraction
-        $framePos = ($framenumber === null) ? ($this->frameNumber + 1) : ((int) $framenumber);    
+        $framePos = ($framenumber === null) ? $this->frameNumber : ((int) $framenumber);    
         
         // Frame position out of range
         if (!is_numeric($framePos) || $framePos < 0 || $framePos > $this->getFrameCount()) {
@@ -656,12 +656,8 @@ class FFmpegMovie implements Serializable {
     * 
     * @return FFmpegFrame|boolean 
     */
-    public function getNextKeyFrame() {
-        $nextFrameNumber   = $this->frameNumber + 1;
-        $frame             = $this->getFrame($nextFrameNumber);
-        $this->frameNumber = ($frame === false) ? $this->frameNumber : $nextFrameNumber;
-        
-        return $frame;
+    public function getNextKeyFrame() {        
+        return $this->getFrame();
     }
     
     public function serialize() {
