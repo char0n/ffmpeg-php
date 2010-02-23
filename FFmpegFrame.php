@@ -152,8 +152,7 @@ class FFmpegFrame implements Serializable {
         $data  = array(
             $image,
             $this->pts
-        );        
-        imagedestroy($this->gdImage);
+        );                
         
         return serialize($data);
     }
