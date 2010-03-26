@@ -679,33 +679,5 @@ class FFmpegMovie implements Serializable {
         ) = unserialize($serialized);
         
     }
-    
-    public function __destruct() {
-        $this->movieFile       = null;
-        $this->persistent      = null;
-        $this->ffmpegOut       = null;
-    
-        $this->duration        = null;
-        $this->frameCount      = null;
-        $this->frameRate       = null;
-        $this->comment         = null;
-        $this->title           = null;
-        $this->artist          = null;
-        $this->copyright       = null;
-        $this->genre           = null;
-        $this->trackNumber     = null;
-        $this->year            = null;
-        $this->frameHeight     = null;
-        $this->frameWidth      = null;
-        $this->pixelFormat     = null;
-        $this->bitRate         = null;
-        $this->videoBitRate    = null;
-        $this->audioBitRate    = null;
-        $this->audioSampleRate = null;
-        $this->frameNumber     = null;
-        $this->videoCodec      = null;
-        $this->audioCodec      = null;
-        $this->audioChannels   = null;
-    }
 }  
 ?>

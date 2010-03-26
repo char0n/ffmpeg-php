@@ -174,8 +174,6 @@ class FFmpegFrame implements Serializable {
         if (is_resource($this->gdImage)) {
             imagedestroy($this->gdImage);
         }        
-        $this->gdImage = null;
-        $this->pts     = null;
     }
 }   
 ?>

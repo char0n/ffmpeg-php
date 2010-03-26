@@ -289,16 +289,5 @@ class FFmpegAnimatedGif implements Serializable {
             $this->counter
         ) = $data;
     }
-    
-    public function __destruct() {
-        $this->outFilePath = null;
-        $this->width       = null;
-        $this->height      = null;
-        $this->frameRate   = null;
-        $this->loopCount   = null;
-        $this->gifData     = null;
-        $this->frames      = null;
-        $this->counter     = null;
-    }    
 }
 ?>
