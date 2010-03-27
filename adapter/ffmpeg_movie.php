@@ -121,5 +121,9 @@ class ffmpeg_movie {
     public function getNextKeyFrame() {        
         return $this->adaptee->getFrameHeight(); 
     }    
+    
+    public function __destruct() {
+        $this->adaptee = null;
+    }
 }
 ?>
