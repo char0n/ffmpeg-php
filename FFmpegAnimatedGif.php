@@ -81,7 +81,7 @@ class FFmpegAnimatedGif implements Serializable {
         $this->frameRate   = $frameRate;
         $this->loopCount   = ($loopCount < -1) ? 0 : $loopCount;
         $this->frames      = array();
-        $this->counter     = -1;        
+        $this->counter     = -1;
     }
     
     /**
@@ -240,7 +240,7 @@ class FFmpegAnimatedGif implements Serializable {
     public function save() {
         // No images to proces
         if (count($this->frames) == 0) return false;
-        
+                               
         return (boolean) file_put_contents($this->outFilePath, $this->getAnimation(), LOCK_EX);
     } 
     
