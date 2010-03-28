@@ -119,7 +119,14 @@ class ffmpeg_movie {
     }
     
     public function getNextKeyFrame() {        
-        return $this->adaptee->getFrameHeight(); 
+        $toReturn = null;
+        $frame    = $this->adaptee->getNextKeyFrame(); 
+        if ($frame != null) {
+            $toReturn = new ffmpeg_frame($frame->toGDImage(), $frame->getPTS());
+            $frame    = null;
+        }
+        
+        return $toReturn;
     }    
     
     public function __clone() {
