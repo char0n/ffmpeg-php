@@ -9,7 +9,7 @@ class ffmpeg_animated_gif {
     
     public function addFrame(ffmpeg_frame $frame) {
         $this->adaptee->addFrame(new FFmpegFrame($frame->toGDImage(), $frame->getPTS()));
-        $this->adaptee->save();
+        return $this->adaptee->save();
     }
     
     public function __clone() {
