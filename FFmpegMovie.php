@@ -648,7 +648,10 @@ class FFmpegMovie implements Serializable {
             ++$this->frameNumber;
         }
         
-        return new FFmpegFrame($gdImage, $frameTime);
+        $frame = new FFmpegFrame($gdImage, $frameTime);
+        imagedestroy($gdImage);
+        
+        return $frame;
     }
     
     /**
