@@ -36,11 +36,7 @@ class ffmpeg_frame {
     }
     
     public function __clone() {
-        ob_start();
-        imagegd2($this->adaptee->toGDImage());
-        $data    = ob_get_clean();
-        $gdImage = imagecreatefromstring($data);
-        $this->adaptee = new FFmpegFrame($gdImage, $this->adaptee->getPTS());
+        $this->adaptee = new FFmpegFrame($this->adaptee->toGDImage(), $this->adaptee->getPTS());
     }
     
     public function __destruct() {
