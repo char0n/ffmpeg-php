@@ -12,6 +12,10 @@ class ffmpeg_animated_gif {
         $this->adaptee->save();
     }
     
+    public function __clone() {
+        $this->adaptee = clone $this->adaptee;
+    }
+    
     public function __destruct() {
         $this->adaptee = null;
     }

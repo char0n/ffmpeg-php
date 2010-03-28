@@ -36,7 +36,7 @@ class ffmpeg_frame {
     }
     
     public function __clone() {
-        $this->adaptee = new FFmpegFrame($this->adaptee->toGDImage(), $this->adaptee->getPTS());
+        $this->adaptee = clone $this->adaptee;
     }
     
     public function __destruct() {

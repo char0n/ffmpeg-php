@@ -122,6 +122,10 @@ class ffmpeg_movie {
         return $this->adaptee->getFrameHeight(); 
     }    
     
+    public function __clone() {
+        $this->adaptee = clone $this->adaptee;
+    }
+    
     public function __destruct() {
         $this->adaptee = null;
     }
