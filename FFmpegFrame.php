@@ -12,17 +12,31 @@ class FFmpegFrame implements Serializable {
     protected static $EX_CODE_NO_VALID_RESOURCE = 334563;
     
     /**
-    * GdImage resource
+    * GdImage binary data
     * 
-    * @var resource
+    * @var string
     */
-    protected $gdImage;
+    protected $gdImageData;
     /**
     * Presentation time stamp
     * 
     * @var float
     */
     protected $pts;
+    
+    /**
+    * Frame width in pixels
+    * 
+    * @var int
+    */
+    protected $width;
+    
+    /**
+    * Frame height in pixels
+    * 
+    * @var int
+    */
+    protected $height;
     
     /**
     * Create a FFmpegFrame object from a GD image. 
@@ -37,8 +51,10 @@ class FFmpegFrame implements Serializable {
             throw new Exception('Param given by constructor is not valid gd resource', self::$EX_CODE_NO_VALID_RESOURCE);
         }
         
-        $this->gdImage = $gdImage;
-        $this->pts     = $pts;
+        $this->gdImageData = $this->gdImageToBinaryData($gdImage);
+        $this->width       = imagesx($gdImage);
+        $this->height      = imagesy($gdImage);
+        $this->pts         = $pts;
     }                  
     
     /**
@@ -47,7 +63,7 @@ class FFmpegFrame implements Serializable {
     * @return int
     */
     public function getWidth() {
-        return imagesx($this->gdImage);
+        return $this->width;
     }
     
     /**
@@ -56,7 +72,7 @@ class FFmpegFrame implements Serializable {
     * @return int
     */
     public function getHeight() {
-        return imagesy($this->gdImage);
+        return $this->height;
     }
     
     /**
@@ -103,17 +119,20 @@ class FFmpegFrame implements Serializable {
          $heightCrop    = ($cropTop + $cropBottom);
          $width        -= $widthCrop;
          $height       -= $heightCrop;
-         $resizedImage  = imagecreatetruecolor($width, $height);
-         
-         imagecopyresampled($resizedImage, $this->gdImage, 0, 0, $cropLeft, $cropTop, $width, $height, $this->getWidth() - $widthCrop, $this->getHeight() - $heightCrop);    
+         $resizedImage  = imagecreatetruecolor($width, $height);         
+         $gdImage       = $this->toGDImage();
+         imagecopyresampled($resizedImage, $gdImage, 0, 0, $cropLeft, $cropTop, $width, $height, $this->getWidth() - $widthCrop, $this->getHeight() - $heightCrop);    
          imageconvolution($resizedImage, array(
             array( -1, -1, -1 ),
             array( -1, 24, -1 ),
             array( -1, -1, -1 ),
          ), 16, 0);           
          
-         imagedestroy($this->gdImage);
-         $this->gdImage = $resizedImage;         
+         $this->gdImageData = $this->gdImageToBinaryData($resizedImage);
+         $this->width       = imagesx($resizedImage);
+         $this->height      = imagesy($resizedImage);
+         imagedestroy($gdImage);
+         imagedestroy($resizedImage);
     } 
                                                   
     /**
@@ -142,38 +161,33 @@ class FFmpegFrame implements Serializable {
     * @return resource resource of type gd 
     */
     public function toGDImage() {
-        return $this->gdImage;
+        return imagecreatefromstring($this->gdImageData);
+    }
+    
+    protected function gdImageToBinaryData($gdImage) {
+        ob_start();
+        imagegd2($gdImage);
+        return ob_get_clean();
     }
     
     public function serialize() {
-        ob_start();
-        imagegd2($this->gdImage);
-        $image = base64_encode(ob_get_clean());
-        $data  = array(
-            $image,
-            $this->pts
-        );                
+        $data = array(
+            $this->gdImageData,
+            $this->pts,
+            $this->width, 
+            $this->height
+        );
         
         return serialize($data);
     }
     
     public function unserialize($serialized) {
         $data = unserialize($serialized);       
-        $this->gdImage = imagecreatefromstring(base64_decode($data[0]));
-        $this->pts     = $data[1];
-    }
-    
-    public function __clone() {
-        ob_start();
-        imagegd2($this->gdImage);
-        $data = ob_get_clean();
-        $this->gdImage = imagecreatefromstring($data);
-    }
-    
-    public function __destruct() {
-        if (is_resource($this->gdImage)) {
-            imagedestroy($this->gdImage);
-        }        
+        list($this->gdImageData,
+             $this->pts,
+             $this->width,
+             $this->height
+        ) = $data;
     }
 }   
 ?>
