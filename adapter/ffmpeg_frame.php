@@ -1,4 +1,14 @@
 <?php
+/**
+* ffmpeg_frame serves as a compatiblity adapter for old ffmpeg-php extension
+* 
+* @author char0n (Vladimir Gorej)
+* @package FFmpegPHP
+* @subpackage adapter
+* @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_frame.php
+* @license New BSD
+* @version 1.5-b1
+*/
 class ffmpeg_frame {
 
     protected $adaptee;
