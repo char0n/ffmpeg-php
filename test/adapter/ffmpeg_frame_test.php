@@ -17,7 +17,7 @@ require_once '../../FFmpegAnimatedGif.php';
 * To run the test supposing that you are in the same
 * directory as this file(ffmpeg_frame_test.php) type:
 * 
-* php ../../phpunit/phpunit.php FFmpegFrameTest.php
+* php ../../phpunit/phpunit.php ffmpeg_frame_test.php
 */
 
 class ffmpeg_frame_test extends PHPUnit_Framework_TestCase {
