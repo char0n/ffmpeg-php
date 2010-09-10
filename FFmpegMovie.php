@@ -639,7 +639,7 @@ class FFmpegMovie implements Serializable {
              
         $frameFilePath = sys_get_temp_dir().uniqid('frame', true).'.jpg';
         $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
-        exec($this->execPath.'ffmpeg -i '.escapeshellarg($this->movieFile).' -vframes 1 -ss '.$frameTime.' '.$frameFilePath.' 2>&1');
+        exec($this->execPath.'ffmpeg -ss '.$frameTime.' -i '.escapeshellarg($this->movieFile).' -vframes 1 '.$frameFilePath.' 2>&1');
         
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
