@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD
-* @version 1.5-b1
+* @version 1.5-rc1
 */
 class FFmpegMovie implements Serializable {
 
@@ -35,6 +35,8 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_VIDEO_CODEC       = '/Video:\s([^,]+),/';
     protected static $REGEX_AUDIO_CODEC       = '/Audio:\s([^,]+),/';
     protected static $REGEX_AUDIO_CHANNELS    = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
+    protected static $REGEX_HAS_AUDIO         = '/Stream.+Audio/';
+    protected static $REGEX_HAS_VIDEO         = '/Stream.+Video/';
     
     /**
     * FFmpeg execution prefix (e.g. /usr/bin/)
@@ -608,7 +610,7 @@ class FFmpegMovie implements Serializable {
     * @return boolean 
     */
     public function hasAudio() {
-        return (boolean) $this->getAudioChannels();
+        return (boolean) preg_match(self::$REGEX_HAS_AUDIO, $this->ffmpegOut);
     }
     
     /**
@@ -617,7 +619,7 @@ class FFmpegMovie implements Serializable {
     * @return boolean 
     */
     public function hasVideo() {
-        return (boolean) $this->getVideoBitRate();
+        return (boolean) preg_match(self::$REGEX_HAS_VIDEO, $this->ffmpegOut);
     }
     
     /**
