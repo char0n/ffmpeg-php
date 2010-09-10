@@ -1,9 +1,4 @@
 <?php
-require_once '../phpunit/PHPUnit/Framework.php';
-require_once '../FFmpegMovie.php';
-require_once '../FFmpegFrame.php';
-require_once '../FFmpegAnimatedGif.php';
-
 /**
 * Testing framework: PHPUnit (http://www.phpunit.de)
 * 
@@ -11,10 +6,9 @@ require_once '../FFmpegAnimatedGif.php';
 * Unpack PHPUnit downloaded from http://pear.phpunit.de/get/
 * to "phpunit" directory created earlier.
 * 
-* To run the test supposing that you are in the same
-* directory as this file(FFmpegFrameTest.php) type:
+* To run the test run the command:
 * 
-* php ../phpunit/phpunit.php FFmpegFrameTest.php
+* php phpunit/phpunit.php --bootstrap test/bootstrap.php test/FFmpegFrameTest.php
 */
 
 class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
@@ -24,7 +18,7 @@ class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
     protected static $frame;
     
     public static function setUpBeforeClass() {
-        self::$moviePath   = 'data/test.mp4';
+        self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test.mp4';
         self::$movie       = new FFmpegMovie(self::$moviePath);
         self::$frame       = self::$movie->getFrame(1);
     }

@@ -1,9 +1,4 @@
 <?php
-require_once '../phpunit/PHPUnit/Framework.php';
-require_once '../FFmpegMovie.php';
-require_once '../FFmpegFrame.php';
-require_once '../FFmpegAnimatedGif.php';
-
 /**
 * Testing framework: PHPUnit (http://www.phpunit.de)
 * 
@@ -11,10 +6,9 @@ require_once '../FFmpegAnimatedGif.php';
 * Unpack PHPUnit downloaded from http://pear.phpunit.de/get/
 * to "phpunit" directory created earlier.
 * 
-* To run the test supposing that you are in the same
-* directory as this file(FFmpegMovieTest.php) type:
+* To run the test run the command:
 * 
-* php ../phpunit/phpunit.php FFmpegMovieTest.php
+* php phpunit/phpunit.php --bootstrap test/bootstrap.php test/FFmpegMovieTest.php
 */
 
 class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
@@ -28,14 +22,29 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     protected static $noMediaPath;
     
     public static function setUpBeforeClass() {
-        self::$moviePath   = 'data/test.mp4';
-        self::$audioPath   = 'data/test.wav';
-        self::$noMediaPath = 'data/test1.txt';
+        self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test.mp4';
+        self::$audioPath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test.wav';
+        self::$noMediaPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test1.txt';
         
         self::$movie     = new FFmpegMovie(self::$moviePath);
         self::$audio     = new FFmpegMovie(self::$audioPath);
-    }   
-    
+    } 
+
+    public function testNoFFmpegExecutableAvailabe() {
+        try {
+            $movie = new FFmpegMovie(self::$moviePath, false, '/usr/local/'.uniqid('path', true).'/');    
+        } catch (Exception $ex) {
+            if ($ex->getCode() == 334560) {
+                return;
+            } else {
+                $this->fail('Expected exception raised with wrong code');
+            }
+        }
+        
+        $this->fail('An expected exception with code 334560 has not been raised');
+        
+    }    
+
     public function testFileDoesNotExistException() {
         try {
             $movie = new FFmpegMovie(uniqid('test', true));
@@ -101,7 +110,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public function testGetFileName() {
         $this->assertType('string', self::$movie->getFilename(), 'Filename is of type string');
-        $this->assertEquals('data/test.mp4', self::$movie->getFilename(), 'Filename should be string(data/test.avi)');
+        $this->assertEquals(self::$moviePath, self::$movie->getFilename(), 'Filename should be string(data/test.avi)');
     }
     
     public function testGetComment() {

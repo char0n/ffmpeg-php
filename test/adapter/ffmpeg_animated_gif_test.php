@@ -1,23 +1,14 @@
 <?php
-require_once '../../phpunit/PHPUnit/Framework.php';
-require_once '../../adapter/ffmpeg_movie.php';
-require_once '../../adapter/ffmpeg_frame.php';
-require_once '../../adapter/ffmpeg_animated_gif.php';         
-require_once '../../FFmpegMovie.php';
-require_once '../../FFmpegFrame.php';
-require_once '../../FFmpegAnimatedGif.php';
-
 /**
 * Testing framework: PHPUnit (http://www.phpunit.de)
 * 
-* Create directory "phpunit" two levels above this file.
+* Create directory "phpunit" one level above this file.
 * Unpack PHPUnit downloaded from http://pear.phpunit.de/get/
 * to "phpunit" directory created earlier.
 * 
-* To run the test supposing that you are in the same
-* directory as this file(ffmpeg_animated_gif_test.php) type:
+* To run the test run the command:
 * 
-* php ../../phpunit/phpunit.php ffmpeg_animated_gif_test.php
+* php phpunit/phpunit.php --bootstrap test/bootstrap.php test/adapter/ffmpeg_animated_gif_test.php
 */
 
 class ffmpeg_animated_git_test extends PHPUnit_Framework_TestCase {
