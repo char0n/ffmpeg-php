@@ -9,23 +9,27 @@
 */
 class FFmpegMovie implements Serializable {
 
-    protected static $EX_CODE_NO_FFMPEG      = 334560;
+    protected static $EX_CODE_NO_FFMPEG      = 334560;    
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
     protected static $EX_CODE_UNKNOWN_FORMAT = 334562;
+    protected static $EX_CODE_NO_FFPROBE     = 334563;
+    protected static $EX_CODE_NO_EXEC        = 334564;
     
     protected static $persistentBuffer        = array();
+    protected static $defaultExecutable       = 'ffmpeg';
     
     protected static $REGEX_NO_FFMPEG         = '/FFmpeg version/';
+    protected static $REGEX_NO_FFPROBE        = '/FFprobe version/';
     protected static $REGEX_UNKNOWN_FORMAT    = '/[^:]+: Unknown format/';
     protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
     protected static $REGEX_FRAME_RATE        = '/([0-9\.]+)\stbr/';    
-    protected static $REGEX_COMMENT           = '/comment\s*:\s*(.+)/i';
-    protected static $REGEX_TITLE             = '/title\s*:\s*(.+)/i';
-    protected static $REGEX_ARTIST            = '/(artist|author)\s*:\s*(.+)/i';
-    protected static $REGEX_COPYRIGHT         = '/copyright\s*:\s*(.+)/i';
-    protected static $REGEX_GENRE             = '/genre\s*:\s*(.+)/i';
-    protected static $REGEX_TRACK_NUMBER      = '/track\s*:\s*(.+)/i';
-    protected static $REGEX_YEAR              = '/year\s*:\s*(.+)/i';
+    protected static $REGEX_COMMENT           = '/comment\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TITLE             = '/title\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_ARTIST            = '/(artist|author)\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_COPYRIGHT         = '/copyright\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_GENRE             = '/genre\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TRACK_NUMBER      = '/track\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_YEAR              = '/year\s*(:|=)\s*(.+)/i';
     protected static $REGEX_FRAME_WH          = '/Video:.+?([0-9]+)x([0-9]+)/';
     protected static $REGEX_PIXEL_FORMAT      = '/Video: [^,]+, ([^,]+)/';
     protected static $REGEX_BITRATE           = '/bitrate: ([0-9]+) kb\/s/';    
@@ -43,7 +47,17 @@ class FFmpegMovie implements Serializable {
     * 
     * @var string
     */
-    protected $execPath;
+    protected $ffmpegExecPath;
+
+
+    /**
+    * FFprobe execution prefix (e.g. /usr/bin/)
+    *
+    * @var string
+    */
+    protected $ffprobeExecPath;
+
+
     /**
     * Movie file path
     * 
@@ -193,19 +207,95 @@ class FFmpegMovie implements Serializable {
     
     /**
     * Open a video or audio file and return it as an FFmpegMovie object. 
+    * If ffmpeg and ffprobe are both installed on host system, ffprobe
+    * gets priority in extracting info from the movie file. However
+    * to override this default behaviour set $ffprobeExecPath to some random string
+    * in constructor while instantiating. ffmpeg -i will be used instead for info extraction.
+    * 
     * 
     * @param string $moviePath full path to the movie file
     * @param boolean $persistent Whether to open this media as a persistent resource
+    * @param string $ffmpegExecPath path to ffmpeg executable binary 
+    * @param string #ffprobeExecPath path to ffprobe executable binary
     * @throws Exception
     * @return FFmpegMovie
     */
-    public function __construct($moviePath, $persistent = false, $execPath = '') {
-        $this->movieFile   = $moviePath;
-        $this->persistent  = $persistent;
-        $this->frameNumber = 0;
-        $this->execPath    = $execPath;
-        
-        $this->getFFmpegOutput();
+    public function __construct($moviePath, $persistent = false, $ffmpegExecPath = '', $ffprobeExecPath = '') {
+        $this->movieFile       = $moviePath;
+        $this->persistent      = $persistent;
+        $this->frameNumber     = 0;
+        $this->ffmpegExecPath  = $ffmpegExecPath;
+        $this->ffprobeExecPath = $ffprobeExecPath;
+       
+        if ($this->isFFprobeInstalled() == true) {
+            $this->getFFprobeOutput();
+        } else if ($this->isFFmpegInstalled() == true) {
+            $this->getFFmpegOutput();
+        } else {
+            throw new Exception('Neither ffmpeg nor ffprobe are installed', self::$EX_CODE_NO_EXEC);
+        }
+    }
+ 
+    protected function isFFprobeInstalled() {
+        $output = array();
+        exec($this->ffprobeExecPath.'ffprobe 2>&1', $output, $retVar);
+        $outputStr = join(PHP_EOL, $output);
+        if (!preg_match(self::$REGEX_NO_FFPROBE, $outputStr)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function isFFmpegInstalled() {
+        $output = array();
+        exec($this->ffmpegExecPath.'ffmpeg 2>&1', $output, $retVar);
+        $outputStr = join(PHP_EOL, $output);
+        if (!preg_match(self::$REGEX_NO_FFMPEG, $outputStr)) {
+            return false;  
+        }
+
+        return true;
+    }
+
+    /**
+     * Getting ffprobe output from command line
+     * 
+     * @throws Exception
+     * @return voide
+     */
+    protected function getFFprobeOutput() {
+        // Persistent opening
+        if ($this->persistent == true && array_key_exists($this->ffprobeExecPath.$this->movieFile, self::$persistentBuffer)) {
+            $this->ffmpegOut = self::$persistentBuffer[$this->ffprobeExecPath.$this->movieFile];
+            return;
+        }
+
+        // File doesn't exist
+        if (!file_exists($this->movieFile)) {
+            throw new Exception('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
+        }
+
+        // Get information about file from ffprobe
+        $output = array();
+
+        exec($this->ffprobeExecPath.'ffprobe -show_tags '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);
+        $this->ffmpegOut = join(PHP_EOL, $output);
+
+        // ffprobe installed
+        if (!preg_match(self::$REGEX_NO_FFPROBE, $this->ffmpegOut)) {
+            throw new Exception('FFprobe is not installed on host server', self::$EX_CODE_NO_FFPROBE);
+        }
+
+        // File is not video file
+        if (preg_match(self::$REGEX_UNKNOWN_FORMAT, $this->ffmpegOut)) {
+            throw new Exception('Unknown movie format', self::$EX_CODE_UNKNOWN_FORMAT);
+        }
+
+        // Storing persistent opening
+        if ($this->persistent == true) {
+            self::$persistentBuffer[$this->ffprobeExecPath.$this->movieFile] = $this->ffmpegOut;
+        }        
     }
     
     /**
@@ -216,8 +306,8 @@ class FFmpegMovie implements Serializable {
     */
     protected function getFFmpegOutput() {
         // Persistent opening
-        if ($this->persistent == true && array_key_exists($this->movieFile, self::$persistentBuffer)) {
-            $this->ffmpegOut = self::$persistentBuffer[$this->movieFile];
+        if ($this->persistent == true && array_key_exists($this->ffmpegExecPath.$this->movieFile, self::$persistentBuffer)) {
+            $this->ffmpegOut = self::$persistentBuffer[$this->ffmpegExecPath.$this->movieFile];
             return;
         }
         
@@ -228,12 +318,13 @@ class FFmpegMovie implements Serializable {
         
         // Get information about file from ffmpeg
         $output = array();
-        exec($this->execPath.'ffmpeg -i '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);        
+        
+        exec($this->ffmpegExecPath.'ffmpeg -i '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);        
         $this->ffmpegOut = join(PHP_EOL, $output);
         
-        // No ffmpeg installed
+        // ffmpeg installed
         if (!preg_match(self::$REGEX_NO_FFMPEG, $this->ffmpegOut)) {
-            throw new Exception('No ffmpeg installed on host server', self::$EX_CODE_NO_FFMPEG);
+            throw new Exception('FFmpeg is not installed on host server', self::$EX_CODE_NO_FFMPEG);
         }
         
         // File is not video file
@@ -243,7 +334,7 @@ class FFmpegMovie implements Serializable {
         
         // Storing persistent opening
         if ($this->persistent == true) {
-            self::$persistentBuffer[$this->movieFile] = $this->ffmpegOut;            
+            self::$persistentBuffer[$this->ffmpegExecPath.$this->movieFile] = $this->ffmpegOut;            
         }        
     }
     
@@ -319,7 +410,7 @@ class FFmpegMovie implements Serializable {
         if ($this->comment === null) {
              $match = array();
              preg_match(self::$REGEX_COMMENT, $this->ffmpegOut, $match);
-             $this->comment = (array_key_exists(1, $match)) ? trim($match[1]) : '';
+             $this->comment = (array_key_exists(2, $match)) ? trim($match[2]) : '';
         }
         
         return $this->comment;
@@ -334,7 +425,7 @@ class FFmpegMovie implements Serializable {
         if ($this->title === null) {
             $match = array();
             preg_match(self::$REGEX_TITLE, $this->ffmpegOut, $match);
-            $this->title = (array_key_exists(1, $match)) ? trim($match[1]) : '';
+            $this->title = (array_key_exists(2, $match)) ? trim($match[2]) : '';
         }
         
         return $this->title;
@@ -349,7 +440,7 @@ class FFmpegMovie implements Serializable {
         if ($this->artist === null) {
             $match = array();
             preg_match(self::$REGEX_ARTIST, $this->ffmpegOut, $match);
-            $this->artist = (array_key_exists(2, $match)) ? trim($match[2]) : '';
+            $this->artist = (array_key_exists(3, $match)) ? trim($match[3]) : '';
         }
         
         return $this->artist;
@@ -373,7 +464,7 @@ class FFmpegMovie implements Serializable {
         if ($this->copyright === null) {
             $match = array();
             preg_match(self::$REGEX_COPYRIGHT, $this->ffmpegOut, $match);
-            $this->copyright = (array_key_exists(1, $match)) ? trim($match[1]) : '';
+            $this->copyright = (array_key_exists(2, $match)) ? trim($match[2]) : '';
         }
         
         return $this->copyright;
@@ -388,7 +479,7 @@ class FFmpegMovie implements Serializable {
         if ($this->genre === null) {
             $match = array();
             preg_match(self::$REGEX_GENRE, $this->ffmpegOut, $match);
-            $this->genre = (array_key_exists(1, $match)) ? trim($match[1]) : '';
+            $this->genre = (array_key_exists(2, $match)) ? trim($match[2]) : '';
         }
         
         return $this->genre;
@@ -403,7 +494,7 @@ class FFmpegMovie implements Serializable {
         if ($this->trackNumber === null) {
             $match = array();
             preg_match(self::$REGEX_TRACK_NUMBER, $this->ffmpegOut, $match);
-            $this->trackNumber = (int) ((array_key_exists(1, $match)) ? $match[1] : 0);
+            $this->trackNumber = (int) ((array_key_exists(2, $match)) ? $match[2] : 0);
         }
         
         return $this->trackNumber;    
@@ -418,7 +509,7 @@ class FFmpegMovie implements Serializable {
         if ($this->year === null) {
             $match = array();
             preg_match(self::$REGEX_YEAR, $this->ffmpegOut, $match);
-            $this->year = (int) ((array_key_exists(1, $match)) ? $match[1] : 0);
+            $this->year = (int) ((array_key_exists(2, $match)) ? $match[2] : 0);
         }
         
         return $this->year;    
@@ -641,7 +732,7 @@ class FFmpegMovie implements Serializable {
              
         $frameFilePath = sys_get_temp_dir().uniqid('frame', true).'.jpg';
         $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
-        exec($this->execPath.'ffmpeg -ss '.$frameTime.' -i '.escapeshellarg($this->movieFile).' -vframes 1 '.$frameFilePath.' 2>&1');
+        exec($this->ffmpegExecPath.'ffmpeg -ss '.$frameTime.' -i '.escapeshellarg($this->movieFile).' -vframes 1 '.$frameFilePath.' 2>&1');
         
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {

@@ -6,3 +6,12 @@ It has methods for returning frames from movie files as images that can be manip
 using PHP's image functions. This works well for automatically creating thumbnail images from movies.
 FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...).
 FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...) 
+
+Notes for 2.0b1:
+phpunit tests tends to fail due to ffmpeg output incompatibility. FFprobe executable
+was introduced, but its output doesn't contain information about video or audio bitrates.
+I do believe that ffprobe -show_tags is buggy for track tag, and always returns 0. This
+behaviour causes further fails in unit tests.
+Tested against ffmpeg SVN-r0.5.1-4:0.5.1-1ubuntu1
+               ffprobe SVN-r20090707
+               php 5.3.2

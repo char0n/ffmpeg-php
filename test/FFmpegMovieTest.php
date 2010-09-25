@@ -30,18 +30,18 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         self::$audio     = new FFmpegMovie(self::$audioPath);
     } 
 
-    public function testNoFFmpegExecutableAvailabe() {
+    public function testNeitherFFmpegNorFFprobeExecutableAvailabe() {
         try {
-            $movie = new FFmpegMovie(self::$moviePath, false, '/usr/local/'.uniqid('path', true).'/');    
+            $movie = new FFmpegMovie(self::$moviePath, false, '/usr/local/'.uniqid('path', true).'/', '/usr/local/'.uniqid('path', true).'/');    
         } catch (Exception $ex) {
-            if ($ex->getCode() == 334560) {
+            if ($ex->getCode() == 334564) {
                 return;
             } else {
                 $this->fail('Expected exception raised with wrong code');
             }
         }
         
-        $this->fail('An expected exception with code 334560 has not been raised');
+        $this->fail('An expected exception with code 334564 has not been raised');
         
     }    
 
