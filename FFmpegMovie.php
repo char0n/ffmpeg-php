@@ -41,6 +41,8 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_AUDIO_CHANNELS    = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
     protected static $REGEX_HAS_AUDIO         = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO         = '/Stream.+Video/';
+
+    protected static $ffprobe_capabilities = array("-show_tags","-show_format","-show_streams");
     
     /**
     * FFmpeg execution prefix (e.g. /usr/bin/)
@@ -226,25 +228,33 @@ class FFmpegMovie implements Serializable {
         $this->frameNumber     = 0;
         $this->ffmpegExecPath  = $ffmpegExecPath;
         $this->ffprobeExecPath = $ffprobeExecPath;
-       
-        if ($this->isFFprobeInstalled() == true) {
-            $this->getFFprobeOutput();
-        } else if ($this->isFFmpegInstalled() == true) {
-            $this->getFFmpegOutput();
-        } else {
-            throw new Exception('Neither ffmpeg nor ffprobe are installed', self::$EX_CODE_NO_EXEC);
+
+        $ffprobe_capabilities = $this->getFFprobeCapabilities();
+        if ($ffprobe_capabilities !== false) {
+            $this->getFFprobeOutput($ffprobe_capabilities);
+            return;
         }
+
+        if ($this->isFFmpegInstalled()) {
+            $this->getFFmpegOutput();
+            return;
+        }
+        throw new Exception('Neither ffmpeg nor ffprobe are installed', self::$EX_CODE_NO_EXEC);
     }
- 
-    protected function isFFprobeInstalled() {
-        $output = array();
-        exec($this->ffprobeExecPath.'ffprobe 2>&1', $output, $retVar);
+
+    protected function getFFprobeCapabilities() {
+        $capabilities = $output = array();
+        exec($this->ffprobeExecPath.'ffprobe --help 2>&1', $output, $retVal);
         $outputStr = join(PHP_EOL, $output);
         if (!preg_match(self::$REGEX_NO_FFPROBE, $outputStr)) {
             return false;
         }
-
-        return true;
+        foreach (self::$ffprobe_capabilities as $option) {
+            if (strpos($outputStr, $option)!==false) {
+                $capabilities[] = $option;
+            }
+        }
+        return $capabilities;
     }
 
     protected function isFFmpegInstalled() {
@@ -264,7 +274,7 @@ class FFmpegMovie implements Serializable {
      * @throws Exception
      * @return voide
      */
-    protected function getFFprobeOutput() {
+    protected function getFFprobeOutput($capabilities) {
         // Persistent opening
         if ($this->persistent == true && array_key_exists($this->ffprobeExecPath.$this->movieFile, self::$persistentBuffer)) {
             $this->ffmpegOut = self::$persistentBuffer[$this->ffprobeExecPath.$this->movieFile];
@@ -279,7 +289,7 @@ class FFmpegMovie implements Serializable {
         // Get information about file from ffprobe
         $output = array();
 
-        exec($this->ffprobeExecPath.'ffprobe -show_tags '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);
+        exec($this->ffprobeExecPath.'ffprobe '.implode(" ", $capabilities).' '.escapeshellarg($this->movieFile).' 2>&1', $output, $retVar);
         $this->ffmpegOut = join(PHP_EOL, $output);
 
         // ffprobe installed
