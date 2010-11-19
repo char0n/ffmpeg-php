@@ -5,7 +5,7 @@
 * @author char0n (Vladimir Gorej)
 * @package FFmpegPHP
 * @license New BSD
-* @version 2.0b1
+* @version 2.5b1
 */
 class FFmpegMovie implements Serializable {
 
@@ -207,12 +207,22 @@ class FFmpegMovie implements Serializable {
         $this->setProvider($outputProvider);
     }
     
+    /**
+     * Setting provider implementation
+     * 
+     * @param OutputProvider $outputProvider
+     */
     public function setProvider(OutputProvider $outputProvider) {
         $this->provider = $outputProvider;
         $this->provider->setMovieFile($this->movieFile);
         $this->output = $this->provider->getOutput();
     }
     
+    /**
+     * Getting current provider implementation
+     * 
+     * @return OutputProvider
+     */
     public function getProvider() {
         return $this->provider;
     }

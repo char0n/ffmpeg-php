@@ -7,7 +7,7 @@
 * @subpackage adapter
 * @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_frame.php
 * @license New BSD
-* @version 2.0b1
+* @version 2.5b1
 */
 class ffmpeg_frame {
 

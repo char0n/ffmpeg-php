@@ -1,3 +1,12 @@
+/**
+* AbstractOutputProvider parent of all output providers
+* 
+* @author char0n (Vladimir Gorej)
+* @package FFmpegPHP
+* @subpackage provider
+* @license New BSD
+* @version 2.5b1
+*/
 <?php
 abstract class AbstractOutputProvider implements OutputProvider, Serializable {
 

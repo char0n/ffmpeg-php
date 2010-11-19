@@ -1,3 +1,12 @@
+/**
+* FFmpegOutputProvider ffmpeg provider implementation
+* 
+* @author char0n (Vladimir Gorej)
+* @package FFmpegPHP
+* @subpackage provider
+* @license New BSD
+* @version 2.5b1
+*/
 <?php
 class FFmpegOutputProvider extends AbstractOutputProvider {
 	
