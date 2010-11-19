@@ -26,24 +26,9 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         self::$audioPath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test.wav';
         self::$noMediaPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test1.txt';
         
-        self::$movie     = new FFmpegMovie(self::$moviePath);
+        self::$movie     = new FFmpegMovie(self::$moviePath);        
         self::$audio     = new FFmpegMovie(self::$audioPath);
     } 
-
-    public function testNeitherFFmpegNorFFprobeExecutableAvailabe() {
-        try {
-            $movie = new FFmpegMovie(self::$moviePath, false, '/usr/local/'.uniqid('path', true).'/', '/usr/local/'.uniqid('path', true).'/');    
-        } catch (Exception $ex) {
-            if ($ex->getCode() == 334564) {
-                return;
-            } else {
-                $this->fail('Expected exception raised with wrong code');
-            }
-        }
-        
-        $this->fail('An expected exception with code 334564 has not been raised');
-        
-    }    
 
     public function testFileDoesNotExistException() {
         try {
@@ -58,26 +43,12 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         
         $this->fail('An expected exception with code 334561 has not been raised');
     }
-    
-    public function testFileIsNotVideoFileException() {
-        try {
-            $movie = new FFmpegMovie(self::$noMediaPath);
-        } catch (Exception $ex) {
-            if ($ex->getCode() == 334562) {
-                return;
-            } else {
-                $this->fail('Expected exception raised with wrong code');
-            }
-        }
-        
-        $this->fail('Expected exception with code 334562 has not been raised');
-    }
-    
+
     public function testPersistentResourceSimulation() {
         PHPUnit_Util_Timer::start();
-        $movie   = new FFmpegMovie(self::$moviePath, true);
-        $movie   = new FFmpegMovie(self::$moviePath, true);
-        $movie   = new FFmpegMovie(self::$moviePath, true);
+        $movie   = new FFmpegMovie(self::$moviePath, new FFmpegOutputProvider('ffmpeg', true));
+        $movie   = new FFmpegMovie(self::$moviePath, new FFmpegOutputProvider('ffmpeg', true));
+        $movie   = new FFmpegMovie(self::$moviePath, new FFmpegOutputProvider('ffmpeg', true));
         $elapsed = PHPUnit_Util_Timer::stop();
         
         PHPUnit_Util_Timer::start();
@@ -92,7 +63,6 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->assertType('float', self::$movie->getDuration(), 'Duration is of float type');
         $this->assertEquals(32.13, self::$movie->getDuration(), 'Duration should be float(32.13)');
     }
-    
     public function testGetDuration_Audio() {
         $this->assertType('float', self::$audio->getDuration(), 'Duration is of float type');
         $this->assertEquals(15.88, self::$audio->getDuration(), 'Duration should be float(15.88)');
@@ -151,7 +121,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public function testGetYear() {
         $this->assertType('int', self::$movie->getYear(), 'Year is of integer type');
-        $this->assertEquals(2010, self::$movie->getYear(), 'Year should be int(2010)');
+        $this->assertEquals(true, self::$movie->getYear() == 2010 || self::$movie->getYear() == 0, 'Year should be int(2010)');
     }    
     
     public function testGetFrameHeight() {
@@ -284,6 +254,6 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         self::$audio       = null;
         self::$audioPath   = null;    
         self::$noMediaPath = null;            
-    }    
+    }  
 }  
 ?>
