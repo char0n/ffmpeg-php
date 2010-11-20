@@ -1,4 +1,4 @@
-FFmpegPHP 2.0b1
+FFmpegPHP 2.5b1
 
 FFmpegPHP is a pure OO PHP port of ffmpeg-php writter in C. It adds an easy to use,
 object-oriented API for accessing and retrieving information from video and audio files.
@@ -6,6 +6,17 @@ It has methods for returning frames from movie files as images that can be manip
 using PHP's image functions. This works well for automatically creating thumbnail images from movies.
 FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...).
 FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...) 
+
+Notes for 2.5b1:
+Code completely refactored. OutputProvider interface is now available.
+OutputProvider Interface allows to implement custom output providers.
+FFmpegMovie class no longer responsible for getting output from ffmpeg/ffprobe
+binaries.
+Phpunit tests completely fixed for the environemnt:
+    FFmpeg version SVN-r25769
+    FFprobe version SVN-r25769
+    PHP 5.3.3
+
 
 Notes for 2.0b1:
 phpunit tests tends to fail due to ffmpeg output incompatibility. FFprobe executable
