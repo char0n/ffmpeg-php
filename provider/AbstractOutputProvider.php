@@ -1,3 +1,4 @@
+<?php
 /**
 * AbstractOutputProvider parent of all output providers
 * 
@@ -7,7 +8,6 @@
 * @license New BSD
 * @version 2.5b1
 */
-<?php
 abstract class AbstractOutputProvider implements OutputProvider, Serializable {
 
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;

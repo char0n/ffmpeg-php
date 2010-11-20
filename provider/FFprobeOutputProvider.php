@@ -1,3 +1,4 @@
+<?php
 /**
 * FFprobeOutputProvider ffprobe provider implementation
 * 
@@ -7,7 +8,6 @@
 * @license New BSD
 * @version 2.5b1
 */
-<?php
 class FFprobeOutputProvider extends AbstractOutputProvider {
 
     protected static $EX_CODE_NO_FFPROBE = 334563;    

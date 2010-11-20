@@ -652,6 +652,10 @@ class FFmpegMovie implements Serializable {
         return $this->getFrame();
     }
     
+    public function __clone() {
+        $this->provider = clone $this->provider;
+    }
+    
     public function serialize() {
         $data = serialize(array(
             $this->ffmpegBinary,

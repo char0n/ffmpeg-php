@@ -14,7 +14,7 @@ class ffmpeg_movie {
     protected $adaptee;
     
     public function __construct($moviePath, $persistent = false) {
-        $this->adaptee = new FFmpegMovie($moviePath, $persistent);
+        $this->adaptee = new FFmpegMovie($moviePath, new FFmpegOutputProvider('ffmpeg', $persistent));
     }
     
     public function getDuration() {

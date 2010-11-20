@@ -1,3 +1,4 @@
+<?php
 /**
 * FFmpegOutputProvider ffmpeg provider implementation
 * 
@@ -7,7 +8,6 @@
 * @license New BSD
 * @version 2.5b1
 */
-<?php
 class FFmpegOutputProvider extends AbstractOutputProvider {
 	
     protected static $EX_CODE_NO_FFMPEG = 334560;
