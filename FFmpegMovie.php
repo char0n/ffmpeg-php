@@ -202,7 +202,7 @@ class FFmpegMovie implements Serializable {
         $this->frameNumber     = 0;
         $this->ffmpegBinary    = $ffmpegBinary;
         if ($outputProvider == null) {
-            $outputProvider = new FFmpegOutputProvider('ffmpeg');
+            $outputProvider = new FFmpegOutputProvider($ffmpegBinary);
         }   
         $this->setProvider($outputProvider);
     }
@@ -230,7 +230,7 @@ class FFmpegMovie implements Serializable {
     /**
     * Return the duration of a movie or audio file in seconds.
     * 
-    * @return int movie duration in seconds
+    * @return float movie duration in seconds
     */
     public function getDuration() {
         if ($this->duration === null) {
