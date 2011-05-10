@@ -35,7 +35,7 @@ class FFmpegOutputProvider extends AbstractOutputProvider {
         $output = join(PHP_EOL, $output);
         
         // ffmpeg installed
-        if (!preg_match('/FFmpeg version/', $output)) {
+        if (!preg_match('/FFmpeg version/i', $output)) {
             throw new Exception('FFmpeg is not installed on host server', self::$EX_CODE_NO_FFMPEG);
         }
         
