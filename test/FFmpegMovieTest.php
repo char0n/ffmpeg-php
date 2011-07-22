@@ -70,7 +70,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     }
     public function testGetDuration_Audio() {
         $this->assertType('float', self::$audio->getDuration(), 'Duration is of float type');
-        $this->assertEquals(15.88, self::$audio->getDuration(), 'Duration should be float(15.88)');
+        $this->assertEquals(15.84, self::$audio->getDuration(), 'Duration should be float(15.84)');
     }
     
     public function testGetFrameCount() {
