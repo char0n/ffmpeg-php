@@ -1,21 +1,32 @@
 <?php
 /**
-* FFmpegOutputProvider ffmpeg provider implementation
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @subpackage provider
-* @license New BSD
-* @version 2.5b1
-*/
+ * FFmpegOutputProvider ffmpeg provider implementation
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @subpackage provider
+ * @license New BSD
+ * @version 2.5
+ */
 class FFmpegOutputProvider extends AbstractOutputProvider {
 	
     protected static $EX_CODE_NO_FFMPEG = 334560;
 		
+    /**
+     * Constructor
+     * 
+     * @param string $ffmpegBinary path to ffmpeg executable
+     * @param boolean $persistent persistent functionality on/off
+     */
     public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false) {
         parent::__construct($ffmpegBinary, $persistent);
     }
 	
+    /**
+     * Getting parsable output from ffmpeg binary
+     * 
+     * @return string
+     */    
     public function getOutput() {
         
         // Persistent opening

@@ -1,21 +1,32 @@
 <?php
 /**
-* FFprobeOutputProvider ffprobe provider implementation
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @subpackage provider
-* @license New BSD
-* @version 2.5b1
-*/
+ * FFprobeOutputProvider ffprobe provider implementation
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @subpackage provider
+ * @license New BSD
+ * @version 2.5
+ */
 class FFprobeOutputProvider extends AbstractOutputProvider {
 
     protected static $EX_CODE_NO_FFPROBE = 334563;    
     
+    /**
+     * Constructor
+     * 
+     * @param string $ffprobeBinary path to ffprobe executable
+     * @param boolean $persistent persistent functionality on/off
+     */    
     public function __construct($ffprobeBinary, $persistent = false) {
         parent::__construct($ffprobeBinary, $persistent);
     }
     
+    /**
+     * Getting parsable output from ffprobe binary
+     * 
+     * @return string
+     */      
     public function getOutput() {
         // Persistent opening
         if ($this->persistent == true && array_key_exists(get_class($this).$this->binary.$this->movieFile, self::$persistentBuffer)) {

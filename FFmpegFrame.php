@@ -1,12 +1,12 @@
 <?php     
 /**
-* FFmpegFrame represents one frame from the movie
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @license New BSD
-* @version 2.5b1
-*/
+ * FFmpegFrame represents one frame from the movie
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @license New BSD
+ * @version 2.5
+ */
 class FFmpegFrame implements Serializable {
     
     protected static $EX_CODE_NO_VALID_RESOURCE = 334563;

@@ -1,18 +1,18 @@
 <?php
 /**
-* FFmpegAnimatedGif represents an animated gif object
-* 
-* This class in implemented in rather un-orthodox way.
-* Reason is that ffmpeg doesn't provide satisfactory 
-* quality and compression of animated gifs.
-* 
-* Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @license New BSD 
-* @version 2.5b1
-*/
+ * FFmpegAnimatedGif represents an animated gif object
+ * 
+ * This class in implemented in rather un-orthodox way.
+ * Reason is that ffmpeg doesn't provide satisfactory 
+ * quality and compression of animated gifs.
+ * 
+ * Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @license New BSD 
+ * @version 2.5
+ */
 class FFmpegAnimatedGif implements Serializable {
 
     /**

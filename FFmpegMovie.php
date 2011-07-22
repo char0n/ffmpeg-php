@@ -1,12 +1,12 @@
 <?php     
 /**
-* FFmpegMovie represents a movie file
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @license New BSD
-* @version 2.5b1
-*/
+ * FFmpegMovie represents a movie file
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @license New BSD
+ * @version 2.5
+ */
 class FFmpegMovie implements Serializable {
 
     protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
@@ -186,14 +186,15 @@ class FFmpegMovie implements Serializable {
     
     /**
     * Open a video or audio file and return it as an FFmpegMovie object. 
-    * If ffmpeg and ffprobe are both installed on host system, ffprobe
+    * If ffmpeg and ffprobe are both installed on host system, ffmpeg
     * gets priority in extracting info from the movie file. However
-    * to override this default behaviour set $ffprobeExecPath to some random string
-    * in constructor while instantiating. ffmpeg -i will be used instead for info extraction.
+    * to override this default behaviour use any implementation of OutputProvider interface
+    * as the second constructor argumentwhile instantiating
     * 
     * 
     * @param string $moviePath full path to the movie file
     * @param OutputProvider $outputProvider provides parsable output
+    * @param string $ffmpegBinary ffmpeg executable, if $outputProvider not specified
     * @throws Exception 
     * @return FFmpegMovie
     */

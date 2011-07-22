@@ -1,14 +1,14 @@
 <?php
 /**
-* ffmpeg_animated_gif serves as a compatiblity adapter for old ffmpeg-php extension
-* 
-* @author char0n (Vladimir Gorej)
-* @package FFmpegPHP
-* @subpackage adapter
-* @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_animated_gif.php
-* @license New BSD
-* @version 2.5b1
-*/
+ * ffmpeg_animated_gif serves as a compatiblity adapter for old ffmpeg-php extension
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @package FFmpegPHP
+ * @subpackage adapter
+ * @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_animated_gif.php
+ * @license New BSD
+ * @version 2.5
+ */
 class ffmpeg_animated_gif {
 
     protected $adaptee;

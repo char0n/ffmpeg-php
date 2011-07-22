@@ -1,16 +1,21 @@
 <?php
 /**
-* Testing framework: PHPUnit (http://www.phpunit.de)
-* 
-* Create directory "phpunit" one level above this file.
-* Unpack PHPUnit downloaded from http://pear.phpunit.de/get/
-* to "phpunit" directory created earlier.
-* 
-* To run the test run the command:
-* 
-* php phpunit/phpunit.php --bootstrap test/bootstrap.php test/FFmpegMovieTest.php
-*/
-
+ * Testing framework: PHPUnit (http://www.phpunit.de)
+ *
+ * 1.) Install phpunit on your operating system
+ * 2.) Run the test
+ * 
+ * phpunit --bootstrap test/bootstrap.php test/FFmpegMovieTest.php
+ */
+/**
+ * FFmpegMovieTest contains tests for FFmpegMovie class
+ * 
+ * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @category tests
+ * @package FFmpegPHP
+ * @license New BSD
+ * @version 2.5
+ */
 class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
 
     protected static $moviePath;
