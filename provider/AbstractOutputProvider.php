@@ -46,11 +46,11 @@ abstract class AbstractOutputProvider implements OutputProvider, Serializable {
         $this->persistent = $persistent;    
     }
     
-	/**
-	 * Setting movie file path
-	 * 
-	 * @param string $movieFile
-	 */    
+    /**
+     * Setting movie file path
+     * 
+     * @param string $movieFile
+     */    
     public function setMovieFile($movieFile) {
         $this->movieFile = $movieFile;
     }
