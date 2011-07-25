@@ -11,8 +11,8 @@ class FFmpegAutoloader {
 
     protected static $classes = array(
         'FFmpegAnimatedGif'      => '/FFmpegAnimatedGif.php',
-        'FFmpegFrame'            => '/FFmpegFrame',
-        'FFmpegMovie'            => '/FFmpegMovie',
+        'FFmpegFrame'            => '/FFmpegFrame.php',
+        'FFmpegMovie'            => '/FFmpegMovie.php',
         'ffmpeg_animated_gif'    => '/adapter/ffmpeg_animated_gif.php',
         'ffmpeg_frame'           => '/adapter/ffmpeg_frame.php',
         'ffmpeg_movie'           => '/adapter/ffmpeg_movie.php',        

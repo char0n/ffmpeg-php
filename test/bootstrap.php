@@ -13,6 +13,7 @@
 date_default_timezone_set('Europe/Bratislava');  
 
 $basePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR;
+require_once $basePath.'FFmpegAutoloader.php';
 require_once $basePath.'provider'.DIRECTORY_SEPARATOR.'OutputProvider.php';
 require_once $basePath.'provider'.DIRECTORY_SEPARATOR.'AbstractOutputProvider.php';
 require_once $basePath.'provider'.DIRECTORY_SEPARATOR.'FFmpegOutputProvider.php';
