@@ -18,7 +18,7 @@ class FFprobeOutputProvider extends AbstractOutputProvider {
      * @param string $ffprobeBinary path to ffprobe executable
      * @param boolean $persistent persistent functionality on/off
      */    
-    public function __construct($ffprobeBinary, $persistent = false) {
+    public function __construct($ffprobeBinary = 'ffprobe', $persistent = false) {
         parent::__construct($ffprobeBinary, $persistent);
     }
     
@@ -45,7 +45,7 @@ class FFprobeOutputProvider extends AbstractOutputProvider {
         $output = join(PHP_EOL, $output);
                 
         // ffprobe installed
-        if (!preg_match('/FFprobe version/', $output)) {
+        if (!preg_match('/FFprobe version/i', $output)) {
             throw new Exception('FFprobe is not installed on host server', self::$EX_CODE_NO_FFPROBE);
         }
 
