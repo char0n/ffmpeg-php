@@ -28,7 +28,7 @@ class ffmpeg_animated_git_test extends PHPUnit_Framework_TestCase {
     
     public static function setUpBeforeClass() {
         self::$outFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('anim', true).'.gif';       
-        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'../data/test.mp4');
+        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4');
     }    
 
     public static function tearDownAfterClass() {

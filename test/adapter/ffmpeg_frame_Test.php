@@ -24,7 +24,7 @@ class ffmpeg_frame_test extends PHPUnit_Framework_TestCase {
     protected $frame;
     
     public static function setUpBeforeClass() {
-        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'../data/test.mp4');
+        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4');
     }
 
     public static function tearDownAfterClass() {

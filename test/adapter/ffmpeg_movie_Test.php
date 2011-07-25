@@ -28,9 +28,9 @@ class ffmpeg_movie_test extends PHPUnit_Framework_TestCase {
     protected static $noMediaPath;
     
     public static function setUpBeforeClass() {
-        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'../data/test.mp4');
-        self::$audioPath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'../data/test.wav');
-        self::$noMediaPath = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'../data/test1.txt');
+        self::$moviePath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4');
+        self::$audioPath   = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.wav');
+        self::$noMediaPath = realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test1.txt');
     } 
 
     public static function tearDownAfterClass() {
