@@ -1,4 +1,5 @@
 .buildpath
 .project
 .settings
+*.swp
 /docs/*
