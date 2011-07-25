@@ -8,7 +8,11 @@
  * @version 2.5
  */
 class FFmpegAutoloader {
-
+    /**
+     * Map of all required FFmpegPHP package files
+     *
+     * @var array
+     */
     protected static $classes = array(
         'FFmpegAnimatedGif'      => '/FFmpegAnimatedGif.php',
         'FFmpegFrame'            => '/FFmpegFrame.php',
@@ -22,14 +26,22 @@ class FFmpegAutoloader {
         'FFprobeOutputProvider'  => '/provider/FFprobeOutputProvider.php'      
     );
 
+    /**
+     * Autoloading mechanizm
+     * 
+     * @param string $className name of the class to be loaded
+     * @return boolean
+     */
     public static function autoload($className) {
         if (array_key_exists($className, self::$classes)) {
             require_once dirname(__FILE__).self::$classes[$className];
             return true;
         }
         return false;
-    }
 
+    /**
+     * Registering autoloading mechanizm
+     */     
     public static function register() {
         if (function_exists('__autoload')) {        
             trigger_error('FFmpegPHP uses spl_autoload_register() which will bypass your __autoload() and may break your autoloading', E_USER_WARNING);    
