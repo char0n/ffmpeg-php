@@ -20,25 +20,41 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
 
     protected static $outFilePath;
     protected static $moviePath;
-    protected static $movie;
-    protected static $frame1;
-    protected static $frame2;
-    protected static $anim;
+    protected $movie;
+    protected $frame1;
+    protected $frame2;
+    protected $anim;
     
     public static function setUpBeforeClass() {
         self::$outFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('anim', true).'.gif';        
         self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data/test.mp4';
-        self::$movie       = new FFmpegMovie(self::$moviePath);
-        self::$frame1      = self::$movie->getFrame(1);
-        self::$frame2      = self::$movie->getFrame(2);
-    }    
+    }   
+
+    public static function tearDownAfterClass() {
+        self::$outFilePath = null;
+        self::$moviePath   = null;
+    }
+
+    public function setUp() {
+        $this->movie  = new FFmpegMovie(self::$moviePath);
+        $this->frame1 = $this->movie->getFrame(1);
+        $this->frame2 = $this->movie->getFrame(2);
+        $this->anim   = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
+    }
+
+    public function tearDown() {
+        $this->movie  = null;
+        $this->frame1 = null;
+        $this->frame2 = null;
+        $this->anim   = null;
+        if (file_exists(self::$outFilePath)) unlink(self::$outFilePath);
+    }
     
     public function testAddFrame() {
-        $frame        = self::$movie->getFrame(3);
+        $frame        = $this->movie->getFrame(3);
         $memoryBefore = memory_get_usage();
 
-        self::$anim   = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);     
-        self::$anim->addFrame($frame);
+        $this->anim->addFrame($frame);
         
         $memoryAfter  = memory_get_usage();
         
@@ -46,56 +62,41 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testGetAnimation() {
-        self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame(self::$frame1); 
-        self::$anim->addFrame(self::$frame2); 
+        $this->anim->addFrame($this->frame1); 
+        $this->anim->addFrame($this->frame2); 
         
-        $animData = self::$anim->getAnimation();
+        $animData = $this->anim->getAnimation();
         $this->assertEquals(19715, strlen($animData), 'Animation binary size should be int(19715)');
     }
     
     public function testSave() {
-        self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame(self::$frame1);
-        self::$anim->addFrame(self::$frame2);
+        $this->anim->addFrame($this->frame1);
+        $this->anim->addFrame($this->frame2);
 
-        $saveResult = self::$anim->save();
+        $saveResult = $this->anim->save();
         $this->assertEquals(true, $saveResult, 'Save result should be true');
         $this->assertEquals(true, file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');      
         $this->assertEquals(19715, filesize(self::$outFilePath), 'Animation binary size should be int(19715)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
-        unlink(self::$outFilePath);
     }
     
     public function testSerializeUnserialize() {
-        self::$anim = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
-        self::$anim->addFrame(self::$frame1); 
-        self::$anim->addFrame(self::$frame2);
+        $this->anim->addFrame($this->frame1); 
+        $this->anim->addFrame($this->frame2);
         
-        $serialized  = serialize(self::$anim);
-        self::$anim = null;
-        self::$anim = unserialize($serialized);
+        $serialized  = serialize($this->anim);
+        $this->anim = null;
+        $this->anim = unserialize($serialized);
 
-        $saveResult = self::$anim->save();
+        $saveResult = $this->anim->save();
         $this->assertEquals(true, $saveResult, 'Save result should be true');
         $this->assertEquals(true, file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');      
         $this->assertEquals(19715, filesize(self::$outFilePath), 'Animation binary size should be int(19715)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
-        unlink(self::$outFilePath);
     }       
-    
-    public static function tearDownAfterClass() {
-        self::$anim        = null;
-        self::$outFilePath = null;
-        self::$moviePath   = null;
-        self::$movie       = null;
-        self::$frame1      = null;
-        self::$frame2      = null;
-        self::$anim        = null;        
-    }    
 }  
 ?>

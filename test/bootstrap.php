@@ -23,5 +23,4 @@ require_once $basePath.'FFmpegMovie.php';
 require_once $basePath.'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_animated_gif.php';
 require_once $basePath.'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_frame.php';
 require_once $basePath.'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_movie.php';
-require_once 'PHPUnit/Framework.php';
 ?>

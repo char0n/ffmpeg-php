@@ -23,6 +23,7 @@ Tests
 
 - Ubuntu Linux 10.04
 - ffmpeg version N-31530-g15285d8
+- PHPUnit 3.5.14
 - PHP 5.3.3
 
 
