@@ -10,11 +10,11 @@
  */
 interface OutputProvider {
 
-	/**
-	 * Setting movie file path
-	 * 
-	 * @param string $movieFile
-	 */
+    /**
+     * Setting movie file path
+     * 
+     * @param string $movieFile
+     */
     public function setMovieFile($movieFile);
     
     /**
