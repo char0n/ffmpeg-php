@@ -38,6 +38,7 @@ class FFmpegAutoloader {
             return true;
         }
         return false;
+    }
 
     /**
      * Registering autoloading mechanizm
