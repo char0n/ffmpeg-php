@@ -13,18 +13,24 @@ class FFmpegAutoloader {
      *
      * @var array
      */
-    protected static $classes = array(
-        'FFmpegAnimatedGif'      => '/FFmpegAnimatedGif.php',
-        'FFmpegFrame'            => '/FFmpegFrame.php',
-        'FFmpegMovie'            => '/FFmpegMovie.php',
-        'ffmpeg_animated_gif'    => '/adapter/ffmpeg_animated_gif.php',
-        'ffmpeg_frame'           => '/adapter/ffmpeg_frame.php',
-        'ffmpeg_movie'           => '/adapter/ffmpeg_movie.php',        
-        'OutputProvider'         => '/provider/OutputProvider.php',
-        'AbstractOutputProvider' => '/provider/AbstractOutputProvider.php',
-        'FFmpegOutputProvider'   => '/provider/FFmpegOutputProvider.php',
-        'FFprobeOutputProvider'  => '/provider/FFprobeOutputProvider.php'      
-    );
+    protected static $classes;
+
+    protected static function initClasses() {
+        if (self::$classes === null) {
+            self::$classes = array(
+                'FFmpegAnimatedGif'      => 'FFmpegAnimatedGif.php',
+                'FFmpegFrame'            => 'FFmpegFrame.php',
+                'FFmpegMovie'            => 'FFmpegMovie.php',
+                'ffmpeg_animated_gif'    => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_animated_gif.php',
+                'ffmpeg_frame'           => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_frame.php',
+                'ffmpeg_movie'           => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_movie.php',        
+                'OutputProvider'         => 'provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
+                'AbstractOutputProvider' => 'provider'.DIRECTORY_SEPARATOR.'AbstractOutputProvider.php',
+                'FFmpegOutputProvider'   => 'provider'.DIRECTORY_SEPARATOR.'FFmpegOutputProvider.php',
+                'FFprobeOutputProvider'  => 'provider'.DIRECTORY_SEPARATOR.'FFprobeOutputProvider.php'      
+            );
+        }
+    }
 
     /**
      * Autoloading mechanizm
@@ -34,7 +40,7 @@ class FFmpegAutoloader {
      */
     public static function autoload($className) {
         if (array_key_exists($className, self::$classes)) {
-            require_once dirname(__FILE__).self::$classes[$className];
+            require_once dirname(__FILE__).DIRECTORY_SEPARATOR.self::$classes[$className];
             return true;
         }
         return false;
@@ -46,8 +52,9 @@ class FFmpegAutoloader {
     public static function register() {
         if (function_exists('__autoload')) {        
             trigger_error('FFmpegPHP uses spl_autoload_register() which will bypass your __autoload() and may break your autoloading', E_USER_WARNING);    
-        } else {
-           spl_autoload_register(array('FFmpegAutoloader', 'autoload'));
+        } else {        
+            self::initClasses();
+            spl_autoload_register(array('FFmpegAutoloader', 'autoload'));
         }
     }
 }
