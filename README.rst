@@ -21,7 +21,7 @@ Tests
 
 **Tested on evnironment**
 
-- Ubuntu Linux 11.04 natty 64-bit
+- Xubuntu Linux 11.04 natty 64-bit
 - ffmpeg version N-31898-g95b5b52
 - PHPUnit 3.5.15
 - PHP 5.3.5
