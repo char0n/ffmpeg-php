@@ -31,8 +31,15 @@ Tests
 
 To run the test install phpunit (http://www.phpunit.de/) and run: ::
 
- phpunit --bootstrap test/bootstrap.php test/
+ $ phpunit --bootstrap test/bootstrap.php test/
 
+Installation
+------------
+
+You can easily install FFmpegPHP via PEAR framework: ::
+
+ $ sudo pear channel-discover pear.codescale.net
+ $ sudo pear install codescale/FFmpegPHP2
 
 Author
 ------
@@ -47,7 +54,7 @@ Documentation
 FFmpegPHP documentation can be build from source code 
 using PhpDocumentor with following commnad: ::
 
- phpdoc -o HTML:Smarty:HandS -d . -t docs
+ $ phpdoc -o HTML:Smarty:HandS -d . -t docs
 
 
 References
@@ -57,5 +64,7 @@ References
 - http://www.phpclasses.org/package/5977-PHP-Manipulate-video-files-using-the-ffmpeg-program.html
 - http://freshmeat.net/projects/ffmpegphp
 - http://www.codescale.net/en/community/#ffmpegphp
+- http://pear.codescale.net/
 - http://www.phpdoc.org/
 - http://www.phpunit.de/
+- http://pear.php.net/

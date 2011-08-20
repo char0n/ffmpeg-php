@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>FFmpegPHP2</name>
+ <channel>pear.codescale.net</channel>
+ <extends>FFmpegPHP</extends>
+ <summary>Manipulate video files using the ffmpeg program</summary>
+ <description>FFmpegPHP is a pure OO PHP port of ffmpeg-php writter in C. It adds an easy to use, object-oriented API for accessing and retrieving information from video and audio files. It has methods for returning frames from movie files as images that can be manipulated using PHP&apos;s image functions. This works well for automatically creating thumbnail images from movies. FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...). FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...)</description>
+ <lead>
+  <name>Vladimir Gorej</name>
+  <user>char0n</user>
+  <email>gorej@codescale.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-08-20</date>
+ <time>13:19:20</time>
+ <version>
+  <release>2.5.3</release>
+  <api>2.5.3</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://github.com/char0n/ffmpeg-php/blob/master/LICENSE">BSD Style</license>
+ <notes>
+  Fixed code comments
+  Completly refactored tests and better code coverage
+  Autoloader mechanism
+  Tons of fixes
+ </notes>
+ <contents>
+  <dir baseinstalldir="/FFmpegPHP2/" name="/">
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="474d1d3bad780009b8b0cc83c25cce47" name="adapter/ffmpeg_animated_gif.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="00b011564a618ea4267b4cd0bbc7e310" name="adapter/ffmpeg_frame.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="ff0c32ceb8ccbe61239901396e7b0d69" name="adapter/ffmpeg_movie.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="835c790b40fb915a46ef1cdaae3fc494" name="provider/AbstractOutputProvider.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="a7179adee8a1b493403b02befe6f500d" name="provider/FFmpegOutputProvider.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="3671bb87431e8332acab0eaf34db45d8" name="provider/FFprobeOutputProvider.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="2cc73a526f212be2bf2aa665138019ae" name="provider/OutputProvider.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="bda5cfdfd97fa9f56ee6cbaa6be0c41d" name="test/bootstrap.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="c970847b773b41c9cb9d96422817fd19" name="test/FFmpegAnimatedGifTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="80a065ddac289daf597a61e529933df0" name="test/FFmpegAutoloaderTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="d8849e6c261a4b6059d76a2c417cba0a" name="test/FFmpegFrameTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="25f59d59c247ba5291ebcb66e8eb2706" name="test/FFmpegMovieTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="b64129ad3b9c1ba88c70487e998f6572" name="test/adapter/ffmpeg_animated_gif_Test.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="876fb146958cc0b084b204b29b644257" name="test/adapter/ffmpeg_frame_Test.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="aed9886399c964dd7c4704535357cf67" name="test/adapter/ffmpeg_movie_Test.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="34ccb4a8bcf8af7054f66745ed081045" name="test/data/test.mp4" role="data" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="3ad821dca55f57baaf66881aa156c058" name="test/data/test.wav" role="data" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="d8e8fca2dc0f896fd7cb4cb0031ba249" name="test/data/test1.txt" role="data" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="eba3d956c211b69e5adff9452e485fb1" name="test/provider/FFmpegOutputProviderTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="8ebb9c866b57ae421532ecffae9284b9" name="test/provider/FFprobeOutputProviderTest.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="e9a7de04c11bc0f8849774c6bdd0f852" name="FFmpegAnimatedGif.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="c978f65db86914fb3ecaadee3a0bcf83" name="FFmpegAutoloader.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="19b14fdd9b2c967665c8ff139821d6c0" name="FFmpegFrame.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="b87ae439c457bf36274c0d8fca06230b" name="FFmpegMovie.php" role="php" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="dcc6e007874c892bbe01f30079eecd74" name="LICENSE" role="data" />
+   <file baseinstalldir="/FFmpegPHP2/" md5sum="cd7320a6151e292c4fba83a2fcac7456" name="README.rst" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>2.5.3</release>
+    <api>2.5.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-08-20</date>
+   <license uri="http://github.com/char0n/ffmpeg-php/blob/master/LICENSE">BSD Style</license>
+   <notes>
+    Fixed code comments
+    Completly refactored tests and better code coverage
+    Autoloader mechanism
+    Tons of fixes
+   </notes>
+   <deps>
+     <dep type="php" rel="ge">5</dep>
+     <dep type="ext" rel="has">gd</dep>
+   </deps>
+  </release>
+ </changelog>
+</package>
