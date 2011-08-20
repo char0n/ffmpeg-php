@@ -21,10 +21,10 @@ Tests
 
 **Tested on evnironment**
 
-- Ubuntu Linux 10.04
-- ffmpeg version N-31530-g15285d8
-- PHPUnit 3.5.14
-- PHP 5.3.3
+- Ubuntu Linux 11.04 natty 64-bit
+- ffmpeg version N-31898-g95b5b52
+- PHPUnit 3.5.15
+- PHP 5.3.5
 
 
 **Running tests**

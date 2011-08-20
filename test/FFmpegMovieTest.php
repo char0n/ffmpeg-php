@@ -206,7 +206,7 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     
     public function testGetVideoCodec() {
         $this->assertInternalType('string', $this->movie->getVideoCodec(), 'Video codec is of string type');
-        $this->assertEquals('mpeg4', $this->movie->getVideoCodec(), 'Video codec should be string(mpeg4)');
+        $this->assertEquals('mpeg4 (Simple Profile)', $this->movie->getVideoCodec(), 'Video codec should be string(mpeg4)');
     }      
 
     public function testGetAudioCodec() {
