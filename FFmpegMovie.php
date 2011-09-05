@@ -18,7 +18,7 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_GENRE             = '/genre\s*(:|=)\s*(.+)/i';
     protected static $REGEX_TRACK_NUMBER      = '/track\s*(:|=)\s*(.+)/i';
     protected static $REGEX_YEAR              = '/year\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_FRAME_WH          = '/Video:.+?([0-9]+)x([0-9]+)/';
+    protected static $REGEX_FRAME_WH          = '/Video:.+?([1-9][0-9]*)x([1-9][0-9]*)/';
     protected static $REGEX_PIXEL_FORMAT      = '/Video: [^,]+, ([^,]+)/';
     protected static $REGEX_BITRATE           = '/bitrate: ([0-9]+) kb\/s/';    
     protected static $REGEX_VIDEO_BITRATE     = '/Video:.+?([0-9]+) kb\/s/';
