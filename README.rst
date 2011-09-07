@@ -33,6 +33,7 @@ To run the test install phpunit (http://www.phpunit.de/) and run: ::
 
  $ phpunit --bootstrap test/bootstrap.php test/
 
+
 Installation
 ------------
 
@@ -40,6 +41,23 @@ You can easily install FFmpegPHP via PEAR framework: ::
 
  $ sudo pear channel-discover pear.codescale.net
  $ sudo pear install codescale/FFmpegPHP2
+
+or download package from github.com: ::
+
+ $ wget http://github.com/char0n/ffmpeg-php/tarball/master
+
+
+Using FFmpegPHP
+---------------
+
+Package installed via PEAR channel: ::
+
+ require_once 'FFmpegPHP2/FFmpegAutoloader.php';
+
+Package downloaded from github.com and unpacked into certain directory: ::
+
+ require_once 'PATH_TO_YOUR_DIRECTORY/FFmpegAutoloader.php';
+ 
 
 Author
 ------
