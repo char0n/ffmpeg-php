@@ -614,25 +614,41 @@ class FFmpegMovie implements Serializable {
     * @param int $quality
     * @return FFmpegFrame|boolean
     */
-    public function getFrame($framenumber = null, $height = null, $width = null) {
+    public function getFrame($framenumber = null, $height = null, $width = null, $quality = 30) {
         // Set frame position for frame extraction
         $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
         // Frame position out of range
         if (!is_numeric($framePos) || $framePos < 0 || $framePos > $this->getFrameCount()) {
             return false;
-        }        
-
+        }
+        
         if(is_numeric($height) !== false && is_numeric($width) !== false) {
-            $image_size = ' -s '.$width.'x'.$height;
+            $image_size = ' -s '.$height.'x'.$width;
         } else {
             $image_size = '';
+        }
+        
+        if(is_numeric($quality) !== false) {
+            $quality = ' -qscale '.$quality;
+        } else {
+            $quality = '';
         }
         
         $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
         $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
         
-        exec($this->ffmpegBinary.' -ss '.$frameTime.' -i '.escapeshellarg($this->movieFile).' -vframes 1 '.$image_size.' '.$frameFilePath.' 2>&1');
+        exec(implode(' ', array(
+            $this->ffmpegBinary,
+            '-ss '.$frameTime,
+            '-i '.escapeshellarg($this->movieFile),
+            '-f image2',
+            '-vframes 1',
+            $image_size,
+            $quality,
+            $frameFilePath, 
+            '2>&1',
+        )));
         
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
