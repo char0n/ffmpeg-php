@@ -614,7 +614,7 @@ class FFmpegMovie implements Serializable {
     * @param int $quality
     * @return FFmpegFrame|boolean
     */
-    public function getFrame($framenumber = null, $height = null, $width = null, $quality = 30) {
+    public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
         // Set frame position for frame extraction
         $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
