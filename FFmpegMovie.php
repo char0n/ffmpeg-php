@@ -640,10 +640,10 @@ class FFmpegMovie implements Serializable {
         
         exec(implode(' ', array(
             $this->ffmpegBinary,
-            '-ss '.$frameTime,
             '-i '.escapeshellarg($this->movieFile),
             '-f image2',
-            '-vframes 1',
+            '-ss '.$frameTime,
+            '-vframes 1',            
             $image_size,
             $quality,
             $frameFilePath, 
