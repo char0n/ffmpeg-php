@@ -73,7 +73,7 @@ class ffmpeg_animated_git_test extends PHPUnit_Framework_TestCase {
         $saveResult = $this->anim->addFrame($this->frame1);
         $this->assertEquals(true, $saveResult, 'Save result should be true');
         $this->assertEquals(true, file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');
-        $this->assertEquals(29172, filesize(self::$outFilePath), 'Animation binary size should be int(29172)');
+        $this->assertEquals(30092, filesize(self::$outFilePath), 'Animation binary size should be int(30092)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');

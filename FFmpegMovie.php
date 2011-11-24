@@ -202,7 +202,7 @@ class FFmpegMovie implements Serializable {
         $this->movieFile       = $moviePath;
         $this->frameNumber     = 0;
         $this->ffmpegBinary    = $ffmpegBinary;
-        if ($outputProvider == null) {
+        if ($outputProvider === null) {
             $outputProvider = new FFmpegOutputProvider($ffmpegBinary);
         }   
         $this->setProvider($outputProvider);
@@ -399,7 +399,7 @@ class FFmpegMovie implements Serializable {
         if ($this->year === null) {
             $match = array();
             preg_match(self::$REGEX_YEAR, $this->output, $match);
-            $this->year = (int) ((array_key_exists(2, $match)) ? $match[2] : 0);
+	    $this->year = (int) ((array_key_exists(2, $match)) ? $match[2] : 0);
         }
         
         return $this->year;    
@@ -432,7 +432,7 @@ class FFmpegMovie implements Serializable {
     * @return int 
     */
     public function getFrameWidth() {
-        if ($this->frameWidth == null) {
+        if ($this->frameWidth === null) {
             $this->getFrameHeight();
         }
         
@@ -445,7 +445,7 @@ class FFmpegMovie implements Serializable {
     * @return string 
     */
     public function getPixelFormat() {
-        if ($this->pixelFormat == null) {
+        if ($this->pixelFormat === null) {
             $match = array();
             preg_match(self::$REGEX_PIXEL_FORMAT, $this->output, $match);
             $this->pixelFormat = (array_key_exists(1, $match)) ? trim($match[1]) : '';
@@ -460,7 +460,7 @@ class FFmpegMovie implements Serializable {
     * @return int
     */
     public function getBitRate() {
-        if ($this->bitRate == null) {
+        if ($this->bitRate === null) {
             $match = array();
             preg_match(self::$REGEX_BITRATE, $this->output, $match);
             $this->bitRate = (int) ((array_key_exists(1, $match)) ? ($match[1] * 1000) : 0);
@@ -623,13 +623,13 @@ class FFmpegMovie implements Serializable {
             return false;
         }
         
-        if(is_numeric($height) !== false && is_numeric($width) !== false) {
+        if(is_numeric($height) && is_numeric($width)) {
             $image_size = ' -s '.$height.'x'.$width;
         } else {
             $image_size = '';
         }
         
-        if(is_numeric($quality) !== false) {
+        if(is_numeric($quality)) {
             $quality = ' -qscale '.$quality;
         } else {
             $quality = '';
