@@ -610,21 +610,51 @@ class FFmpegMovie implements Serializable {
     * 
     * @param int $framenumber
     * @param int $height
-    * @param int $width
-    * @param int $quality
+	* @param int $width
+	* @param int $quality
     * @return FFmpegFrame|boolean
     */
-    public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
-        // Set frame position for frame extraction
-        $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
+	public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
+    	$framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
-        // Frame position out of range
+		// Frame position out of range
         if (!is_numeric($framePos) || $framePos < 0 || $framePos > $this->getFrameCount()) {
             return false;
         }
+		
+	    $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
+		
+		$frame = $this->getFrameAtTime($frameTime, $height, $width, $quality);
+		
+	    // Increment internal frame number
+        if ($framenumber === null) {
+            ++$this->frameNumber;
+        }
+		
+		return $frame;
+	}
+	
+    /**
+    * Returns a frame from the movie as an FFmpegFrame object. Returns false if the frame was not found.
+    * 
+    * @param float $seconds
+    * @param int $width
+	* @param int $height
+    * @param int $quality
+    * @return FFmpegFrame|boolean
+    */
+
+	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, &$output = null) {
+        // Set frame position for frame extraction
+        $frameTime = ($seconds === null) ? $this->frameNumber : $seconds;    
+        
+        // time out of range
+        if (!is_numeric($frameTime) || $frameTime < 0 || $frameTime > $this->getDuration()) {
+			throw(new Exception('Frame time is not in range '.$frameTime.'/'.$this->getDuration().' '.$this->getFilename()));
+        }
         
         if(is_numeric($height) && is_numeric($width)) {
-            $image_size = ' -s '.$height.'x'.$width;
+            $image_size = ' -s '.$width.'x'.$height;
         } else {
             $image_size = '';
         }
@@ -636,7 +666,6 @@ class FFmpegMovie implements Serializable {
         }
         
         $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
-        $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
         
         exec(implode(' ', array(
             $this->ffmpegBinary,
@@ -658,11 +687,6 @@ class FFmpegMovie implements Serializable {
         // Create gdimage and delete temporary image
         $gdImage = imagecreatefromjpeg($frameFilePath);
         if (is_writable($frameFilePath)) unlink($frameFilePath);        
-        
-        // Increment internal frame number
-        if ($framenumber === null) {
-            ++$this->frameNumber;
-        }
         
         $frame = new FFmpegFrame($gdImage, $frameTime);
         imagedestroy($gdImage);
