@@ -29,7 +29,8 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_AUDIO_CHANNELS    = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
     protected static $REGEX_HAS_AUDIO         = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO         = '/Stream.+Video/';
-    
+    protected static $REGEX_ERRORS            = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+
     /**
      * FFmpeg binary
      * 
@@ -684,7 +685,13 @@ class FFmpegMovie implements Serializable {
 		
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
-            return false;
+			// find error in output
+			preg_match(self::$REGEX_ERRORS, $output, $errors);
+			if (array_pop($errors)) {
+				throw(new Exception(implode("\n", $errors)));
+			}
+			//default file not found error
+            throw(new Exception('TMP image not found/written '. $frameFilePath));
         }
         
         // Create gdimage and delete temporary image
