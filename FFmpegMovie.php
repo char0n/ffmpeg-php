@@ -667,6 +667,8 @@ class FFmpegMovie implements Serializable {
         
         $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
         
+		$output = array();
+		
         exec(implode(' ', array(
             $this->ffmpegBinary,
             '-i '.escapeshellarg($this->movieFile),
@@ -677,8 +679,9 @@ class FFmpegMovie implements Serializable {
             $quality,
             $frameFilePath, 
             '2>&1',
-        )));
-        
+        )), $output, $retVar);
+        $output = join(PHP_EOL, $output);
+		
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
             return false;
