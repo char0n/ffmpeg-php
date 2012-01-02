@@ -27,7 +27,8 @@ class FFmpegAutoloader {
                 'OutputProvider'         => 'provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
                 'AbstractOutputProvider' => 'provider'.DIRECTORY_SEPARATOR.'AbstractOutputProvider.php',
                 'FFmpegOutputProvider'   => 'provider'.DIRECTORY_SEPARATOR.'FFmpegOutputProvider.php',
-                'FFprobeOutputProvider'  => 'provider'.DIRECTORY_SEPARATOR.'FFprobeOutputProvider.php'      
+                'FFprobeOutputProvider'  => 'provider'.DIRECTORY_SEPARATOR.'FFprobeOutputProvider.php',
+                'StringOutputProvider'   => 'provider'.DIRECTORY_SEPARATOR.'StringOutputProvider.php'     
             );
         }
     }
