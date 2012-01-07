@@ -647,7 +647,7 @@ class FFmpegMovie implements Serializable {
 
 	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, &$output = null) {
         // Set frame position for frame extraction
-        $frameTime = ($seconds === null) ? $this->frameNumber : $seconds;    
+        $frameTime = ($seconds === null) ? 0 : $seconds;    
         
         // time out of range
         if (!is_numeric($frameTime) || $frameTime < 0 || $frameTime > $this->getDuration()) {
