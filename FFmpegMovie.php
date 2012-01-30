@@ -645,7 +645,7 @@ class FFmpegMovie implements Serializable {
     * @return FFmpegFrame|boolean
     */
 
-	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, &$output = null) {
+	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, $frameFilePath = null, &$output = null) {
         // Set frame position for frame extraction
         $frameTime = ($seconds === null) ? 0 : $seconds;    
         
@@ -666,7 +666,11 @@ class FFmpegMovie implements Serializable {
             $quality = '';
         }
         
-        $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
+		$deleteTmp = false;
+        if ($frameFilePath === null) {
+            $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
+			$deleteTmp = true;
+        }
         
 		$output = array();
 		
@@ -696,7 +700,7 @@ class FFmpegMovie implements Serializable {
         
         // Create gdimage and delete temporary image
         $gdImage = imagecreatefromjpeg($frameFilePath);
-        if (is_writable($frameFilePath)) unlink($frameFilePath);        
+        if ($deleteTmp && is_writable($frameFilePath)) unlink($frameFilePath);        
         
         $frame = new FFmpegFrame($gdImage, $frameTime);
         imagedestroy($gdImage);
