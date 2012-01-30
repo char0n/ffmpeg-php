@@ -10,7 +10,7 @@
 class FFmpegMovie implements Serializable {
 
     protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
-    protected static $REGEX_FRAME_RATE        = '/([0-9\.]+)\stbr/';    
+    protected static $REGEX_FRAME_RATE        = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stbr/';    
     protected static $REGEX_COMMENT           = '/comment\s*(:|=)\s*(.+)/i';
     protected static $REGEX_TITLE             = '/title\s*(:|=)\s*(.+)/i';
     protected static $REGEX_ARTIST            = '/(artist|author)\s*(:|=)\s*(.+)/i';
@@ -29,7 +29,8 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_AUDIO_CHANNELS    = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
     protected static $REGEX_HAS_AUDIO         = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO         = '/Stream.+Video/';
-    
+    protected static $REGEX_ERRORS            = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+
     /**
      * FFmpeg binary
      * 
@@ -610,21 +611,51 @@ class FFmpegMovie implements Serializable {
     * 
     * @param int $framenumber
     * @param int $height
-    * @param int $width
-    * @param int $quality
+	* @param int $width
+	* @param int $quality
     * @return FFmpegFrame|boolean
     */
-    public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
-        // Set frame position for frame extraction
-        $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
+	public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
+    	$framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
-        // Frame position out of range
+		// Frame position out of range
         if (!is_numeric($framePos) || $framePos < 0 || $framePos > $this->getFrameCount()) {
             return false;
         }
+		
+	    $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
+		
+		$frame = $this->getFrameAtTime($frameTime, $height, $width, $quality);
+		
+	    // Increment internal frame number
+        if ($framenumber === null) {
+            ++$this->frameNumber;
+        }
+		
+		return $frame;
+	}
+	
+    /**
+    * Returns a frame from the movie as an FFmpegFrame object. Returns false if the frame was not found.
+    * 
+    * @param float $seconds
+    * @param int $width
+	* @param int $height
+    * @param int $quality
+    * @return FFmpegFrame|boolean
+    */
+
+	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, $frameFilePath = null, &$output = null) {
+        // Set frame position for frame extraction
+        $frameTime = ($seconds === null) ? 0 : $seconds;    
+        
+        // time out of range
+        if (!is_numeric($frameTime) || $frameTime < 0 || $frameTime > $this->getDuration()) {
+			throw(new Exception('Frame time is not in range '.$frameTime.'/'.$this->getDuration().' '.$this->getFilename()));
+        }
         
         if(is_numeric($height) && is_numeric($width)) {
-            $image_size = ' -s '.$height.'x'.$width;
+            $image_size = ' -s '.$width.'x'.$height;
         } else {
             $image_size = '';
         }
@@ -635,9 +666,14 @@ class FFmpegMovie implements Serializable {
             $quality = '';
         }
         
-        $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
-        $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
+		$deleteTmp = false;
+        if ($frameFilePath === null) {
+            $frameFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('frame', true).'.jpg';
+			$deleteTmp = true;
+        }
         
+		$output = array();
+		
         exec(implode(' ', array(
             $this->ffmpegBinary,
             '-i '.escapeshellarg($this->movieFile),
@@ -648,21 +684,23 @@ class FFmpegMovie implements Serializable {
             $quality,
             $frameFilePath, 
             '2>&1',
-        )));
-        
+        )), $output, $retVar);
+        $output = join(PHP_EOL, $output);
+		
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
-            return false;
+			// find error in output
+			preg_match(self::$REGEX_ERRORS, $output, $errors);
+			if (array_pop($errors)) {
+				throw(new Exception(implode("\n", $errors)));
+			}
+			//default file not found error
+            throw(new Exception('TMP image not found/written '. $frameFilePath));
         }
         
         // Create gdimage and delete temporary image
         $gdImage = imagecreatefromjpeg($frameFilePath);
-        if (is_writable($frameFilePath)) unlink($frameFilePath);        
-        
-        // Increment internal frame number
-        if ($framenumber === null) {
-            ++$this->frameNumber;
-        }
+        if ($deleteTmp && is_writable($frameFilePath)) unlink($frameFilePath);        
         
         $frame = new FFmpegFrame($gdImage, $frameTime);
         imagedestroy($gdImage);
