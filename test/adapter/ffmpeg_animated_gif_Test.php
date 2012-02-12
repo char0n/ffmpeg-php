@@ -15,7 +15,7 @@
  * @package FFmpegPHP
  * @subpackage adapter
  * @license New BSD
- * @version 2.5
+ * @version 2.6
  */
 class ffmpeg_animated_git_test extends PHPUnit_Framework_TestCase {
 

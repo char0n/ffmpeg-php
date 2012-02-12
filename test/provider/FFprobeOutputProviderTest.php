@@ -15,7 +15,7 @@
  * @package FFmpegPHP
  * @subpackage provider
  * @license New BSD
- * @version 2.5
+ * @version 2.6
  */
 
 class FFprobeOutputProviderTest extends PHPUnit_Framework_TestCase {

@@ -14,7 +14,7 @@
  * @category tests
  * @package FFmpegPHP
  * @license New BSD
- * @version 2.5
+ * @version 2.6
  */
 class FFmpegFrameTest extends PHPUnit_Framework_TestCase {
 

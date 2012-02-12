@@ -7,7 +7,7 @@
  * @subpackage adapter
  * @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_animated_gif.php
  * @license New BSD
- * @version 2.5
+ * @version 2.6
  */
 class ffmpeg_animated_gif {
 

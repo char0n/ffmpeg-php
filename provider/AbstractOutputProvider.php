@@ -7,7 +7,7 @@
  * @subpackage provider
  * @abstract
  * @license New BSD
- * @version 2.5
+ * @version 2.6
  */
 abstract class AbstractOutputProvider implements OutputProvider, Serializable {
 
