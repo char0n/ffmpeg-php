@@ -57,5 +57,4 @@ class FFmpegOutputProvider extends AbstractOutputProvider {
 
         return $output;
     }
-} 
-?>
+}

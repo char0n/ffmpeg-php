@@ -32,4 +32,3 @@ class FFmpegAutoloaderTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse(FFmpegAutoloader::autoload(uniqid()));         
     }
 }
-?>

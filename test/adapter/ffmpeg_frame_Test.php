@@ -131,5 +131,4 @@ class ffmpeg_frame_test extends PHPUnit_Framework_TestCase {
         $cuoid  = (string) $cloned->toGdImage();
         $this->assertNotEquals($uoid, $cuoid);
     }
-}  
-?>
+}

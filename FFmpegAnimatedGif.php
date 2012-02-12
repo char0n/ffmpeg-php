@@ -290,4 +290,3 @@ class FFmpegAnimatedGif implements Serializable {
         ) = $data;
     }
 }
-?>

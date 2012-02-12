@@ -745,5 +745,4 @@ class FFmpegMovie implements Serializable {
         ) = unserialize($serialized);
         
     }
-}  
-?>
+}

@@ -52,5 +52,4 @@ class StringOutputProvider extends AbstractOutputProvider {
             self::$persistentBuffer[get_class($this).$this->binary.$this->movieFile] = $output;            
         }
     }
-} 
-?>
+}

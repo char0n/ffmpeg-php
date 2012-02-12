@@ -30,4 +30,3 @@ class ffmpeg_animated_gif {
         $this->adaptee = null;
     }
 }
-?>

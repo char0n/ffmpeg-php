@@ -92,4 +92,3 @@ class FFmpegOutputProviderTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($output, $this->provider->getOutput(), 'Output from original and unserialized provider should be equal');        
     }
 }
-?>

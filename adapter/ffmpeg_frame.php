@@ -53,4 +53,3 @@ class ffmpeg_frame {
         $this->adaptee = null;
     }    
 }
-?>

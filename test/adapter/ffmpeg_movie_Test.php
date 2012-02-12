@@ -270,5 +270,4 @@ class ffmpeg_movie_test extends PHPUnit_Framework_TestCase {
         $this->assertInternalType('float', $this->movie->getDuration(), 'Duration is of float type');
         $this->assertEquals(32.13, $this->movie->getDuration(), 'Duration should be float(32.13)');        
     }
-}  
-?>
+}

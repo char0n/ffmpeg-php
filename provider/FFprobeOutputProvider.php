@@ -56,5 +56,4 @@ class FFprobeOutputProvider extends AbstractOutputProvider {
 
         return $output;
     }
-} 
-?>
+}

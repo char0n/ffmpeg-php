@@ -24,4 +24,3 @@ interface OutputProvider {
      */
     public function getOutput();
 }
-?>

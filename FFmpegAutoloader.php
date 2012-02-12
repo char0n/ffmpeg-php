@@ -61,4 +61,3 @@ class FFmpegAutoloader {
 }
 
 FFmpegAutoloader::register();
-?>

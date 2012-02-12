@@ -189,5 +189,4 @@ class FFmpegFrame implements Serializable {
              $this->height
         ) = $data;
     }
-}   
-?>
+}

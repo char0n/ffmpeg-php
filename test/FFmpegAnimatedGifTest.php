@@ -98,5 +98,4 @@ class FFmpegAnimatedGifTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
     }       
-}  
-?>
+}

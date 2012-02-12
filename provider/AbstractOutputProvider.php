@@ -70,5 +70,4 @@ abstract class AbstractOutputProvider implements OutputProvider, Serializable {
             $this->persistent
         ) = unserialize($serialized);
     }
-} 
-?>
+}

@@ -147,4 +147,3 @@ class ffmpeg_movie {
         $this->adaptee = null;
     }
 }
-?>
