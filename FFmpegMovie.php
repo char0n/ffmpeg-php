@@ -683,20 +683,20 @@ class FFmpegMovie implements Serializable {
             '-vframes 1',            
             $image_size,
             $quality,
-            $frameFilePath, 
+            escapeshellarg($frameFilePath),
             '2>&1',
         )), $output, $retVar);
         $output = join(PHP_EOL, $output);
-		
+
         // Cannot write frame to the data storage
         if (!file_exists($frameFilePath)) {
-			// find error in output
+			// Find error in output
 			preg_match(self::$REGEX_ERRORS, $output, $errors);
-			if (array_pop($errors)) {
-				throw(new Exception(implode("\n", $errors)));
+			if ($errors) {
+				throw new Exception($errors[0]);
 			}
-			//default file not found error
-            throw(new Exception('TMP image not found/written '. $frameFilePath));
+			// Default file not found error
+            throw new Exception('TMP image not found/written '. $frameFilePath);
         }
         
         // Create gdimage and delete temporary image
