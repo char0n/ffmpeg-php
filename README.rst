@@ -46,6 +46,14 @@ or download package from github.com: ::
 
  $ wget http://github.com/char0n/ffmpeg-php/tarball/master
 
+or to install via composer (http://getcomposer.org/) place the following in your composer.json file: ::
+
+ {
+    "require": {
+        "char0n/ffmpeg-php": "dev-master"
+    }
+ }
+
 
 Using FFmpegPHP
 ---------------

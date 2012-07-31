@@ -1,0 +1,20 @@
+{
+    "name": "char0n/ffmpeg-php",
+    "type": "library",
+    "description": "PHP wrapper for FFmpeg application",
+    "keywords": ["ffmpeg", "video"],
+    "homepage": "http://freecode.com/projects/ffmpegphp",
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "char0n (Vladimír Gorej, CodeScale)",
+            "email": "gorej@codescale.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "classmap": ["."]
+    }
+}
