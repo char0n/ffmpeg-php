@@ -50,7 +50,7 @@ or to install via composer (http://getcomposer.org/) place the following in your
 
  {
     "require": {
-        "char0n/ffmpeg-php": "dev-master"
+        "codescale/ffmpeg-php": "dev-master"
     }
  }
 
