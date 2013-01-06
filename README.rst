@@ -86,7 +86,7 @@ using PhpDocumentor with following commnad: ::
 References
 ----------
 
-- http://github.com/char0n/ffmpeg-php
+- http://github.com/CodeScaleInc/ffmpeg-php
 - http://www.phpclasses.org/package/5977-PHP-Manipulate-video-files-using-the-ffmpeg-program.html
 - http://freshmeat.net/projects/ffmpegphp
 - http://www.codescale.net/en/community/#ffmpegphp
