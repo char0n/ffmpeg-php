@@ -1,10 +1,10 @@
 FFmpegPHP 2.6
 =============
 
-FFmpegPHP is a pure OO PHP port of ffmpeg-php writter in C. It adds an easy to use,
+FFmpegPHP is a pure OO PHP port of ffmpeg-php (written in C). It adds an easy to use,
 object-oriented API for accessing and retrieving information from video and audio files.
 It has methods for returning frames from movie files as images that can be manipulated
-using PHP's image functions. This works well for automatically creating thumbnail images from movies.
+using PHP image functions. This works well for automatically creating thumbnail images from movies.
 FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...).
 FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...) 
 
@@ -19,7 +19,7 @@ Requirements
 Tests
 -----
 
-**Tested on evnironment**
+**Tested environment**
 
 - Xubuntu Linux 11.10 oneiric 64-bit
 - ffmpeg version N-37798-gcd1c12b
