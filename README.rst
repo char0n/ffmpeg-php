@@ -1,4 +1,4 @@
-FFmpegPHP 2.6
+FFmpegPHP 2.7
 =============
 
 FFmpegPHP is a pure OO PHP port of ffmpeg-php (written in C). It adds an easy to use,
@@ -21,10 +21,10 @@ Tests
 
 **Tested environment**
 
-- Xubuntu Linux 11.10 oneiric 64-bit
+- Xubuntu Linux 12.04.2 LTS precise 64-bit
 - ffmpeg version N-37798-gcd1c12b
-- PHPUnit 3.5.15
-- PHP 5.3.6
+- PHPUnit 3.7.18
+- PHP 5.3.10
 
 
 **Running tests**
