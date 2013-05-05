@@ -2,7 +2,7 @@
     "name": "codescale/ffmpeg-php",
     "type": "library",
     "description": "PHP wrapper for FFmpeg application",
-    "version": "2.7",
+    "version": "2.7.0",
     "keywords": ["ffmpeg", "video", "audio"],
     "homepage": "http://freecode.com/projects/ffmpegphp",
     "license": "New BSD",

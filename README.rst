@@ -1,5 +1,5 @@
-FFmpegPHP 2.7
-=============
+FFmpegPHP 2.7.0
+===============
 
 FFmpegPHP is a pure OO PHP port of ffmpeg-php (written in C). It adds an easy to use,
 object-oriented API for accessing and retrieving information from video and audio files.
