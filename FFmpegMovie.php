@@ -675,11 +675,24 @@ class FFmpegMovie implements Serializable {
         
 		$output = array();
 		
+		// fast and accurate way to seek. First quick-seek before input up to
+		// a point just before the frame, and then accurately seek after input
+		// to the exact point.
+		// See: http://ffmpeg.org/trac/ffmpeg/wiki/Seeking%20with%20FFmpeg
+		if ($frameTime > 30) {
+			$seek1 = $frameTime - 30;
+			$seek2 = 30;
+		} else {
+			$seek1 = 0;
+			$seek2 = $frameTime;
+		}
+
         exec(implode(' ', array(
             $this->ffmpegBinary,
+            '-ss '.$seek1,
             '-i '.escapeshellarg($this->movieFile),
             '-f image2',
-            '-ss '.$frameTime,
+            '-ss '.$seek2,
             '-vframes 1',            
             $image_size,
             $quality,
