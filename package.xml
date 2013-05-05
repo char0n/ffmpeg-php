@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-    http://pear.php.net/dtd/tasks-1.0.xsd
-    http://pear.php.net/dtd/package-2.0
-    http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>FFmpegPHP2</name>
  <channel>pear.codescale.net</channel>
  <summary>Manipulate video files using the ffmpeg program</summary>
- <description>FFmpegPHP is a pure OO PHP port of ffmpeg-php writter in C. It adds an easy to use, object-oriented API for accessing and retrieving information from video and audio files. It has methods for returning frames from movie files as images that can be manipulated using PHP&amp;apos;s image functions. This works well for automatically creating thumbnail images from movies. FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...). FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...)</description>
+ <description>FFmpegPHP is a pure OO PHP port of ffmpeg-php written in C. It adds an easy to use, object-oriented API for accessing and retrieving information from video and audio files. It has methods for returning frames from movie files as images that can be manipulated using PHP&amp;apos;s image functions. This works well for automatically creating thumbnail images from movies. FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...). FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...)</description>
  <lead>
   <name>Vladimír Gorej</name>
   <user>char0n</user>
   <email>gorej@codescale.net</email>
   <active>yes</active>
  </lead>
- <date>2012-02-12</date>
- <time>19:49:12</time>
+ <date>2013-05-05</date>
+ <time>12:52:31</time>
  <version>
-  <release>2.6.2.1</release>
-  <api>2.6</api>
+  <release>2.7.0</release>
+  <api>2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -25,8 +22,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-Removed php ending tags from php files
-Support for latest ffmpeg
+Faster frames extraction
 Tons of fixes and enhancements
  </notes>
  <contents>
@@ -34,55 +30,55 @@ Tons of fixes and enhancements
    <file baseinstalldir="FFmpegPHP2" md5sum="c6ce75ee0150e5cbb8137a9d21a2b63d" name="adapter/ffmpeg_animated_gif.php" role="php" />
    <file baseinstalldir="FFmpegPHP2" md5sum="6cc9c7e25224dd133bc860ec452c4665" name="adapter/ffmpeg_frame.php" role="php" />
    <file baseinstalldir="FFmpegPHP2" md5sum="5ce9010f166601289866d613b9e55159" name="adapter/ffmpeg_movie.php" role="php" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="0fc94a8fb2cadaf4e33e2130a5af9baa" name="docs/classtrees_FFmpegPHP.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="42b8b7563dcd72cde6ce98228ed58097" name="docs/elementindex.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="bbe296f7c5314ae84fb9f7030c9ab95f" name="docs/elementindex_FFmpegPHP.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="014611007691e989499111e36b38d96a" name="docs/errors.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="a4c82b4368cde0584a4542facf734125" name="docs/index.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="a4c82b4368cde0584a4542facf734125" name="docs/li_FFmpegPHP.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="d128a66fcdcd68fb144b48a99686d533" name="docs/FFmpegPHP/FFmpegAnimatedGif.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="968c47705eaa90b5b97868a82c0228b7" name="docs/FFmpegPHP/FFmpegAnimatedGifTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="a74eae488f9ff483ed701d3afa3a3807" name="docs/FFmpegPHP/FFmpegAutoloader.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="d9e0a16601862a6d0e7a9a479f5eb4d5" name="docs/FFmpegPHP/FFmpegAutoloaderTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="8369ce1ac63d6c9bf378b36108c87a13" name="docs/FFmpegPHP/FFmpegFrame.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="b8a2ae351b479198afbb77a451b1293f" name="docs/FFmpegPHP/FFmpegFrameTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="89d87fd2d4b6455940db68bc0faeabd1" name="docs/FFmpegPHP/FFmpegMovie.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="8eaa89d465c402aa928724089593db39" name="docs/FFmpegPHP/FFmpegMovieTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="46ddaa2aa8d292ddcf1d6f15aefad14d" name="docs/FFmpegPHP/_FFmpegAnimatedGif.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="86180a3b6c0a6dc9fffc1c8e56b8ff87" name="docs/FFmpegPHP/_FFmpegAutoloader.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="a1e0f5a370261482b3599ae0c2824bce" name="docs/FFmpegPHP/_FFmpegFrame.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="d243eb1896031b96bd13f16f3bb15f23" name="docs/FFmpegPHP/_FFmpegMovie.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="e809d36aaab0a23c78814c1d7a3a392f" name="docs/FFmpegPHP/_test---bootstrap.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="eb1f572aaab71fe0c6a648f0ca48ec44" name="docs/FFmpegPHP/_test---FFmpegAnimatedGifTest.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="fc6334662387fdba784001305a644238" name="docs/FFmpegPHP/_test---FFmpegAutoloaderTest.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="20de88b639a4916c749a93927c6a9e04" name="docs/FFmpegPHP/_test---FFmpegFrameTest.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="0c966a72ca4734ab2af19881189bca34" name="docs/FFmpegPHP/_test---FFmpegMovieTest.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="862fe6c3feab078dd03d4614bbcf08d5" name="docs/FFmpegPHP/adapter/ffmpeg_animated_gif.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="147e2d5c3958b4e61df70a408511c2fc" name="docs/FFmpegPHP/adapter/ffmpeg_animated_git_test.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="5369a180dfa7a9c67e4efb349a3d07e5" name="docs/FFmpegPHP/adapter/ffmpeg_frame.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="33df762a0fbc370fdf7dd215d455c349" name="docs/FFmpegPHP/adapter/ffmpeg_frame_test.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="6391a48d4c522bbcbc7d0c76c7d47183" name="docs/FFmpegPHP/adapter/ffmpeg_movie.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="b510dc9e9bdc5d2c3a107a0c08f7b6bf" name="docs/FFmpegPHP/adapter/ffmpeg_movie_test.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="52f541f35563ce63c70fbafc91828c64" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_animated_gif.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="3b67d0e03ea4393149238a160acb8038" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_frame.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="7688f294a865ed85e4e53bdb0ece7d60" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_movie.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="82ce261220ef72ed47ffce2d2ec298f2" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_animated_gif_Test.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="e14fa2963c7bfcccb91e798b48a5a1b4" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_frame_Test.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="ce7db18a1470aefbf30982937ef682e8" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_movie_Test.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="74681eabf62c27360ac55ca25949c2b9" name="docs/FFmpegPHP/provider/AbstractOutputProvider.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="0a10ce37cb71e289fcbb3ca1cb580e53" name="docs/FFmpegPHP/provider/FFmpegOutputProvider.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="74a1e44ebbf1adffcf48254d002c3999" name="docs/FFmpegPHP/provider/FFmpegOutputProviderTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="6fc34ba259ee341007716b9ba249e544" name="docs/FFmpegPHP/provider/FFprobeOutputProvider.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="121199ff72039c155c70744e4c3280c8" name="docs/FFmpegPHP/provider/FFprobeOutputProviderTest.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="6b0864617f24b156a95ab52ff383c83d" name="docs/FFmpegPHP/provider/OutputProvider.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="8871acc0aaa4248ae5b19088b7ce0d79" name="docs/FFmpegPHP/provider/StringOutputProvider.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="48c69da79f28259189faa33ac7dd8b93" name="docs/FFmpegPHP/provider/_provider---AbstractOutputProvider.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="67974ba49187fad84a855d5d7913a313" name="docs/FFmpegPHP/provider/_provider---FFmpegOutputProvider.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="bea12ddfd74efb69f8406e52df1ef17c" name="docs/FFmpegPHP/provider/_provider---FFprobeOutputProvider.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="c76bfec9af1d1ed4c46e961269f87be5" name="docs/FFmpegPHP/provider/_provider---OutputProvider.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="bf1ec9a704d3a027948f8b020977a622" name="docs/FFmpegPHP/provider/_provider---StringOutputProvider.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="f0ddad7d1269399005916f4d4fe56993" name="docs/FFmpegPHP/provider/_test---provider---FFmpegOutputProviderTest.php.html" role="doc" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="6ec0fc32b9ded25cf1820ddbdf8fb9e5" name="docs/FFmpegPHP/provider/_test---provider---FFprobeOutputProviderTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="573c2f37a1f39637090810cd7746566c" name="docs/classtrees_FFmpegPHP.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="8d51e24193dfcd61f56f98ee98e05520" name="docs/elementindex.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="665e7811deccf3ef793f905b01129305" name="docs/elementindex_FFmpegPHP.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="e697256782fef3a2ba9a7ea2803c0261" name="docs/errors.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="bcc1a0655d9cb83b4c8cfffb3f41144e" name="docs/index.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="bcc1a0655d9cb83b4c8cfffb3f41144e" name="docs/li_FFmpegPHP.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="55d3078567ae307b5141049c66f48f63" name="docs/FFmpegPHP/FFmpegAnimatedGif.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="3a7f920e58b3e4db952fc1e461351d22" name="docs/FFmpegPHP/FFmpegAnimatedGifTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="e84b04db70d3baa70c69ebf66670e442" name="docs/FFmpegPHP/FFmpegAutoloader.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="0b696d2b8b37ec69c8fec2c44ab878b3" name="docs/FFmpegPHP/FFmpegAutoloaderTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="8ede7d47d73c58671451635d6dd614e4" name="docs/FFmpegPHP/FFmpegFrame.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="312590ee2be596e237b855caad0a0161" name="docs/FFmpegPHP/FFmpegFrameTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="990a364874ab22cfce99a3c1bb58b6a2" name="docs/FFmpegPHP/FFmpegMovie.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="b230780ddb143b097315f10177984bbb" name="docs/FFmpegPHP/FFmpegMovieTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="dd8a2fb0536b5626e819988aabb2b089" name="docs/FFmpegPHP/_FFmpegAnimatedGif.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="a25004a9a35d138cdd2b1e6f30ed14fc" name="docs/FFmpegPHP/_FFmpegAutoloader.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="a03e0bcd61539fd02d88ee4708aa5041" name="docs/FFmpegPHP/_FFmpegFrame.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="107066da16225942d3c7d76cd325d884" name="docs/FFmpegPHP/_FFmpegMovie.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="b1d55e5e563f05fe23a690f4a910a49f" name="docs/FFmpegPHP/_test---bootstrap.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="727cd6ce0ad6f91146a85e004608839e" name="docs/FFmpegPHP/_test---FFmpegAnimatedGifTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="04497476fcfa4cb22cc36e7984bf2d38" name="docs/FFmpegPHP/_test---FFmpegAutoloaderTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="9d39757295a319d56af6f813872bd677" name="docs/FFmpegPHP/_test---FFmpegFrameTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="b6f3009dedf4abaa5f284a652cfb9a7d" name="docs/FFmpegPHP/_test---FFmpegMovieTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="47328e9bede1ddbf25e0a6bc0c8a4141" name="docs/FFmpegPHP/adapter/ffmpeg_animated_gif.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="f2e2823b23b0afac3ce9f98009db854d" name="docs/FFmpegPHP/adapter/ffmpeg_animated_git_test.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="1fb6df6ede8114a40e012ea1cde81cfc" name="docs/FFmpegPHP/adapter/ffmpeg_frame.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="9d3eaa45f69a70e044c98008e4012400" name="docs/FFmpegPHP/adapter/ffmpeg_frame_test.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="80575b689d89c48164cad5aa78429c3d" name="docs/FFmpegPHP/adapter/ffmpeg_movie.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="08eecded92789b8f653528f7ed52c1ae" name="docs/FFmpegPHP/adapter/ffmpeg_movie_test.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="04426fddd0765f360eb44419d469cae0" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_animated_gif.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="cd4f74c001804b8f7083ba8ac520341b" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_frame.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="0df770b038dd9aee9110d3631f15be2f" name="docs/FFmpegPHP/adapter/_adapter---ffmpeg_movie.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="ee1f0d82787a5c75a8caa45472389a82" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_animated_gif_Test.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="daecc1de4cce63099001f855454015d6" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_frame_Test.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="970872c3a1bfbafc8eeca16582d97756" name="docs/FFmpegPHP/adapter/_test---adapter---ffmpeg_movie_Test.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="95f8d18207e589773ab27b85f9840779" name="docs/FFmpegPHP/provider/AbstractOutputProvider.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="917b121be7eba943cfe1fc46ff64e546" name="docs/FFmpegPHP/provider/FFmpegOutputProvider.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="7d7cdff1c8db3671ed2b931ac8ba65fe" name="docs/FFmpegPHP/provider/FFmpegOutputProviderTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="720ee6e0706ae1ba479393f74c1b7496" name="docs/FFmpegPHP/provider/FFprobeOutputProvider.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="d760d1aef332ba48e3ec825784ab0f6f" name="docs/FFmpegPHP/provider/FFprobeOutputProviderTest.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="2d61a6a4aa87ae0b69e7a9ebcf071a7a" name="docs/FFmpegPHP/provider/OutputProvider.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="264647f2d1af921a17d828e07adc5fd6" name="docs/FFmpegPHP/provider/StringOutputProvider.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="c3b7e9a1888ac54c4141c9a478543fde" name="docs/FFmpegPHP/provider/_provider---AbstractOutputProvider.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="bd5e3fe8a1b5121c35a4ff048cbb9cf6" name="docs/FFmpegPHP/provider/_provider---FFmpegOutputProvider.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="41e7832e0cbf633b2dc6971d254cc63d" name="docs/FFmpegPHP/provider/_provider---FFprobeOutputProvider.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="c835f1b0c343fa709b494f957c94fd1c" name="docs/FFmpegPHP/provider/_provider---OutputProvider.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="e02bc3e1d7d82f88db7cf720bceefd9e" name="docs/FFmpegPHP/provider/_provider---StringOutputProvider.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="5b55e2c34e23dfee89523eab758f3b73" name="docs/FFmpegPHP/provider/_test---provider---FFmpegOutputProviderTest.php.html" role="doc" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="781274e52dc7ff4d6e9271b55a3c5dcd" name="docs/FFmpegPHP/provider/_test---provider---FFprobeOutputProviderTest.php.html" role="doc" />
    <file baseinstalldir="FFmpegPHP2" md5sum="908a7af2b36fa04f1b869ff74b6a8d37" name="docs/media/background.png" role="doc" />
    <file baseinstalldir="FFmpegPHP2" md5sum="4c480a60db1ab64317fe351a24396eb1" name="docs/media/empty.png" role="doc" />
    <file baseinstalldir="FFmpegPHP2" md5sum="45923cad7340f4184f27e287c17e2429" name="docs/media/logo.png" role="doc" />
@@ -105,18 +101,19 @@ Tons of fixes and enhancements
    <file baseinstalldir="FFmpegPHP2" md5sum="d8e8fca2dc0f896fd7cb4cb0031ba249" name="test/data/test1.txt" role="data" />
    <file baseinstalldir="FFmpegPHP2" md5sum="827f0f6a3f2dcbf8a3b8063ec0943b4f" name="test/provider/FFmpegOutputProviderTest.php" role="php" />
    <file baseinstalldir="FFmpegPHP2" md5sum="c5e38d9d0ee8b2ad05690ad09fa1b74e" name="test/provider/FFprobeOutputProviderTest.php" role="php" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="15fe925d2c2f58e8ba9401cddaa37fee" name="composer.json" role="data" />
    <file baseinstalldir="FFmpegPHP2" md5sum="e97a02c44c623e806614a617125fb8cf" name="FFmpegAnimatedGif.php" role="php" />
    <file baseinstalldir="FFmpegPHP2" md5sum="5261f35e77f21bd3e1a220ceec6b934d" name="FFmpegAutoloader.php" role="php" />
    <file baseinstalldir="FFmpegPHP2" md5sum="7af7fb0f8713be3ecc4613498efa1bf1" name="FFmpegFrame.php" role="php" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="eafd5fd248175e8128bd51f674a9bf44" name="FFmpegMovie.php" role="php" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="f7de63f5b302160363fe690479eb8323" name="LICENSE" role="data" />
-   <file baseinstalldir="FFmpegPHP2" md5sum="351f9cb9debf0a3d6c9c51f9b0a3d20f" name="README.rst" role="data" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="41fb7436d03a92e9c7b4deb300a40356" name="FFmpegMovie.php" role="php" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="38615a9c552fe3d138ce2a1491052333" name="LICENSE" role="data" />
+   <file baseinstalldir="FFmpegPHP2" md5sum="1f69bc46935b4bcbdea160661e271a00" name="README.rst" role="data" />
   </dir>
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>5</min>
+    <min>5.3</min>
    </php>
    <pearinstaller>
     <min>1.4.0</min>
@@ -127,24 +124,19 @@ Tons of fixes and enhancements
  <changelog>
   <release>
    <version>
-    <release>2.6.2.1</release>
-    <api>2.6</api>
+    <release>2.7.0</release>
+    <api>2</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2012-02-12</date>
+   <date>2013-05-05</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
-Removed php ending tags from php files
-Support for latest ffmpeg
+Faster frames extraction
 Tons of fixes and enhancements
    </notes>
-   <deps>
-    <dep type="php" rel="ge">5</dep>
-    <dep type="ext" rel="has">gd</dep>
-   </deps>
   </release>
  </changelog>
 </package>

@@ -83,6 +83,27 @@ using PhpDocumentor with following commnad: ::
  $ phpdoc -o HTML:Smarty:HandS -d . -t docs
 
 
+Generating package.xml
+----------------------
+First temporarily remove .git/ directory from project root. It causes *pfm* not to work correctly.
+::
+
+ $ pear install PEAR_PackageFileManager2
+ $ pear install PEAR_PackageFileManager_Cli
+ $ pfm
+ $ pear package package.xml
+ $ pear install/upgrade ./{PACKAGE_NAME} # Verify is package is installable
+
+Create *test.php* with contents and verify installation was successful:::
+
+ <?php
+ require_once 'FFmpegPHP2/FFmpegAutoloader.php';
+
+And run the file with:::
+
+ $ php test.php
+
+
 References
 ----------
 
