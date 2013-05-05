@@ -644,7 +644,11 @@ class FFmpegMovie implements Serializable {
      * @param int $quality
      * @param string $frameFilePath
      * @param array $output
+     *
+     * @throws Exception
+     *
      * @return FFmpegFrame|boolean
+     *
     */
 	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, $frameFilePath = null, &$output = null) {
         // Set frame position for frame extraction
@@ -675,7 +679,7 @@ class FFmpegMovie implements Serializable {
         
 		$output = array();
 		
-		// fast and accurate way to seek. First quick-seek before input up to
+		// Fast and accurate way to seek. First quick-seek before input up to
 		// a point just before the frame, and then accurately seek after input
 		// to the exact point.
 		// See: http://ffmpeg.org/trac/ffmpeg/wiki/Seeking%20with%20FFmpeg
