@@ -18,17 +18,17 @@ class FFmpegAutoloader {
     protected static function initClasses() {
         if (self::$classes === null) {
             self::$classes = array(
-                'FFmpegAnimatedGif'      => 'FFmpegAnimatedGif.php',
-                'FFmpegFrame'            => 'FFmpegFrame.php',
-                'FFmpegMovie'            => 'FFmpegMovie.php',
-                'ffmpeg_animated_gif'    => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_animated_gif.php',
-                'ffmpeg_frame'           => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_frame.php',
-                'ffmpeg_movie'           => 'adapter'.DIRECTORY_SEPARATOR.'ffmpeg_movie.php',        
-                'OutputProvider'         => 'provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
-                'AbstractOutputProvider' => 'provider'.DIRECTORY_SEPARATOR.'AbstractOutputProvider.php',
-                'FFmpegOutputProvider'   => 'provider'.DIRECTORY_SEPARATOR.'FFmpegOutputProvider.php',
-                'FFprobeOutputProvider'  => 'provider'.DIRECTORY_SEPARATOR.'FFprobeOutputProvider.php',
-                'StringOutputProvider'   => 'provider'.DIRECTORY_SEPARATOR.'StringOutputProvider.php'     
+                'FFmpegAnimatedGif'      => 'AnimatedGif.php',
+                'FFmpegFrame'            => 'Frame.php',
+                'FFmpegMovie'            => 'Movie.php',
+                'ffmpeg_animated_gif'    => 'Adapter'.DIRECTORY_SEPARATOR.'ffmpeg_animated_gif.php',
+                'ffmpeg_frame'           => 'Adapter'.DIRECTORY_SEPARATOR.'ffmpeg_frame.php',
+                'ffmpeg_movie'           => 'Adapter'.DIRECTORY_SEPARATOR.'ffmpeg_movie.php',
+                'OutputProvider'         => 'Provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
+                'AbstractOutputProvider' => 'Provider'.DIRECTORY_SEPARATOR.'AbstractOutputProvider.php',
+                'FFmpegOutputProvider'   => 'Provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
+                'FFprobeOutputProvider'  => 'Provider'.DIRECTORY_SEPARATOR.'OutputProvider.php',
+                'StringOutputProvider'   => 'Provider'.DIRECTORY_SEPARATOR.'OutputProvider.php'
             );
         }
     }

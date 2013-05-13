@@ -5,15 +5,15 @@
  * 1.) Install phpunit on your operating system
  * 2.) Run the test
  * 
- * phpunit --bootstrap test/bootstrap.php test/adapter/ffmpeg_animated_gif_test.php
+ * phpunit --bootstrap test/bootstrap.php test/Adapter/ffmpeg_animated_gif_test.php
  */
 /**
- * ffmpeg_animated_gif_test contains tests for ffmpeg_animated_gif adapter class
+ * ffmpeg_animated_gif_test contains tests for ffmpeg_animated_gif Adapter class
  * 
  * @author char0n (Vladimír Gorej, gorej@codescale.net)
  * @category tests 
  * @package FFmpegPHP
- * @subpackage adapter
+ * @subpackage Adapter
  * @license New BSD
  * @version 2.6
  */

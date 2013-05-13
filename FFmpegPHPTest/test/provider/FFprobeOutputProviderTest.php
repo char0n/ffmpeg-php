@@ -5,7 +5,7 @@
  * 1.) Install phpunit on your operating system
  * 2.) Run the test
  * 
- * phpunit --bootstrap test/bootstrap.php test/provider/FFprobeOutputProviderTest.php
+ * phpunit --bootstrap test/bootstrap.php test/Provider/FFprobeOutputProviderTest.php
  */
 /**
  * FFprobeOutputProviderTest contains tests for FFprobeOutputProvider class
@@ -13,7 +13,7 @@
  * @author char0n (Vladimír Gorej, gorej@codescale.net)
  * @category tests
  * @package FFmpegPHP
- * @subpackage provider
+ * @subpackage Provider
  * @license New BSD
  * @version 2.6
  */
@@ -89,6 +89,6 @@ class FFprobeOutputProviderTest extends PHPUnit_Framework_TestCase {
         $serialized  = serialize($this->provider);
         $this->provider = null;
         $this->provider = unserialize($serialized);
-        $this->assertEquals($output, $this->provider->getOutput(), 'Output from original and unserialized provider should be equal');        
+        $this->assertEquals($output, $this->provider->getOutput(), 'Output from original and unserialized Provider should be equal');
     }
 }
