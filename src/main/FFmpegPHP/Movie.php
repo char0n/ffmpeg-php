@@ -8,6 +8,10 @@
  */
 namespace FFmpegPHP {
 
+    use \FFmpegPHP\Provider\OutputProvider;
+    use \FFmpegPHP\Provider\FFmpeg\OutputProvider as FFmpegOutputProvider;
+    use \Exception;
+
     class Movie implements \Serializable {
 
         protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';

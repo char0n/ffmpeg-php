@@ -5,7 +5,7 @@
  * 1.) Install phpunit on your operating system
  * 2.) Run the test
  * 
- * phpunit --bootstrap test/bootstrap.php test/FFmpegFrameTest.php
+ * phpunit --bootstrap test/bootstrap.php test/FrameTest.php
  */
 /**
  * FFmpegFrameTest contains tests for FFmpegFrame class

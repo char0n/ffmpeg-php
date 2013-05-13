@@ -5,7 +5,7 @@
  * 1.) Install phpunit on your operating system
  * 2.) Run the test
  * 
- * phpunit --bootstrap test/bootstrap.php test/FFmpegAnimatedGifTest.php
+ * phpunit --bootstrap test/bootstrap.php test/AnimatedGifTest.php
  */
 /**
  * FFmpegAnimatedGifTest contains tests for FFmpegAnimatedGif class

@@ -10,6 +10,7 @@
 namespace FFmpegPHP\Provider\FFmpeg {
 
     use \FFmpegPHP\Provider\AbstractOutputProvider;
+    use \Exception;
 
     class OutputProvider extends AbstractOutputProvider {
 
