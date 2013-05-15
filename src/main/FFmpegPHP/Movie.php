@@ -45,7 +45,7 @@ namespace FFmpegPHP {
         /**
          * Output Provider
          *
-         * @var OutputProvider
+         * @var \FFmpegPHP\Provider\OutputProvider
          */
         protected $provider;
 
@@ -172,7 +172,7 @@ namespace FFmpegPHP {
         */
         protected $frameNumber;
         /**
-        * Movie video cocec
+        * Movie video coced
         *
         * @var string
         */
@@ -199,10 +199,10 @@ namespace FFmpegPHP {
         *
         *
         * @param string $moviePath full path to the movie file
-        * @param OutputProvider $outputProvider provides parsable output
+        * @param \FFmpegPHP\Provider\OutputProvider $outputProvider provides parsable output
         * @param string $ffmpegBinary ffmpeg executable, if $outputProvider not specified
         * @throws Exception
-        * @return FFmpegMovie
+        * @return \FFmpegPHP\Movie
         */
         public function __construct($moviePath, OutputProvider $outputProvider = null, $ffmpegBinary = 'ffmpeg') {
             $this->movieFile       = $moviePath;
@@ -215,9 +215,9 @@ namespace FFmpegPHP {
         }
 
         /**
-         * Setting Provider implementation
+         * Setting Provider implementation.
          *
-         * @param OutputProvider $outputProvider
+         * @param \FFmpegPHP\Provider\OutputProvider $outputProvider
          */
         public function setProvider(OutputProvider $outputProvider) {
             $this->provider = $outputProvider;
@@ -226,9 +226,9 @@ namespace FFmpegPHP {
         }
 
         /**
-         * Getting current Provider implementation
+         * Getting current Provider implementation.
          *
-         * @return OutputProvider
+         * @return \FFmpegPHP\Provider\OutputProvider
          */
         public function getProvider() {
             return $this->provider;
@@ -328,7 +328,7 @@ namespace FFmpegPHP {
         }
 
         /**
-        * Return the author field from the movie or the artist ID3 field from an mp3 file; alias $movie->getArtist()
+        * Return the author field from the movie or the artist ID3 field from an mp3 file; alias $movie->getArtist().
         *
         * @return string
         */
@@ -610,7 +610,7 @@ namespace FFmpegPHP {
         }
 
         /**
-        * Returns a frame from the movie as an FFmpegFrame object. Returns false if the frame was not found.
+        * Returns a frame from the movie as an Frame \FFmpegPHP\Frame bject. Returns false if the frame was not found.
         *
         *   * framenumber - Frame from the movie to return. If no framenumber is specified, returns the next frame of the movie.
         *
@@ -618,7 +618,7 @@ namespace FFmpegPHP {
         * @param int $height
         * @param int $width
         * @param int $quality
-        * @return Frame|boolean
+        * @return \FFmpegPHP\Frame|boolean
         */
         public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
             $framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);
@@ -641,7 +641,7 @@ namespace FFmpegPHP {
         }
 
         /**
-         * Returns a frame from the movie as an FFmpegFrame object. Returns false if the frame was not found.
+         * Returns a frame from the movie as an \FFmpegPHP\Frame object. Returns false if the frame was not found.
          *
          * @param float $seconds
          * @param int $width
@@ -652,9 +652,9 @@ namespace FFmpegPHP {
          *
          * @throws Exception
          *
-         * @return Frame|boolean
+         * @return \FFmpegPHP\Frame|boolean
          *
-        */
+         */
          public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, $frameFilePath = null, &$output = null) {
             // Set frame position for frame extraction
             $frameTime = ($seconds === null) ? 0 : $seconds;
@@ -710,18 +710,18 @@ namespace FFmpegPHP {
             )), $output, $retVar);
             $output = join(PHP_EOL, $output);
 
-            // Cannot write frame to the data storage
+            // Cannot write frame to the data storage.
             if (!file_exists($frameFilePath)) {
                 // Find error in output
                 preg_match(self::$REGEX_ERRORS, $output, $errors);
                 if ($errors) {
                     throw new Exception($errors[0]);
                 }
-                // Default file not found error
+                // Default file not found error.
                 throw new Exception('TMP image not found/written '. $frameFilePath);
             }
 
-            // Create gdimage and delete temporary image
+            // Create gdimage and delete temporary image.
             $gdImage = imagecreatefromjpeg($frameFilePath);
             if ($deleteTmp && is_writable($frameFilePath)) {
                 unlink($frameFilePath);
@@ -734,10 +734,11 @@ namespace FFmpegPHP {
         }
 
         /**
-        * Returns the next key frame from the movie as an FFmpegFrame object. Returns false if the frame was not found.
-        *
-        * @return Frame|boolean
-        */
+         * Returns the next key frame from the movie as an \FFmpegPHP\Frame object.
+         * Returns false if the frame was not found.
+         *
+         * @return Frame|boolean
+         */
         public function getNextKeyFrame() {
             return $this->getFrame();
         }

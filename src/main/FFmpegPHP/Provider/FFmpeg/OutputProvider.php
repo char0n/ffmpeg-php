@@ -30,7 +30,7 @@ namespace FFmpegPHP\Provider\FFmpeg {
          * Getting parsable output from ffmpeg binary.
          *
          * @return string
-         * @throws Exception
+         * @throws \Exception
          */
         public function getOutput() {
 
@@ -41,7 +41,7 @@ namespace FFmpegPHP\Provider\FFmpeg {
 
             // File doesn't exist.
             if (!file_exists($this->movieFile)) {
-                throw new Exception('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
+                throw new \Exception('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
             }
 
             // Get information about file from ffmpeg.

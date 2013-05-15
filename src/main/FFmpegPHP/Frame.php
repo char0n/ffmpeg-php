@@ -44,12 +44,12 @@ namespace FFmpegPHP {
         *
         * @param resource $gdImage image resource of type gd
         * @param float $pts frame presentation timestamp; OPTIONAL parameter; DEFAULT value 0.0
-        * @throws Exception
-        * @return Frame
+        * @throws \Exception
+        * @return \FFmpegPHP\Frame
         */
         public function __construct($gdImage, $pts = 0.0) {
             if (!(is_resource($gdImage) && get_resource_type($gdImage) == 'gd')) {
-                throw new Exception('Param given by constructor is not valid gd resource', self::$EX_CODE_NO_VALID_RESOURCE);
+                throw new \Exception('Param given by constructor is not valid gd resource', self::$EX_CODE_NO_VALID_RESOURCE);
             }
 
             $this->gdImageData = $this->gdImageToBinaryData($gdImage);

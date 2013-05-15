@@ -5,7 +5,7 @@
  * 1.) Install phpunit on your operating system
  * 2.) Run the test
  * 
- * phpunit --bootstrap src/test/bootstrap.php src/test/MovieTest.php
+ * phpunit --bootstrap src/test/bootstrap.php src/test/FFmpegPHPTest/MovieTest.php
  */
 /**
  * MovieTest contains tests for Movie class
