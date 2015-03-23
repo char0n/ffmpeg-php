@@ -9,27 +9,28 @@
  */
 class FFmpegMovie implements Serializable {
 
-    protected static $REGEX_DURATION          = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
-    protected static $REGEX_FRAME_RATE        = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stbr/';    
-    protected static $REGEX_COMMENT           = '/comment\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_TITLE             = '/title\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_ARTIST            = '/(artist|author)\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_COPYRIGHT         = '/copyright\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_GENRE             = '/genre\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_TRACK_NUMBER      = '/track\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_YEAR              = '/year\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_FRAME_WH          = '/Video:.+?([1-9][0-9]*)x([1-9][0-9]*)/';
-    protected static $REGEX_PIXEL_FORMAT      = '/Video: [^,]+, ([^,]+)/';
-    protected static $REGEX_BITRATE           = '/bitrate: ([0-9]+) kb\/s/';    
-    protected static $REGEX_VIDEO_BITRATE     = '/Video:.+?([0-9]+) kb\/s/';
-    protected static $REGEX_AUDIO_BITRATE     = '/Audio:.+?([0-9]+) kb\/s/';
-    protected static $REGEX_AUDIO_SAMPLE_RATE = '/Audio:.+?([0-9]+) Hz/';
-    protected static $REGEX_VIDEO_CODEC       = '/Video:\s([^,]+),/';
-    protected static $REGEX_AUDIO_CODEC       = '/Audio:\s([^,]+),/';
-    protected static $REGEX_AUDIO_CHANNELS    = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
-    protected static $REGEX_HAS_AUDIO         = '/Stream.+Audio/';
-    protected static $REGEX_HAS_VIDEO         = '/Stream.+Video/';
-    protected static $REGEX_ERRORS            = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+    protected static $REGEX_DURATION            = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
+    protected static $REGEX_FRAME_RATE          = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stbr/';    
+    protected static $REGEX_COMMENT             = '/comment\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TITLE               = '/title\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_ARTIST              = '/(artist|author)\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_COPYRIGHT           = '/copyright\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_GENRE               = '/genre\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TRACK_NUMBER        = '/track\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_YEAR                = '/year\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_FRAME_WH            = '/Video:.+?([1-9][0-9]*)x([1-9][0-9]*)/';
+    protected static $REGEX_PIXEL_FORMAT        = '/Video: [^,]+, ([^,]+)/';
+    protected static $REGEX_PIXEL_ASPECT_RATIO  = '/Video:.+DAR ([0-9]+):([0-9]+)\]/';
+    protected static $REGEX_BITRATE             = '/bitrate: ([0-9]+) kb\/s/';    
+    protected static $REGEX_VIDEO_BITRATE       = '/Video:.+?([0-9]+) kb\/s/';
+    protected static $REGEX_AUDIO_BITRATE       = '/Audio:.+?([0-9]+) kb\/s/';
+    protected static $REGEX_AUDIO_SAMPLE_RATE   = '/Audio:.+?([0-9]+) Hz/';
+    protected static $REGEX_VIDEO_CODEC         = '/Video:\s([^,]+),/';
+    protected static $REGEX_AUDIO_CODEC         = '/Audio:\s([^,]+),/';
+    protected static $REGEX_AUDIO_CHANNELS      = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
+    protected static $REGEX_HAS_AUDIO           = '/Stream.+Audio/';
+    protected static $REGEX_HAS_VIDEO           = '/Stream.+Video/';
+    protected static $REGEX_ERRORS              = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
 
     /**
      * FFmpeg binary
@@ -136,6 +137,12 @@ class FFmpegMovie implements Serializable {
     * @var string
     */
     protected $pixelFormat;
+    /**
+    * Movie pixel aspect ratio
+    *
+    * @var float
+    */
+    protected $pixelAspectRatio;
     /**
     * Movie bit rate combined with audio bit rate
     * 
@@ -453,6 +460,21 @@ class FFmpegMovie implements Serializable {
         }
         
         return $this->pixelFormat;
+    }
+    
+    /**
+    * Return the pixel aspect ratio of the movie.
+    *
+    * @return float 
+    */
+    public function getPixelAspectRatio() {
+        if ($this->pixelAspectRatio === null) {
+            $match = array();
+            preg_match(self::$REGEX_PIXEL_ASPECT_RATIO, $this->output, $match);
+            $this->pixelAspectRatio = (array_key_exists(1, $match) && array_key_exists(2, $match)) ? ($match[1] / $match[2]) : 0;
+        }
+        
+        return $this->pixelAspectRatio;
     }
     
     /**

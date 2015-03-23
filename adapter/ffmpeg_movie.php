@@ -77,6 +77,10 @@ class ffmpeg_movie {
         return $this->adaptee->getPixelFormat(); 
     }
     
+    public function getPixelAspectRatio() {
+        return $this->adaptee->getPixelAspectRatio(); 
+    }
+    
     public function getBitRate() {
         return $this->adaptee->getBitRate(); 
     }

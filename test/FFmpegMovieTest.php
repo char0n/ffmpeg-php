@@ -155,7 +155,12 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
     public function testGetPixelFormat() {
         $this->assertInternalType('string', $this->movie->getPixelFormat(), 'Pixel format is of string type');
         $this->assertEquals('yuv420p', $this->movie->getPixelFormat(), 'Pixel format should be string(yuv420p)');
-    }    
+    }
+    
+    public function testGetPixelAspectRatio() {
+        $this->assertInternalType('float', $this->movie->getPixelAspectRatio(), 'Pixel aspect ratio is of float type');
+        $this->assertEquals(1.7777777777778, $this->movie->getPixelAspectRatio(), 'Pixel aspect ratio should be float(1.7777777777778)');
+    }
     
     public function testGetBitRate() {
         $this->assertInternalType('int', $this->movie->getBitRate(), 'BitRate is of integer type');
