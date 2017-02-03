@@ -1,13 +1,12 @@
 dependencies:
   cache_directories:
-    - "~/.apt-cache"
+    - "/home/ubuntu/aptcache"
   pre:
-    - sudo rm -rf /var/cache/apt/archives && sudo ln -s ~/.apt-cache /var/cache/apt/archives && mkdir -p ~/.apt-cache/partial
-    - sudo apt-get update
-    - sudo apt-get install phpunit
-    - sudo add-apt-repository ppa:mc3man/trusty-media -y
-    - sudo apt-get update
-    - sudo apt-get install ffmpeg gstreamer0.10-ffmpeg
+    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get update
+    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get install phpunit
+    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" add-apt-repository ppa:mc3man/trusty-media -y
+    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get update
+    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get install ffmpeg gstreamer0.10-ffmpeg
 
 test:
   override:
