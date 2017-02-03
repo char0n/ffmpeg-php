@@ -72,7 +72,6 @@ class FFmpegAnimatedGif implements Serializable {
     * @param int $height Height of the animated gif.   
     * @param int $frameRate Frame rate of the animated gif in frames per second.
     * @param int $loopCount Number of times to loop the animation. Put a zero here to loop forever or omit this parameter to disable looping.
-    * @return FFmpegAnimatedGif
     */
     public function __construct($outFilePath, $width, $height, $frameRate, $loopCount) {
         $this->outFilePath = $outFilePath;
@@ -105,8 +104,6 @@ class FFmpegAnimatedGif implements Serializable {
     * @return void 
     */
     protected function addGifHeader() {
-        $cmap = 0;
-
         if (ord($this->frames[0]{10}) & 0x80) {
             $cmap = 3 * (2 << (ord($this->frames[0]{10}) & 0x07));
 
@@ -139,6 +136,8 @@ class FFmpegAnimatedGif implements Serializable {
         $Locals_rgb = substr($this->frames[$i], 13, 3 * (2 << (ord($this->frames[$i]{10}) & 0x07)));
 
         $Locals_ext = "!\xF9\x04".chr(($DIS << 2 ) + 0). chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF)."\x0\x0";
+
+        $Locals_img = null;
 
         if ($COL > -1 && ord($this->frames[$i]{10}) & 0x80) {
             for ($j = 0; $j < (2 << (ord($this->frames[$i]{10}) & 0x07)); $j++) {

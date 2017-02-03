@@ -196,8 +196,7 @@ class FFmpegMovie implements Serializable {
     * @param string $moviePath full path to the movie file
     * @param OutputProvider $outputProvider provides parsable output
     * @param string $ffmpegBinary ffmpeg executable, if $outputProvider not specified
-    * @throws Exception 
-    * @return FFmpegMovie
+    * @throws Exception
     */
     public function __construct($moviePath, OutputProvider $outputProvider = null, $ffmpegBinary = 'ffmpeg') {
         $this->movieFile       = $moviePath;
@@ -652,7 +651,8 @@ class FFmpegMovie implements Serializable {
     */
 	 public function getFrameAtTime($seconds = null, $width = null, $height = null, $quality = null, $frameFilePath = null, &$output = null) {
         // Set frame position for frame extraction
-        $frameTime = ($seconds === null) ? 0 : $seconds;    
+        $frameTime = ($seconds === null) ? 0 : $seconds;
+
         
         // time out of range
         if (!is_numeric($frameTime) || $frameTime < 0 || $frameTime > $this->getDuration()) {
@@ -717,7 +717,17 @@ class FFmpegMovie implements Serializable {
         }
         
         // Create gdimage and delete temporary image
-        $gdImage = imagecreatefromjpeg($frameFilePath);
+        switch (getimagesize($frameFilePath)[2]) {
+            case IMAGETYPE_GIF:
+                $gdImage = imagecreatefromgif($frameFilePath);
+                break;
+            case IMAGETYPE_PNG:
+                $gdImage = imagecreatefrompng($frameFilePath);
+                break;
+            default:
+                $gdImage = imagecreatefromjpeg($frameFilePath);
+        }
+
         if ($deleteTmp && is_writable($frameFilePath)) {
             unlink($frameFilePath);
         }

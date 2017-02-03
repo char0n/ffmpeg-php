@@ -44,7 +44,6 @@ class FFmpegFrame implements Serializable {
     * @param resource $gdImage image resource of type gd
     * @param float $pts frame presentation timestamp; OPTIONAL parameter; DEFAULT value 0.0
     * @throws Exception
-    * @return FFmpegFrame
     */
     public function __construct($gdImage, $pts = 0.0) {
         if (!(is_resource($gdImage) && get_resource_type($gdImage) == 'gd')) {

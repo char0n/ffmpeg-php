@@ -1,6 +1,6 @@
 <?php
 /**
- * ffmpeg_animated_gif serves as a compatiblity adapter for old ffmpeg-php extension
+ * ffmpeg_animated_gif serves as a compatibility adapter for old ffmpeg-php extension
  * 
  * @author char0n (Vladimír Gorej, gorej@codescale.net)
  * @package FFmpegPHP
