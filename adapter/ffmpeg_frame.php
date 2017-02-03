@@ -34,11 +34,11 @@ class ffmpeg_frame {
     }
     
     public function resize($width, $height, $cropTop = 0, $cropBottom = 0, $cropLeft = 0, $cropRight = 0) {        
-        return $this->adaptee->resize($width, $height, $cropTop, $cropBottom, $cropLeft, $cropRight);
+        $this->adaptee->resize($width, $height, $cropTop, $cropBottom, $cropLeft, $cropRight);
     } 
                                                   
     public function crop($cropTop, $cropBottom = 0, $cropLeft = 0, $cropRight = 0) {
-        return $this->adaptee->crop($cropTop, $cropBottom, $cropLeft, $cropRight);
+        $this->adaptee->crop($cropTop, $cropBottom, $cropLeft, $cropRight);
     }
     
     public function toGDImage() {
