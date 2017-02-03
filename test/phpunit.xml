@@ -23,9 +23,6 @@
     timeoutForMediumTests="10"
     timeoutForLargeTests="60"
     verbose="false">
-    <php>
-        <includePath>../;../adapter/;../provider/;</includePath>
-    </php>
     <testsuites>
         <testsuite name="AllTests">
             <directory>.</directory>

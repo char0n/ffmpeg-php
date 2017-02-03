@@ -11,3 +11,7 @@
  */
 
 date_default_timezone_set('Europe/Bratislava');
+
+require_once('../FFmpegAutoloader.php');
+
+FFmpegAutoloader::register();
