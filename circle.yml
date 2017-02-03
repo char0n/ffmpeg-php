@@ -2,12 +2,12 @@ dependencies:
   cache_directories:
     - "/home/ubuntu/aptcache"
   pre:
-    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get update
-    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get install phpunit
-    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" add-apt-repository ppa:mc3man/trusty-media -y
-    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get update
-    - sudo -o dir::cache::archives="/home/ubuntu/aptcache" apt-get install ffmpeg gstreamer0.10-ffmpeg
-
+    - sudo apt-get -o dir::cache::archives="/home/ubuntu/aptcache" update
+    - sudo apt-get -o dir::cache::archives="/home/ubuntu/aptcache" install phpunit
+    - sudo apt-get -o dir::cache::archives="/home/ubuntu/aptcache" install phpdoc
+    - sudo add-apt-repository -o dir::cache::archives="/home/ubuntu/aptcache" ppa:mc3man/trusty-media -y
+    - sudo apt-get -o dir::cache::archives="/home/ubuntu/aptcache" update
+    - sudo apt-get install -o dir::cache::archives="/home/ubuntu/aptcache" ffmpeg gstreamer0.10-ffmpeg
 test:
   override:
     - phpunit --configuration="test/phpunit.xml" --include-path="../"
