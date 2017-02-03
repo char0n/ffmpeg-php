@@ -71,10 +71,13 @@ Author
 Documentation
 -------------
 
+FFmpegPHP API documentation: http://char0n.github.io/ffmpeg-php/
+
 FFmpegPHP documentation can be build from source code 
 using PhpDocumentor with following commnad: ::
 
  $ phpdoc -d . -t docs --ignore="test/*"
+
 
 
 References
