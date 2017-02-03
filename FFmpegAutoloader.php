@@ -2,7 +2,7 @@
 /**
  * FFmpegAutoloader manages lazy autoloading of all FFmpegPHP components
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
  * @license New BSD
  * @version 2.6

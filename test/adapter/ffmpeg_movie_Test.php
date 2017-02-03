@@ -10,7 +10,7 @@
 /**
  * ffmpeg_movie_test contains tests for ffmpeg_movie adapter class
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @category tests
  * @package FFmpegPHP
  * @subpackage adapter

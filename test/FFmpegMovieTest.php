@@ -10,7 +10,7 @@
 /**
  * FFmpegMovieTest contains tests for FFmpegMovie class
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @category tests
  * @package FFmpegPHP
  * @license New BSD

@@ -2,7 +2,7 @@
 /**
  * ffmpeg_frame serves as a compatiblity adapter for old ffmpeg-php extension
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
  * @subpackage adapter
  * @link http://ffmpeg-php.sourceforge.net/doc/api/ffmpeg_frame.php

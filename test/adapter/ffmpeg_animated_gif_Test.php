@@ -10,7 +10,7 @@
 /**
  * ffmpeg_animated_gif_test contains tests for ffmpeg_animated_gif adapter class
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @category tests 
  * @package FFmpegPHP
  * @subpackage adapter

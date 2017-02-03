@@ -8,7 +8,7 @@
  * 
  * Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
  * @license New BSD 
  * @version 2.6

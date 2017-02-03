@@ -2,7 +2,7 @@
 /**
  * OutputProvider interface of all output providers
  * 
- * @author char0n (Vladimír Gorej, gorej@codescale.net)
+ * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
  * @subpackage provider
  * @license New BSD
