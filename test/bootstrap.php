@@ -12,6 +12,6 @@
 
 date_default_timezone_set('Europe/Bratislava');
 
-require_once(__DIR__ . '../FFmpegAutoloader.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '../FFmpegAutoloader.php');
 
 FFmpegAutoloader::register();
