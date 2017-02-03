@@ -636,7 +636,7 @@ class FFmpegMovie implements Serializable {
 	* @param int $quality
     * @return FFmpegFrame|boolean
     */
-	public function getFrame($framenumber = null, $height = null, $width = null, $quality = null) {
+	public function getFrame($framenumber = null, $width = null, $height = null, $quality = null) {
     	$framePos = ($framenumber === null) ? $this->frameNumber : (((int) $framenumber) - 1);    
         
 		// Frame position out of range
@@ -646,7 +646,7 @@ class FFmpegMovie implements Serializable {
 		
 	    $frameTime     = round((($framePos / $this->getFrameCount()) * $this->getDuration()), 4);
 		
-		$frame = $this->getFrameAtTime($frameTime, $height, $width, $quality);
+		$frame = $this->getFrameAtTime($frameTime, $width, $height, $quality);
 		
 	    // Increment internal frame number
         if ($framenumber === null) {
