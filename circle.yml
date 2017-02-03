@@ -43,7 +43,7 @@ dependencies:
 
   # Just echo something to avoid inference
   override:
-    - phpdoc -d . -t docs
+    - phpdoc -d . -t docs --ignore tests/*
 
 # Another echo, so the build will succeed
 test:
