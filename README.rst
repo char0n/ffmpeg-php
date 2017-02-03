@@ -31,7 +31,7 @@ Tests
 
 To run the test install phpunit (http://www.phpunit.de/) and run: ::
 
- $ phpunit --bootstrap test/bootstrap.php test/
+ $ phpunit --configuration="test/phpunit.xml"
 
 
 Installation
