@@ -71,7 +71,7 @@ Documentation
 FFmpegPHP documentation can be build from source code 
 using PhpDocumentor with following commnad: ::
 
- $ phpdoc -o HTML:Smarty:HandS -d . -t docs
+ $ phpdoc -d . -t docs --ignore test/*
 
 
 References

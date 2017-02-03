@@ -41,11 +41,10 @@ dependencies:
         sudo pear install phpdoc/phpDocumentor
       fi
 
-  # Just echo something to avoid inference
   override:
-    - phpdoc -d . -t docs --ignore tests/*
+    - phpdoc -d . -t docs --ignore test/*
 
-# Another echo, so the build will succeed
+
 test:
   override:
     - echo "Hello, world"
