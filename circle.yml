@@ -13,6 +13,10 @@ dependencies:
     # Update to take effect sources repository database
     - sudo add-apt-repository ppa:mc3man/trusty-media -y
     - sudo apt-get update
+    - sudo apt-get install --download-only php-pear
+    - sudo pear channel-discover pear.phpdoc.org
+    - sudo pear install phpdoc/phpDocumentor
+
 
     # Make the cache dir if it doesn't exist
     - |
