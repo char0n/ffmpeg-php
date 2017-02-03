@@ -10,7 +10,7 @@
 class FFmpegMovie implements Serializable {
 
     protected static $REGEX_DURATION            = '/Duration: ([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]+))?/';
-    protected static $REGEX_FRAME_RATE          = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stbr/';    
+    protected static $REGEX_FRAME_RATE          = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stb(?:r|n)/';
     protected static $REGEX_COMMENT             = '/comment\s*(:|=)\s*(.+)/i';
     protected static $REGEX_TITLE               = '/title\s*(:|=)\s*(.+)/i';
     protected static $REGEX_ARTIST              = '/(artist|author)\s*(:|=)\s*(.+)/i';
