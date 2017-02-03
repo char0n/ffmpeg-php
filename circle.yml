@@ -9,7 +9,7 @@ dependencies:
     - sudo mkdir /etc/apt/sources.list.d
 
     # Copy the repository list from source tree to replace default
-    - sudo cp sources.list /etc/apt/sources.list
+    # - sudo cp sources.list /etc/apt/sources.list
     # Update to take effect sources repository database
     - sudo add-apt-repository ppa:mc3man/trusty-media -y
     - sudo apt-get update
