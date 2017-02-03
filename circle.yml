@@ -47,4 +47,4 @@ dependencies:
 
 test:
   override:
-    - echo "Hello, world"
+    - phpunit --configuration="test/phpunit.xml" --include-path="../;../adapter/;../provider/"
