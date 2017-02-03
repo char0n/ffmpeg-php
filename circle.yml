@@ -13,7 +13,7 @@ dependencies:
     # Update to take effect sources repository database
     - sudo add-apt-repository ppa:mc3man/trusty-media -y
     - sudo apt-get update
-    - sudo apt-get install --download-only php-pear
+    - sudo apt-get install php-pear
     - sudo pear channel-discover pear.phpdoc.org
     - sudo pear install phpdoc/phpDocumentor
 
@@ -26,7 +26,7 @@ dependencies:
 
     # Install packages if they don't exist
     - |
-      if [[ ! -e /usr/bin/phpdoc ]]; then
+      if [[ ! -e /usr/bin/phpunit ]]; then
         # First check for archives cache
         if ! [[ -d vendor/apt/archives ]]; then
           # It doesn't so download the packages
