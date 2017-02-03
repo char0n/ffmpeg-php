@@ -42,7 +42,7 @@ dependencies:
       fi
 
   override:
-    - phpdoc -d . -t docs --ignore test/*
+    - phpdoc -d . -t docs --ignore="test/*"
 
 
 test:
