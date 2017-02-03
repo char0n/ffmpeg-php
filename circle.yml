@@ -22,11 +22,13 @@ dependencies:
 
     # Install packages if they don't exist
     - |
-      if [[ ! -e /usr/bin/aspell ]]; then
+      if [[ ! -e /usr/bin/phpdoc ]]; then
         # First check for archives cache
         if ! [[ -d vendor/apt/archives ]]; then
           # It doesn't so download the packages
-          sudo apt-get install --download-only phpunit ffmpeg gstreamer0.10-ffmpeg
+          sudo apt-get install --download-only phpunit ffmpeg gstreamer0.10-ffmpeg php-pear
+          sudo pear channel-discover pear.phpdoc.org
+          sudo pear install phpdoc/phpDocumentor
           # Then move them to our cache directory
           sudo cp -R /var/cache/apt vendor/
           # Making sure our user has ownership, in order to cache
