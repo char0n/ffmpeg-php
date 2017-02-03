@@ -37,11 +37,6 @@ To run the test install phpunit (http://www.phpunit.de/) and run: ::
 Installation
 ------------
 
-You can easily install FFmpegPHP via PEAR framework: ::
-
- $ sudo pear channel-discover pear.codescale.net
- $ sudo pear install codescale/FFmpegPHP2
-
 or download package from github.com: ::
 
  $ wget http://github.com/char0n/ffmpeg-php/tarball/master
@@ -50,17 +45,13 @@ or to install via composer (http://getcomposer.org/) place the following in your
 
  {
     "require": {
-        "codescale/ffmpeg-php": "dev-master"
+        "char0n/ffmpeg-php": "dev-master"
     }
  }
 
 
 Using FFmpegPHP
 ---------------
-
-Package installed via PEAR channel: ::
-
- require_once 'FFmpegPHP2/FFmpegAutoloader.php';
 
 Package downloaded from github.com and unpacked into certain directory: ::
 
@@ -70,9 +61,9 @@ Package downloaded from github.com and unpacked into certain directory: ::
 Author
 ------
 
-| char0n (Vladimír Gorej, CodeScale s.r.o.)
-| email: gorej@codescale.net
-| web: http://www.codescale.net
+| char0n (Vladimír Gorej.)
+| email: vladimir.gorej@gmail.com
+| web: https://www.linkedin.com/in/vladimirgorej/
 
 Documentation
 -------------
@@ -83,35 +74,12 @@ using PhpDocumentor with following commnad: ::
  $ phpdoc -o HTML:Smarty:HandS -d . -t docs
 
 
-Generating package.xml
-----------------------
-First temporarily remove .git/ directory from project root. It causes *pfm* not to work correctly.
-::
-
- $ pear install PEAR_PackageFileManager2
- $ pear install PEAR_PackageFileManager_Cli
- $ pfm
- $ pear package package.xml
- $ pear install/upgrade ./{PACKAGE_NAME} # Verify is package is installable
-
-Create *test.php* with contents and verify installation was successful:::
-
- <?php
- require_once 'FFmpegPHP2/FFmpegAutoloader.php';
-
-And run the file with:::
-
- $ php test.php
-
-
 References
 ----------
 
-- http://github.com/CodeScaleInc/ffmpeg-php
+- http://github.com/char0n/ffmpeg-php
 - http://www.phpclasses.org/package/5977-PHP-Manipulate-video-files-using-the-ffmpeg-program.html
 - http://freshmeat.net/projects/ffmpegphp
-- http://www.codescale.net/en/community/#ffmpegphp
-- http://pear.codescale.net/
 - http://www.phpdoc.org/
 - http://www.phpunit.de/
 - http://pear.php.net/

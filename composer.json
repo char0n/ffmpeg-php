@@ -1,5 +1,5 @@
 {
-    "name": "codescale/ffmpeg-php",
+    "name": "char0n/ffmpeg-php",
     "type": "library",
     "description": "PHP wrapper for FFmpeg application",
     "version": "2.7.0",
@@ -8,10 +8,10 @@
     "license": "New BSD",
     "authors": [
         {
-        "name": "char0n (Vladimír Gorej, CodeScale s.r.o.)",
-        "email": "gorej@codescale.net",
-	    "homepage": "http://www.codescale.net/",
-        "role": "Development lead"
+        "name": "char0n (Vladimír Gorej)",
+        "email": "vladimir.gorej@gmail.com",
+	    "homepage": "https://www.linkedin.com/in/vladimirgorej/",
+        "role": "Software engineer"
         }
     ],
     "require": {
