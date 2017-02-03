@@ -85,7 +85,7 @@ class ffmpeg_movie_test extends PHPUnit_Framework_TestCase {
     
     public function testGetDuration_Audio() {
         $this->assertInternalType('float', $this->audio->getDuration(), 'Duration is of float type');
-        $this->assertEquals(15.84, $this->audio->getDuration(), 'Duration should be float(15.88)');
+        $this->assertEquals(15.85, $this->audio->getDuration(), 'Duration should be float(15.85)');
     }
     
     public function testGetFrameCount() {
@@ -213,7 +213,7 @@ class ffmpeg_movie_test extends PHPUnit_Framework_TestCase {
 
     public function testGetAudioCodec() {
         $this->assertInternalType('string', $this->movie->getAudioCodec(), 'Audio codec is of string type');
-        $this->assertEquals('aac (mp4a / 0x6134706D)', $this->movie->getAudioCodec(), 'Audio codec should be string(aac)');
+        $this->assertEquals('aac (LC) (mp4a / 0x6134706D)', $this->movie->getAudioCodec(), 'Audio codec should be string(aac)');
     }  
     
     public function testGetAudioChannels() {
@@ -268,6 +268,6 @@ class ffmpeg_movie_test extends PHPUnit_Framework_TestCase {
         $this->movie = null;
         $this->movie = unserialize($serialized);
         $this->assertInternalType('float', $this->movie->getDuration(), 'Duration is of float type');
-        $this->assertEquals(32.13, $this->movie->getDuration(), 'Duration should be float(32.13)');        
+        $this->assertEquals(32.14, $this->movie->getDuration(), 'Duration should be float(32.14)');
     }
 }
