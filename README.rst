@@ -1,3 +1,6 @@
+.. image:: https://circleci.com/gh/char0n/ffmpeg-php.svg?style=svg
+    :target: https://circleci.com/gh/char0n/ffmpeg-php
+
 FFmpegPHP
 =========
 
