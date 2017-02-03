@@ -631,8 +631,8 @@ class FFmpegMovie implements Serializable {
     *   * framenumber - Frame from the movie to return. If no framenumber is specified, returns the next frame of the movie. 
     * 
     * @param int $framenumber
+ 	* @param int $width
     * @param int $height
-	* @param int $width
 	* @param int $quality
     * @return FFmpegFrame|boolean
     */
