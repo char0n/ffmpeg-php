@@ -18,6 +18,8 @@
         "php": ">=5.3"
     },
     "autoload": {
-        "classmap": ["."]
+        "psr-4": {
+            "Char0n\\FFMpegPHP\\": "src"
+        }
     }
 }

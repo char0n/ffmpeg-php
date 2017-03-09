@@ -1,6 +1,7 @@
 <?php
+
 /**
- * AbstractOutputProvider parent of all output providers
+ * AbstractProvider parent of all output providers
  * 
  * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
@@ -9,7 +10,10 @@
  * @license New BSD
  * @version 2.6
  */
-abstract class AbstractOutputProvider implements OutputProvider, Serializable {
+
+namespace Char0n\FFMpegPHP\OutputProviders;
+
+abstract class AbstractProvider implements OutputProviderInterface, \Serializable {
 
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
     protected static $persistentBuffer       = array();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * StringOutputProvider ffmpeg provider implementation
  * 
@@ -8,7 +9,10 @@
  * @license New BSD
  * @version 2.6
  */
-class StringOutputProvider extends AbstractOutputProvider {
+
+namespace Char0n\FFMpegPHP\OutputProviders;
+
+class StringProvider extends AbstractProvider {
 	
     protected $_output;
 
@@ -29,10 +33,13 @@ class StringOutputProvider extends AbstractOutputProvider {
      * @return string
      */    
     public function getOutput() {
-        
         // Persistent opening
-        if ($this->persistent == true && array_key_exists(get_class($this).$this->binary.$this->movieFile, self::$persistentBuffer)) {
-            return self::$persistentBuffer[get_class($this).$this->binary.$this->movieFile];
+        $bufferKey = get_class($this).$this->binary.$this->movieFile;
+
+        if (true === $this->persistent
+            && array_key_exists($bufferKey, self::$persistentBuffer)
+        ) {
+            return self::$persistentBuffer[$bufferKey];
         } 
 
         return $this->_output;
@@ -44,11 +51,10 @@ class StringOutputProvider extends AbstractOutputProvider {
      * @param string $output
      */    
     public function setOutput($output) {
-        
         $this->_output = $output;
         
         // Storing persistent opening
-        if ($this->persistent == true) {
+        if (true === $this->persistent) {
             self::$persistentBuffer[get_class($this).$this->binary.$this->movieFile] = $output;            
         }
     }

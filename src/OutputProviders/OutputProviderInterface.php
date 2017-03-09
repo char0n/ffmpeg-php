@@ -8,7 +8,10 @@
  * @license New BSD
  * @version 2.6
  */
-interface OutputProvider {
+
+namespace Char0n\FFMpegPHP\OutputProviders;
+
+interface OutputProviderInterface {
 
     /**
      * Setting movie file path
