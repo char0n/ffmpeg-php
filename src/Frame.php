@@ -66,24 +66,22 @@ class Frame implements \Serializable
         $this->pts = $pts;
     }
 
-    /**
-     * Return the width of the frame.
-     *
-     * @return int
-     */
-    public function getWidth()
+    protected function gdImageToBinaryData($gdImage)
     {
-        return $this->width;
+        ob_start();
+        imagegd2($gdImage);
+
+        return ob_get_clean();
     }
 
     /**
-     * Return the height of the frame.
+     * Return the presentation time stamp of the frame.
      *
-     * @return int
+     * @return float
      */
-    public function getHeight()
+    public function getPresentationTimestamp()
     {
-        return $this->height;
+        return $this->getPTS();
     }
 
     /**
@@ -97,13 +95,20 @@ class Frame implements \Serializable
     }
 
     /**
-     * Return the presentation time stamp of the frame.
+     * Crop the frame.
      *
-     * @return float
+     * NOTE: Crop values must be even numbers.
+     *
+     * @param int $cropTop    Rows of pixels removed from the top of the frame.
+     * @param int $cropBottom Rows of pixels removed from the bottom of the frame.
+     * @param int $cropLeft   Rows of pixels removed from the left of the frame.
+     * @param int $cropRight  Rows of pixels removed from the right of the frame.
+     *
+     * @return void
      */
-    public function getPresentationTimestamp()
+    public function crop($cropTop, $cropBottom = 0, $cropLeft = 0, $cropRight = 0)
     {
-        return $this->getPTS();
+        $this->resize($this->getWidth(), $this->getHeight(), $cropTop, $cropBottom, $cropLeft, $cropRight);
     }
 
     /**
@@ -160,23 +165,6 @@ class Frame implements \Serializable
     }
 
     /**
-     * Crop the frame.
-     *
-     * NOTE: Crop values must be even numbers.
-     *
-     * @param int $cropTop    Rows of pixels removed from the top of the frame.
-     * @param int $cropBottom Rows of pixels removed from the bottom of the frame.
-     * @param int $cropLeft   Rows of pixels removed from the left of the frame.
-     * @param int $cropRight  Rows of pixels removed from the right of the frame.
-     *
-     * @return void
-     */
-    public function crop($cropTop, $cropBottom = 0, $cropLeft = 0, $cropRight = 0)
-    {
-        $this->resize($this->getWidth(), $this->getHeight(), $cropTop, $cropBottom, $cropLeft, $cropRight);
-    }
-
-    /**
      * Returns a truecolor GD image of the frame.
      *
      * @return resource resource of type gd
@@ -186,12 +174,24 @@ class Frame implements \Serializable
         return imagecreatefromstring($this->gdImageData);
     }
 
-    protected function gdImageToBinaryData($gdImage)
+    /**
+     * Return the width of the frame.
+     *
+     * @return int
+     */
+    public function getWidth()
     {
-        ob_start();
-        imagegd2($gdImage);
+        return $this->width;
+    }
 
-        return ob_get_clean();
+    /**
+     * Return the height of the frame.
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
     }
 
     /**

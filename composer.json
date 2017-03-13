@@ -4,18 +4,25 @@
     "description": "PHP wrapper for FFmpeg application",
     "version": "2.9.0",
     "keywords": ["ffmpeg", "video", "audio"],
-    "homepage": "http://freecode.com/projects/ffmpegphp",
+    "homepage": "https://github.com/char0n/ffmpeg-php",
     "license": "New BSD",
     "authors": [
         {
-        "name": "char0n (Vladimír Gorej)",
-        "email": "vladimir.gorej@gmail.com",
-	    "homepage": "https://www.linkedin.com/in/vladimirgorej/",
-        "role": "Software engineer"
+          "name": "char0n (Vladimír Gorej)",
+          "email": "vladimir.gorej@gmail.com",
+          "homepage": "https://www.linkedin.com/in/vladimirgorej/",
+          "role": "Software engineer"
         }
     ],
+    "scripts": {
+      "codesniffer": "phpcs",
+      "codesniffer:fix": "phpcbf"
+    },
     "require": {
         "php": ">=5.3"
+    },
+    "require-dev": {
+      "squizlabs/php_codesniffer": "3.0.0RC4"
     },
     "autoload": {
         "psr-4": {

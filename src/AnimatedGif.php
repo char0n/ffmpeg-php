@@ -233,8 +233,7 @@ class AnimatedGif implements \Serializable
     protected function gifBlockCompare($GlobalBlock, $LocalBlock, $Len)
     {
         for ($i = 0; $i < $Len; $i++) {
-            if (
-                $GlobalBlock{3 * $i + 0} !== $LocalBlock{3 * $i + 0} ||
+            if ($GlobalBlock{3 * $i + 0} !== $LocalBlock{3 * $i + 0} ||
                 $GlobalBlock{3 * $i + 1} !== $LocalBlock{3 * $i + 1} ||
                 $GlobalBlock{3 * $i + 2} !== $LocalBlock{3 * $i + 2}
             ) {
@@ -272,7 +271,7 @@ class AnimatedGif implements \Serializable
             return false;
         }
 
-        // Process images as animation        
+        // Process images as animation
         $this->addGifHeader();
         for ($i = 0, $frameCount = count($this->frames); $i < $frameCount; $i++) {
             $this->addFrameData($i, 1 / $this->frameRate * 100);

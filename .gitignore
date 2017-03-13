@@ -4,4 +4,7 @@
 .settings
 *.swp
 /docs/*
+/composer.phar
+/composer.lock
+/vendor
 .idea

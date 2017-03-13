@@ -2,7 +2,7 @@
 
 /**
  * StringOutputProvider ffmpeg provider implementation
- * 
+ *
  * @author funrob (Rob Walch, rwalch@gmail.com)
  * @package FFmpegPHP
  * @subpackage provider
@@ -12,27 +12,30 @@
 
 namespace Char0n\FFMpegPHP\OutputProviders;
 
-class StringProvider extends AbstractProvider {
-	
+class StringProvider extends AbstractProvider
+{
+    
     protected $_output;
 
     /**
      * Constructor
-     * 
+     *
      * @param string $ffmpegBinary path to ffmpeg executable
      * @param boolean $persistent persistent functionality on/off
      */
-    public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false) {
+    public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false)
+    {
         $this->_output = '';
         parent::__construct($ffmpegBinary, $persistent);
     }
-	
+    
     /**
      * Getting parsable output from ffmpeg binary
-     * 
+     *
      * @return string
-     */    
-    public function getOutput() {
+     */
+    public function getOutput()
+    {
         // Persistent opening
         $bufferKey = get_class($this).$this->binary.$this->movieFile;
 
@@ -40,22 +43,23 @@ class StringProvider extends AbstractProvider {
             && array_key_exists($bufferKey, self::$persistentBuffer)
         ) {
             return self::$persistentBuffer[$bufferKey];
-        } 
+        }
 
         return $this->_output;
     }
 
     /**
      * Setting parsable output
-     * 
+     *
      * @param string $output
-     */    
-    public function setOutput($output) {
+     */
+    public function setOutput($output)
+    {
         $this->_output = $output;
         
         // Storing persistent opening
         if (true === $this->persistent) {
-            self::$persistentBuffer[get_class($this).$this->binary.$this->movieFile] = $output;            
+            self::$persistentBuffer[get_class($this).$this->binary.$this->movieFile] = $output;
         }
     }
 }

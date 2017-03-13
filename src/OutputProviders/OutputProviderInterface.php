@@ -1,7 +1,7 @@
 <?php
 /**
  * OutputProvider interface of all output providers
- * 
+ *
  * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
  * @package FFmpegPHP
  * @subpackage provider
@@ -11,18 +11,19 @@
 
 namespace Char0n\FFMpegPHP\OutputProviders;
 
-interface OutputProviderInterface {
+interface OutputProviderInterface
+{
 
     /**
      * Setting movie file path
-     * 
+     *
      * @param string $movieFile
      */
     public function setMovieFile($movieFile);
     
     /**
      * Getting parsable output
-     * 
+     *
      * @return string
      */
     public function getOutput();
