@@ -3,6 +3,7 @@
 .project
 .settings
 *.swp
+/junit.xml
 /docs/*
 /composer.phar
 /composer.lock

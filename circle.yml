@@ -52,6 +52,9 @@ test:
   override:
     - composer run-script codesniffer
     - composer run-script test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
+    - cp -nf junit.xml $CIRCLE_TEST_REPORTS/phpunit
 
 deployment:
   staging:
