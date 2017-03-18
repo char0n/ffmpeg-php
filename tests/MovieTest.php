@@ -44,19 +44,13 @@ class MovieTest extends TestCase
         $this->audio = null;
     }
 
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionCode 334561
+     */
     public function testFileDoesNotExistException()
     {
-        try {
-            $movie = new Movie(uniqid('test', true));
-        } catch (\Exception $ex) {
-            if ($ex->getCode() == 334561) {
-                return;
-            } else {
-                $this->fail('Expected exception raised with wrong code');
-            }
-        }
-
-        $this->fail('An expected exception with code 334561 has not been raised');
+        new Movie(uniqid('test', true));
     }
 
     public function testPersistentResourceSimulation()
