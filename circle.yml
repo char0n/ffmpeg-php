@@ -56,7 +56,7 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
     - cp -nf junit.xml $CIRCLE_TEST_REPORTS/phpunit/
-    - la -ls $CIRCLE_TEST_REPORTS/phpunit/
+    - ls -la $CIRCLE_TEST_REPORTS/phpunit/
 
 deployment:
   staging:
