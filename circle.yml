@@ -7,7 +7,7 @@ general:
 
 machine:
   php:
-    version: 7
+    version: 7.0.4
 
 dependencies:
   cache_directories:
