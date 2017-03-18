@@ -23,7 +23,7 @@
     verbose="true">
     <testsuites>
         <testsuite name="AllTests">
-            <directory>.</directory>
+            <directory suffix=".php">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

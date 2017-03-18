@@ -17,7 +17,7 @@
     "scripts": {
         "codesniffer": "phpcs",
         "codesniffer:fix": "phpcbf",
-        "test": "phpunit --configuration=\"test/phpunit.xml\" --log-junit junit.xml",
+        "test": "phpunit --configuration=\"tests/phpunit.xml\" --log-junit junit.xml",
         "docs":  "phpdoc -d ./src/ -t docs"
     },
     "require": {
