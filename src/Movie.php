@@ -37,7 +37,8 @@ class Movie implements \Serializable
     protected static $REGEX_AUDIO_CHANNELS     = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
     protected static $REGEX_HAS_AUDIO          = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO          = '/Stream.+Video/';
-    protected static $REGEX_ERRORS             = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+    protected static $REGEX_ERRORS             = '/.*(Error|Permission denied|could not seek to position|Invalid pixel
+     format|Unknown encoder|could not find codec|does not contain any stream).*/i';
 
     /**
      * FFmpeg binary
@@ -676,8 +677,8 @@ class Movie implements \Serializable
     /**
      * Returns a frame from the movie as an Frame object. Returns false if the frame was not found.
      *
-     * @param int $frameNumber Frame from the movie to return. If no framenumber is specified, returns the next frame of the
-     *                         movie.
+     * @param int $frameNumber Frame from the movie to return. If no framenumber is specified,
+     *                         returns the next frame of the movie.
      * @param int $width
      * @param int $height
      * @param int $quality
@@ -733,7 +734,9 @@ class Movie implements \Serializable
 
         // time out of range
         if (!is_numeric($frameTime) || $frameTime < 0 || $frameTime > $this->getDuration()) {
-            throw new \RuntimeException('Frame time is not in range '.$frameTime.'/'.$this->getDuration().' '.$this->getFilename());
+            throw new \RuntimeException(
+                'Frame time is not in range '.$frameTime.'/'.$this->getDuration().' '.$this->getFilename()
+            );
         }
 
         $image_size = '';

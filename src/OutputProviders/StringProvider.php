@@ -15,7 +15,7 @@ namespace Char0n\FFMpegPHP\OutputProviders;
 class StringProvider extends AbstractProvider
 {
     
-    protected $_output;
+    protected $output;
 
     /**
      * Constructor
@@ -25,7 +25,7 @@ class StringProvider extends AbstractProvider
      */
     public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false)
     {
-        $this->_output = '';
+        $this->output = '';
         parent::__construct($ffmpegBinary, $persistent);
     }
     
@@ -45,7 +45,7 @@ class StringProvider extends AbstractProvider
             return self::$persistentBuffer[$bufferKey];
         }
 
-        return $this->_output;
+        return $this->output;
     }
 
     /**
@@ -55,7 +55,7 @@ class StringProvider extends AbstractProvider
      */
     public function setOutput($output)
     {
-        $this->_output = $output;
+        $this->output = $output;
         
         // Storing persistent opening
         if (true === $this->persistent) {

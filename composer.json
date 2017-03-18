@@ -15,14 +15,18 @@
         }
     ],
     "scripts": {
-      "codesniffer": "phpcs",
-      "codesniffer:fix": "phpcbf"
+        "codesniffer": "phpcs",
+        "codesniffer:fix": "phpcbf",
+        "test": "phpunit --configuration=\"test/phpunit.xml\"",
+        "docs":  "phpdoc -d ./src/ -t docs"
     },
     "require": {
-        "php": ">=5.3"
+        "php": ">=7",
+        "phpunit/phpunit": "6.1.x-dev",
+        "squizlabs/php_codesniffer": "3.0.0RC4"
     },
     "require-dev": {
-      "squizlabs/php_codesniffer": "3.0.0RC4"
+        "phpdocumentor/phpdocumentor": "v2.9.0"
     },
     "autoload": {
         "psr-4": {

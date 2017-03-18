@@ -1,3 +1,14 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+  artifacts:
+    - "docs"
+
+machine:
+  php:
+    version: 7.1.3
+
 dependencies:
   cache_directories:
     # We will store packages in this directory
@@ -22,13 +33,11 @@ dependencies:
 
     # Install packages if they don't exist
     - |
-      if [[ ! -e /usr/bin/phpunit ]]; then
+      if [[ ! -e /usr/bin/ffmpeg ]]; then
         # First check for archives cache
         if ! [[ -d vendor/apt/archives ]]; then
           # It doesn't so download the packages
-          sudo apt-get install --download-only phpunit ffmpeg gstreamer0.10-ffmpeg php-pear
-          sudo pear channel-discover pear.phpdoc.org
-          sudo pear install phpdoc/phpDocumentor
+          sudo apt-get install --download-only ffmpeg gstreamer0.10-ffmpeg
           # Then move them to our cache directory
           sudo cp -R /var/cache/apt vendor/
           # Making sure our user has ownership, in order to cache
@@ -37,14 +46,15 @@ dependencies:
 
         # Install all packages in the cache
         sudo dpkg -i vendor/apt/archives/*.deb
-        sudo pear channel-discover pear.phpdoc.org
-        sudo pear install phpdoc/phpDocumentor
       fi
-
-  override:
-    - phpdoc -d . -t docs --ignore="test/*"
-
 
 test:
   override:
-    - phpunit --configuration="test/phpunit.xml"
+    - composer run-script codesniffer
+    - composer run-script test
+
+deployment:
+  staging:
+    branch: PSR-4-develop
+    commands:
+      - composeer run-script docs
