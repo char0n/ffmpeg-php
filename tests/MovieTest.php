@@ -3,6 +3,7 @@
 namespace Char0n\FFMpegPHP\Tests;
 
 use Char0n\FFMpegPHP\Movie;
+use Char0n\FFMpegPHP\Frame;
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -230,15 +231,15 @@ class MovieTest extends TestCase
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
 
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getFrame());
+        $this->assertInstanceOf(Frame, $this->movie->getFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(3, $this->movie->getFrameNumber(), 'Frame number should be int(3)');
     }
@@ -301,18 +302,18 @@ class MovieTest extends TestCase
 
     public function testGetFrame()
     {
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(Frame, $this->movie->getFrame(), 'Frame is of Frame type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getFrame(25), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(Frame, $this->movie->getFrame(25), 'Frame is of Frame type');
 
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(Frame, $this->movie->getFrame(), 'Frame is of Frame type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
     }
 
     public function testGetNextKeyFrame()
     {
-        $this->assertInstanceOf('FFmpegFrame', $this->movie->getNextKeyFrame(), 'KeyFrame is of FFmpegFrame type');
+        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame(), 'KeyFrame is of Frame type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
         $this->assertInstanceOf(
             'FFmpegFrame',
