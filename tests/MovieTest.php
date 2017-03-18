@@ -62,15 +62,15 @@ class MovieTest extends TestCase
     public function testPersistentResourceSimulation()
     {
         \PHP_Timer::start();
-        $movie   = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
-        $movie   = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
-        $movie   = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
+        $movie = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
+        $movie = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
+        $movie = new Movie(self::$moviePath, new FFMpegProvider('ffmpeg', true));
         $elapsed = \PHP_Timer::stop();
 
         \PHP_Timer::start();
-        $movie   = new Movie(self::$moviePath);
-        $movie   = new Movie(self::$moviePath);
-        $movie   = new Movie(self::$moviePath);
+        $movie = new Movie(self::$moviePath);
+        $movie = new Movie(self::$moviePath);
+        $movie = new Movie(self::$moviePath);
         $elapsed1 = \PHP_Timer::stop();
         $this->assertGreaterThan($elapsed, $elapsed1, 'Persistent resource simulation should be faster');
     }
@@ -231,15 +231,15 @@ class MovieTest extends TestCase
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(Frame::class, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(Frame::class, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
 
-        $this->assertInstanceOf(Frame, $this->movie->getFrame());
+        $this->assertInstanceOf(Frame::class, $this->movie->getFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(3, $this->movie->getFrameNumber(), 'Frame number should be int(3)');
     }
@@ -302,23 +302,23 @@ class MovieTest extends TestCase
 
     public function testGetFrame()
     {
-        $this->assertInstanceOf(Frame, $this->movie->getFrame(), 'Frame is of Frame type');
+        $this->assertInstanceOf(Frame::class, $this->movie->getFrame(), 'Frame is of Frame type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf(Frame, $this->movie->getFrame(25), 'Frame is of Frame type');
+        $this->assertInstanceOf(Frame::class, $this->movie->getFrame(25), 'Frame is of Frame type');
 
-        $this->assertInstanceOf(Frame, $this->movie->getFrame(), 'Frame is of Frame type');
+        $this->assertInstanceOf(Frame::class, $this->movie->getFrame(), 'Frame is of Frame type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
     }
 
     public function testGetNextKeyFrame()
     {
-        $this->assertInstanceOf(Frame, $this->movie->getNextKeyFrame(), 'KeyFrame is of Frame type');
+        $this->assertInstanceOf(Frame::class, $this->movie->getNextKeyFrame(), 'KeyFrame is of Frame type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
         $this->assertInstanceOf(
-            'FFmpegFrame',
+            Frame::class,
             $this->movie->getNextKeyFrame(),
-            'Next key frame is of FFmpegFrame type'
+            'Next key frame is of Frame type'
         );
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
     }
