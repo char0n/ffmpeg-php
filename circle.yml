@@ -4,6 +4,7 @@ general:
       - gh-pages
   artifacts:
     - "docs"
+    - "junit.xml"
 
 machine:
   php:
@@ -54,7 +55,8 @@ test:
     - composer run-script test
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
-    - cp -nf junit.xml $CIRCLE_TEST_REPORTS/phpunit
+    - cp -nf junit.xml $CIRCLE_TEST_REPORTS/phpunit/
+    - la -ls $CIRCLE_TEST_REPORTS/phpunit/
 
 deployment:
   staging:
