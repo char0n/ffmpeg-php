@@ -7,7 +7,7 @@ general:
 
 machine:
   php:
-    version: 7.0.4
+    version: 7.1.0
 
 dependencies:
   cache_directories:
@@ -57,4 +57,4 @@ deployment:
   staging:
     branch: PSR-4-develop
     commands:
-      - composeer run-script docs
+      - composer run-script docs
