@@ -7,6 +7,8 @@ general:
     - "junit.xml"
 
 machine:
+  timezone:
+    Europe/Prague
   php:
     version: 7.1.0
 
@@ -56,7 +58,6 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
     - cp -nf junit.xml $CIRCLE_TEST_REPORTS/phpunit/
-    - ls -la $CIRCLE_TEST_REPORTS/phpunit/
 
 deployment:
   staging:
