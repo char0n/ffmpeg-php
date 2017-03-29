@@ -61,6 +61,12 @@ class Frame implements \Serializable
         $this->pts = $pts;
     }
 
+    /**
+     * Transforms gdImage resource to binary data.
+     *
+     * @param resource $gdImage
+     * @return string
+     */
     protected function gdImageToBinaryData($gdImage)
     {
         ob_start();
