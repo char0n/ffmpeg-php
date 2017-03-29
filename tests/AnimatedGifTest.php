@@ -32,29 +32,29 @@ class FFmpegAnimatedGifTest extends TestCase
     public static function setUpBeforeClass()
     {
         self::$outFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('anim', true).'.gif';
-        self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
+        self::$moviePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
     }
 
     public static function tearDownAfterClass()
     {
         self::$outFilePath = null;
-        self::$moviePath   = null;
+        self::$moviePath = null;
     }
 
     public function setUp()
     {
-        $this->movie  = new Movie(self::$moviePath);
+        $this->movie = new Movie(self::$moviePath);
         $this->frame1 = $this->movie->getFrame(1);
         $this->frame2 = $this->movie->getFrame(2);
-        $this->anim   = new AnimatedGif(self::$outFilePath, 100, 120, 1, 0);
+        $this->anim = new AnimatedGif(self::$outFilePath, 100, 120, 1, 0);
     }
 
     public function tearDown()
     {
-        $this->movie  = null;
+        $this->movie = null;
         $this->frame1 = null;
         $this->frame2 = null;
-        $this->anim   = null;
+        $this->anim = null;
         if (file_exists(self::$outFilePath)) {
             unlink(self::$outFilePath);
         }
@@ -62,12 +62,11 @@ class FFmpegAnimatedGifTest extends TestCase
 
     public function testAddFrame()
     {
-        $frame        = $this->movie->getFrame(3);
+        $frame = $this->movie->getFrame(3);
         $memoryBefore = memory_get_usage();
 
         $this->anim->addFrame($frame);
-
-        $memoryAfter  = memory_get_usage();
+        $memoryAfter = memory_get_usage();
 
         $this->assertGreaterThan($memoryBefore, $memoryAfter, 'Memory usage should be higher after adding frame');
     }
@@ -78,7 +77,7 @@ class FFmpegAnimatedGifTest extends TestCase
         $this->anim->addFrame($this->frame2);
 
         $animData = $this->anim->getAnimation();
-        $this->assertEquals(20901, strlen($animData), 'Animation binary size should be int(20901)');
+        $this->assertEquals(21439, strlen($animData), 'Animation binary size should be int(21439)');
     }
 
     public function testSave()
@@ -93,7 +92,7 @@ class FFmpegAnimatedGifTest extends TestCase
             file_exists(self::$outFilePath),
             'File "'.self::$outFilePath.'" should exist after saving'
         );
-        $this->assertEquals(20901, filesize(self::$outFilePath), 'Animation binary size should be int(20901)');
+        $this->assertEquals(21439, filesize(self::$outFilePath), 'Animation binary size should be int(21439)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
@@ -115,7 +114,7 @@ class FFmpegAnimatedGifTest extends TestCase
             file_exists(self::$outFilePath),
             'File "'.self::$outFilePath.'" should exist after saving'
         );
-        $this->assertEquals(20901, filesize(self::$outFilePath), 'Animation binary size should be int(20901)');
+        $this->assertEquals(21439, filesize(self::$outFilePath), 'Animation binary size should be int(21439)');
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
