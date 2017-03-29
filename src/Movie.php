@@ -1,11 +1,6 @@
 <?php
 /**
- * Movie represents a movie file
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @license New BSD
- * @version 2.6
+ * Represents a movie file
  */
 
 namespace Char0n\FFMpegPHP;
@@ -41,13 +36,14 @@ class Movie implements \Serializable
      format|Unknown encoder|could not find codec|does not contain any stream).*/i';
 
     /**
-     * FFmpeg binary
+     * Path to `ffmpeg` binary.
      *
      * @var string
      */
     protected $ffmpegBinary;
+
     /**
-     * Output provider
+     * Output provider instance.
      *
      * @var OutputProviderInterface
      */
@@ -61,18 +57,19 @@ class Movie implements \Serializable
     protected $movieFile;
 
     /**
-     * provider output
+     * Output providers output as string.
      *
      * @var string
      */
     protected $output;
 
     /**
-     * Movie duration in seconds
+     * Movie duration in seconds.
      *
      * @var float
      */
     protected $duration;
+
     /**
      * Current frame index
      *
@@ -80,121 +77,140 @@ class Movie implements \Serializable
      */
     protected $frameCount;
     /**
-     * Movie frame rate
+     * Movie frame rate.
      *
      * @var float
      */
+
     protected $frameRate;
     /**
-     * Comment ID3 field
+     * Comment ID3 field.
      *
      * @var string
      */
+
     protected $comment;
     /**
-     * Title ID3 field
+     * Title ID3 field.
      *
      * @var string
      */
+
     protected $title;
     /**
-     * Author ID3 field
+     * Author ID3 field.
      *
      * @var string
      */
+
     protected $artist;
     /**
-     * Copyright ID3 field
+     * Copyright ID3 field.
      *
      * @var string
      */
+
     protected $copyright;
     /**
-     * Genre ID3 field
+     * Genre ID3 field.
      *
      * @var string
      */
+
     protected $genre;
     /**
-     * Track ID3 field
+     * Track ID3 field.
      *
      * @var int
      */
+
     protected $trackNumber;
     /**
-     * Year ID3 field
+     * Year ID3 field.
      *
      * @var int
      */
     protected $year;
+
     /**
-     * Movie frame height
+     * Movie frame height.
      *
      * @var int
      */
     protected $frameHeight;
+
     /**
-     * Movie frame width
+     * Movie frame width.
      *
      * @var int
      */
     protected $frameWidth;
+
     /**
-     * Movie pixel format
+     * Movie pixel format.
      *
      * @var string
      */
     protected $pixelFormat;
+
     /**
-     * Movie pixel aspect ratio
+     * Movie pixel aspect ratio.
      *
      * @var float
      */
     protected $pixelAspectRatio;
+
     /**
-     * Movie bit rate combined with audio bit rate
+     * Movie bit rate combined with audio bit rate.
      *
      * @var int
      */
     protected $bitRate;
+
     /**
-     * Movie video stream bit rate
+     * Movie video stream bit rate.
      *
      * @var int
      */
     protected $videoBitRate;
+
     /**
-     * Movie audio stream bit rate
+     * Movie audio stream bit rate.
      *
      * @var int
      */
     protected $audioBitRate;
+
     /**
-     * Audio sample rate
+     * Audio sample rate.
      *
      * @var int
      */
     protected $audioSampleRate;
+
     /**
-     * Current frame number
+     * Current frame number.
      *
      * @var int
      */
     protected $frameNumber;
+
     /**
-     * Movie video codec
+     * Movie video codec.
      *
      * @var string
      */
     protected $videoCodec;
+
     /**
-     * Movie audio coded
+     * Movie audio codec.
      *
      * @var string
      */
     protected $audioCodec;
+
     /**
-     * Movie audio channels
+     * Movie audio channels.
      *
      * @var int
      */
@@ -208,9 +224,9 @@ class Movie implements \Serializable
      * as the second constructor argument while instantiating
      *
      *
-     * @param string                  $moviePath full path to the movie file
-     * @param OutputProviderInterface $outputProvider provides parsable output
-     * @param string                  $ffmpegBinary ffmpeg executable, if $outputProvider not specified
+     * @param string $moviePath Full path to the movie file.
+     * @param OutputProviderInterface $outputProvider Provides parsable output.
+     * @param string $ffmpegBinary `ffmpeg` executable, if $outputProvider not specified.
      *
      * @throws \Exception
      */
@@ -226,7 +242,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Setting provider implementation
+     * Setting output provider implementation.
      *
      * @param OutputProviderInterface $outputProvider
      *
@@ -242,7 +258,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Getting current provider implementation
+     * Getting current output provider implementation.
      *
      * @return OutputProviderInterface
      */
@@ -254,7 +270,7 @@ class Movie implements \Serializable
     /**
      * Return the duration of a movie or audio file in seconds.
      *
-     * @return float movie duration in seconds
+     * @return float Movie duration in seconds.
      */
     public function getDuration()
     {
@@ -588,7 +604,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Return the name of the video codec used to encode this movie as a string.
+     * Return the name of the video codec used to encode this movie.
      *
      * @return string
      */
@@ -604,7 +620,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Return the name of the audio codec used to encode this movie as a string.
+     * Return the name of the audio codec used to encode this movie.
      *
      * @return string
      */
@@ -620,7 +636,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Return the number of audio channels in this movie as an integer.
+     * Return the number of audio channels in this movie.
      *
      * @return int
      */
@@ -677,7 +693,7 @@ class Movie implements \Serializable
     /**
      * Returns a frame from the movie as an Frame object. Returns false if the frame was not found.
      *
-     * @param int $frameNumber Frame from the movie to return. If no framenumber is specified,
+     * @param int $frameNumber Frame from the movie to return. If no frame number is specified,
      *                         returns the next frame of the movie.
      * @param int $width
      * @param int $height
@@ -840,9 +856,9 @@ class Movie implements \Serializable
     }
 
     /**
-     * String representation of a Movie
+     * String representation of a Movie.
      *
-     * @return string the string representation of the object or null
+     * @return string Rhe string representation of the object or null.
      */
     public function serialize()
     {
@@ -860,7 +876,7 @@ class Movie implements \Serializable
     }
 
     /**
-     * Constructs the Movie
+     * Constructs the Movie from serialized data.
      *
      * @param string $serialized The string representation of the object.
      *
@@ -874,6 +890,6 @@ class Movie implements \Serializable
             $this->output,
             $this->frameNumber,
             $this->provider
-            ) = unserialize($serialized);
+        ) = unserialize($serialized);
     }
 }

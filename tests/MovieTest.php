@@ -11,9 +11,15 @@ class MovieTest extends TestCase
 {
 
     protected static $moviePath;
+    /**
+     * @var Movie
+     */
     protected $movie;
 
     protected static $audioPath;
+    /**
+     * @var Movie
+     */
     protected $audio;
 
     protected static $noMediaPath;
