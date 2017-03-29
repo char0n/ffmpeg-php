@@ -41,23 +41,18 @@ class FFmpegFrameTest extends TestCase
         $this->frame = null;
     }
 
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionCode 334563
+     */
     public function testConstructor()
     {
-        try {
-            $frame = new Frame('test', 0.0);
-        } catch (\Exception $ex) {
-            if ($ex->getCode() == 334563) {
-                return;
-            } else {
-                $this->fail('Expected exception raised with wrong code');
-            }
-        }
-        $this->fail('An expected exception with code 334561 has not been raised');
+        new Frame('test', 0.0);
     }
 
     public function testFrameExtracted()
     {
-        $this->assertInstanceOf('FFmpegFrame', $this->frame);
+        $this->assertInstanceOf(Frame::class, $this->frame);
     }
 
     public function testGetWidth()

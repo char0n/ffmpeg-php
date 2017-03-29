@@ -36,7 +36,7 @@ dependencies:
 
     # Install packages if they don't exist
     - |
-      if [[ ! -e /usr/bin/ffmpeg ]]; then
+      if [[ ! -e /usr/bin/ffmpeg1 ]]; then
         # First check for archives cache
         if ! [[ -d vendor/apt/archives ]]; then
           # It doesn't so download the packages
