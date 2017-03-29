@@ -40,7 +40,7 @@ dependencies:
         # First check for archives cache
         if ! [[ -d vendor/apt/archives ]]; then
           # It doesn't so download the packages
-          sudo apt-get install --download-only ffmpeg gstreamer0.10-ffmpeg
+          sudo apt-get install --download-only ffmpeg gstreamer0.10-ffmpeg graphviz
           # Then move them to our cache directory
           sudo cp -R /var/cache/apt vendor/
           # Making sure our user has ownership, in order to cache
