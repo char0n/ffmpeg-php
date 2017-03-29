@@ -1,13 +1,13 @@
 <?php
-/**
- * Represents a movie file
- */
 
 namespace Char0n\FFMpegPHP;
 
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
 use Char0n\FFMpegPHP\OutputProviders\OutputProviderInterface;
 
+/**
+ * Represents a movie file.
+ */
 class Movie implements \Serializable
 {
 
@@ -878,7 +878,7 @@ class Movie implements \Serializable
     /**
      * Constructs the Movie from serialized data.
      *
-     * @param string $serialized The string representation of the object.
+     * @param string $serialized The string representation of Movie instance.
      *
      * @return void
      */

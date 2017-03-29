@@ -1,43 +1,38 @@
 <?php
 
-/**
- * Frame represents one frame from the movie
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @license New BSD
- * @version 2.6
- */
-
 namespace Char0n\FFMpegPHP;
 
+/**
+ * Represents one frame from the movie.
+ */
 class Frame implements \Serializable
 {
 
     protected static $EX_CODE_NO_VALID_RESOURCE = 334563;
 
     /**
-     * GdImage binary data
+     * GdImage binary data.
      *
      * @var string
      */
     protected $gdImageData;
+
     /**
-     * Presentation time stamp
+     * Presentation time stamp.
      *
      * @var float
      */
     protected $pts;
 
     /**
-     * Frame width in pixels
+     * Frame width in pixels.
      *
      * @var int
      */
     protected $width;
 
     /**
-     * Frame height in pixels
+     * Frame height in pixels.
      *
      * @var int
      */
@@ -46,8 +41,8 @@ class Frame implements \Serializable
     /**
      * Create a Frame object from a GD image.
      *
-     * @param resource $gdImage image resource of type gd
-     * @param float    $pts frame presentation timestamp; OPTIONAL parameter; DEFAULT value 0.0
+     * @param resource $gdImage Image resource of type gd.
+     * @param float    $pts Frame presentation timestamp.
      *
      * @throws \UnexpectedValueException
      */
@@ -85,7 +80,7 @@ class Frame implements \Serializable
     }
 
     /**
-     * Return the presentation time stamp of the frame; alias $frame->getPresentationTimestamp()
+     * Return the presentation time stamp of the frame; alias $frame->getPresentationTimestamp().
      *
      * @return float
      */
@@ -167,7 +162,7 @@ class Frame implements \Serializable
     /**
      * Returns a truecolor GD image of the frame.
      *
-     * @return resource resource of type gd
+     * @return resource Resource of type gd.
      */
     public function toGDImage()
     {
@@ -195,9 +190,9 @@ class Frame implements \Serializable
     }
 
     /**
-     * String representation of a Frame
+     * Return string representation of a Frame.
      *
-     * @return string the string representation of the object or null
+     * @return string The string representation of the object or null.
      */
     public function serialize()
     {
@@ -212,9 +207,9 @@ class Frame implements \Serializable
     }
 
     /**
-     * Constructs the Frame
+     * Constructs the Frame from serialized data.
      *
-     * @param string $serialized The string representation of the object.
+     * @param string $serialized The string representation of Frame instance.
      *
      * @return void
      */
@@ -225,6 +220,6 @@ class Frame implements \Serializable
             $this->pts,
             $this->width,
             $this->height
-            ) = unserialize($serialized);
+        ) = unserialize($serialized);
     }
 }
