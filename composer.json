@@ -30,7 +30,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Char0n\\FFMpegPHP\\": "src"
+            "Char0n\\FFMpegPHP\\": "src",
+            "Char0n\\FFMpegPHP\\Tests\\": "tests"
         }
     }
 }
