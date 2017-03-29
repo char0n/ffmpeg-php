@@ -1,5 +1,7 @@
 <?php
 
+namespace Char0n\FFMpegPHP;
+
 /**
  * AnimatedGif represents an animated gif object
  *
@@ -8,15 +10,7 @@
  * quality and compression of animated gifs.
  *
  * Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @license New BSD
- * @version 2.6
  */
-
-namespace Char0n\FFMpegPHP;
-
 class AnimatedGif implements \Serializable
 {
 
@@ -51,26 +45,26 @@ class AnimatedGif implements \Serializable
      */
     protected $loopCount;
     /**
-     * Binary data of gif files to create animation
+     * Binary data of gif files to create animation.
      *
      * @var array
      */
     protected $frames;
     /**
-     * Gif binary data of animation
+     * Gif binary data of animation.
      *
      * @var string
      */
     protected $gifData;
     /**
-     * Counter of first animation
+     * Counter of first animation.
      *
      * @var mixed
      */
     protected $counter;
 
     /**
-     * Create a new AnimatedGif object
+     * Create a new AnimatedGif object.
      *
      * @param string $outFilePath Location in the filesystem where the animated gif will be written.
      * @param int    $width       Width of the animated gif.
@@ -93,7 +87,7 @@ class AnimatedGif implements \Serializable
     /**
      * Add a frame to the end of the animated gif.
      *
-     * @param Frame $frame frame to add
+     * @param Frame $frame Frame to add.
      */
     public function addFrame(Frame $frame)
     {
@@ -106,7 +100,7 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Adding header to the animation
+     * Adding header to the animation.
      *
      * @return void
      */
@@ -123,17 +117,17 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Adding frame binary data to the animation
+     * Adding frame binary data to the animation.
      *
-     * @param int $i index of frame from AnimatedGif::frame array
-     * @param int $d delay (5 seconds = 500 delay units)
+     * @param int $i Index of frame from AnimatedGif::frame array.
+     * @param int $d Delay (5 seconds = 500 delay units).
      *
      * @return void
      */
     protected function addFrameData($i, $d)
     {
-        $DIS = 2;
-        $COL = 0;
+        $dis = 2;
+        $col = 0;
 
         $localsString = 13 + 3 * (2 << (ord($this->frames[$i]{10}) & 0x07));
         $localsEnd = strlen($this->frames[$i]) - $localsString - 1;
@@ -145,17 +139,17 @@ class AnimatedGif implements \Serializable
         $globalRbg = substr($this->frames[0], 13, 3 * (2 << (ord($this->frames[0]{10}) & 0x07)));
         $localsRgb = substr($this->frames[$i], 13, 3 * (2 << (ord($this->frames[$i]{10}) & 0x07)));
 
-        $Locals_ext = "!\xF9\x04".chr(($DIS << 2) + 0).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF)."\x0\x0";
+        $localsExt = "!\xF9\x04".chr(($dis << 2) + 0).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF)."\x0\x0";
 
-        $Locals_img = null;
+        $localsImg = null;
 
-        if ($COL > -1 && ord($this->frames[$i]{10}) & 0x80) {
+        if ($col > -1 && ord($this->frames[$i]{10}) & 0x80) {
             for ($j = 0; $j < (2 << (ord($this->frames[$i]{10}) & 0x07)); $j++) {
-                if (ord($localsRgb{3 * $j + 0}) === (($COL >> 16) & 0xFF)
-                    && ord($localsRgb{3 * $j + 1}) === (($COL >> 8) & 0xFF)
-                    && ord($localsRgb{3 * $j + 2}) === (($COL >> 0) & 0xFF)
+                if (ord($localsRgb{3 * $j + 0}) === (($col >> 16) & 0xFF)
+                    && ord($localsRgb{3 * $j + 1}) === (($col >> 8) & 0xFF)
+                    && ord($localsRgb{3 * $j + 2}) === (($col >> 0) & 0xFF)
                 ) {
-                    $Locals_ext = "!\xF9\x04".chr(($DIS << 2) + 1).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF).chr(
+                    $localsExt = "!\xF9\x04".chr(($dis << 2) + 1).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF).chr(
                             $j
                         )."\x0";
                     break;
@@ -164,42 +158,42 @@ class AnimatedGif implements \Serializable
         }
         switch ($localsTmp{0}) {
             case '!':
-                $Locals_img = substr($localsTmp, 8, 10);
+                $localsImg = substr($localsTmp, 8, 10);
                 $localsTmp = substr($localsTmp, 18);
                 break;
             case ',':
-                $Locals_img = substr($localsTmp, 0, 10);
+                $localsImg = substr($localsTmp, 0, 10);
                 $localsTmp = substr($localsTmp, 10);
                 break;
         }
         if ($this->counter > -1 && ord($this->frames[$i]{10}) & 0x80) {
             if ($globalLength === $localsLength) {
                 if ($this->gifBlockCompare($globalRbg, $localsRgb, $globalLength)) {
-                    $this->gifData .= ($Locals_ext.$Locals_img.$localsTmp);
+                    $this->gifData .= ($localsExt.$localsImg.$localsTmp);
                 } else {
-                    $byte = ord($Locals_img{9});
+                    $byte = ord($localsImg{9});
                     $byte |= 0x80;
                     $byte &= 0xF8;
                     $byte |= (ord($this->frames[0]{10}) & 0x07);
-                    $Locals_img{9} = chr($byte);
-                    $this->gifData .= ($Locals_ext.$Locals_img.$localsRgb.$localsTmp);
+                    $localsImg{9} = chr($byte);
+                    $this->gifData .= ($localsExt.$localsImg.$localsRgb.$localsTmp);
                 }
             } else {
-                $byte = ord($Locals_img{9});
+                $byte = ord($localsImg{9});
                 $byte |= 0x80;
                 $byte &= 0xF8;
                 $byte |= (ord($this->frames[$i]{10}) & 0x07);
-                $Locals_img{9} = chr($byte);
-                $this->gifData .= ($Locals_ext.$Locals_img.$localsRgb.$localsTmp);
+                $localsImg{9} = chr($byte);
+                $this->gifData .= ($localsExt.$localsImg.$localsRgb.$localsTmp);
             }
         } else {
-            $this->gifData .= ($Locals_ext.$Locals_img.$localsTmp);
+            $this->gifData .= ($localsExt.$localsImg.$localsTmp);
         }
         $this->counter = 1;
     }
 
     /**
-     * Adding footer to the animation
+     * Adding footer to the animation.
      *
      * @return void
      */
@@ -209,7 +203,7 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Gif integer wrapper
+     * Gif integer wrapper.
      *
      * @param int $int
      *
@@ -222,20 +216,20 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Gif compare block
+     * Gif compare block.
      *
-     * @param string $GlobalBlock
-     * @param string $LocalBlock
-     * @param int    $Len
+     * @param string $globalBlock
+     * @param string $localBlock
+     * @param int    $len
      *
      * @return bool
      */
-    protected function gifBlockCompare($GlobalBlock, $LocalBlock, $Len)
+    protected function gifBlockCompare($globalBlock, $localBlock, $len)
     {
-        for ($i = 0; $i < $Len; $i++) {
-            if ($GlobalBlock{3 * $i + 0} !== $LocalBlock{3 * $i + 0} ||
-                $GlobalBlock{3 * $i + 1} !== $LocalBlock{3 * $i + 1} ||
-                $GlobalBlock{3 * $i + 2} !== $LocalBlock{3 * $i + 2}
+        for ($i = 0; $i < $len; $i++) {
+            if ($globalBlock{3 * $i + 0} !== $localBlock{3 * $i + 0} ||
+                $globalBlock{3 * $i + 1} !== $localBlock{3 * $i + 1} ||
+                $globalBlock{3 * $i + 2} !== $localBlock{3 * $i + 2}
             ) {
                 return false;
             }
@@ -245,7 +239,7 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Saving animated gif to remote file
+     * Saving animated gif to remote file.
      *
      * @return boolean
      */
@@ -260,18 +254,18 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Getting animation binary data
+     * Getting animation binary data.
      *
      * @return string|boolean
      */
     public function getAnimation()
     {
-        // No images to process
+        // No images to process.
         if (0 === count($this->frames)) {
             return false;
         }
 
-        // Process images as animation
+        // Process images as animation.
         $this->addGifHeader();
         for ($i = 0, $frameCount = count($this->frames); $i < $frameCount; $i++) {
             $this->addFrameData($i, 1 / $this->frameRate * 100);
@@ -282,9 +276,9 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * String representation of an AnimatedGif
+     * String representation of an AnimatedGif.
      *
-     * @return string the string representation of the object or null
+     * @return string The string representation of the object or null.
      */
     public function serialize()
     {
@@ -303,7 +297,7 @@ class AnimatedGif implements \Serializable
     }
 
     /**
-     * Constructs the AnimatedGif
+     * Constructs the AnimatedGif.
      *
      * @param string $serialized The string representation of the object.
      *
@@ -320,6 +314,6 @@ class AnimatedGif implements \Serializable
             $this->gifData,
             $this->frames,
             $this->counter
-            ) = unserialize($serialized);
+        ) = unserialize($serialized);
     }
 }
