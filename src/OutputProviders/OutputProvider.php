@@ -11,7 +11,7 @@
 
 namespace Char0n\FFMpegPHP\OutputProviders;
 
-interface OutputProviderInterface
+interface OutputProvider
 {
 
     /**

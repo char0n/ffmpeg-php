@@ -3,7 +3,7 @@
 namespace Char0n\FFMpegPHP;
 
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
-use Char0n\FFMpegPHP\OutputProviders\OutputProviderInterface;
+use Char0n\FFMpegPHP\OutputProviders\OutputProvider;
 
 /**
  * Represents a movie file.
@@ -45,7 +45,7 @@ class Movie implements \Serializable
     /**
      * Output provider instance.
      *
-     * @var OutputProviderInterface
+     * @var OutputProvider
      */
     protected $provider;
 
@@ -225,12 +225,12 @@ class Movie implements \Serializable
      *
      *
      * @param string $moviePath Full path to the movie file.
-     * @param OutputProviderInterface $outputProvider Provides parsable output.
+     * @param OutputProvider $outputProvider Provides parsable output.
      * @param string $ffmpegBinary `ffmpeg` executable, if $outputProvider not specified.
      *
      * @throws \Exception
      */
-    public function __construct($moviePath, OutputProviderInterface $outputProvider = null, $ffmpegBinary = 'ffmpeg')
+    public function __construct($moviePath, OutputProvider $outputProvider = null, $ffmpegBinary = 'ffmpeg')
     {
         $this->movieFile = $moviePath;
         $this->frameNumber = 0;
@@ -244,11 +244,11 @@ class Movie implements \Serializable
     /**
      * Setting output provider implementation.
      *
-     * @param OutputProviderInterface $outputProvider
+     * @param OutputProvider $outputProvider
      *
      * @return $this
      */
-    public function setProvider(OutputProviderInterface $outputProvider)
+    public function setProvider(OutputProvider $outputProvider)
     {
         $this->provider = $outputProvider;
         $this->provider->setMovieFile($this->movieFile);
@@ -260,7 +260,7 @@ class Movie implements \Serializable
     /**
      * Getting current output provider implementation.
      *
-     * @return OutputProviderInterface
+     * @return OutputProvider
      */
     public function getProvider()
     {

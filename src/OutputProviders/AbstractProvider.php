@@ -13,7 +13,7 @@
 
 namespace Char0n\FFMpegPHP\OutputProviders;
 
-abstract class AbstractProvider implements OutputProviderInterface, \Serializable
+abstract class AbstractProvider implements OutputProvider, \Serializable
 {
 
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
