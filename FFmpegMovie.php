@@ -31,6 +31,7 @@ class FFmpegMovie implements Serializable {
     protected static $REGEX_HAS_AUDIO           = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO           = '/Stream.+Video/';
     protected static $REGEX_ERRORS              = '/.*(Error|Permission denied|could not seek to position|Invalid pixel format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+    protected static $REGEX_ROTATION             = '/rotate\s*[:=]\s*(-?[0-9]+)/';
 
     /**
      * FFmpeg binary
@@ -132,6 +133,12 @@ class FFmpegMovie implements Serializable {
     */
     protected $frameWidth;
     /**
+  	* Movie rotiation
+    *
+    * @var int
+    */
+    protected $rotation;
+	/**
     * Movie pixel format
     * 
     * @var string
@@ -445,7 +452,23 @@ class FFmpegMovie implements Serializable {
         
         return $this->frameWidth;
     }
-    
+   
+    /**
+     * Return the rotation angle of the video file
+     *
+     * @return into
+     */
+    public function getRotation()
+    {
+        if ($this->rotation === null) {
+            $match = array();
+            preg_match(self::$REGEX_ROTATION, $this->output, $match);
+            $this->rotation = (array_key_exists(1, $match)) ? intval(trim($match[1])) : 0;
+        }
+
+        return $this->rotation;
+    }
+ 
     /**
     * Return the pixel format of the movie.
     *
