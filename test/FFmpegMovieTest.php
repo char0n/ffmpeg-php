@@ -152,6 +152,11 @@ class FFmpegMovieTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(640, $this->movie->getFrameWidth(), 'Frame width should be int(640)');
     }   
     
+	public function ttetGetRotation() {
+		$this->assertInternalType('int', $this->movie->getRotation(), 'Frame rotation is of integer type');
+		$this->assertEquals(0, $this->movie->getRotation(), 'Frame roation should be int(0)');
+	}
+
     public function testGetPixelFormat() {
         $this->assertInternalType('string', $this->movie->getPixelFormat(), 'Pixel format is of string type');
         $this->assertEquals('yuv420p', $this->movie->getPixelFormat(), 'Pixel format should be string(yuv420p)');
