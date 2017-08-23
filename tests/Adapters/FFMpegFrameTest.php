@@ -42,7 +42,7 @@ class FFMpegFrameTest extends TestCase
     }
 
     /**
-     * @expectException \Exception
+     * @expectException \UnexpectedValueException
      * @expectedExceptionCode 334563
      */
     public function testConstructor()

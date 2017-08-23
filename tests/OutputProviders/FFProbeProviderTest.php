@@ -42,7 +42,7 @@ class FFProbeOutputProviderTest extends TestCase
     }
 
     /**
-     * @expectException \Exception
+     * @expectException \UnexpectedValueException
      * @expectedExceptionCode 334561
      */
     public function testGetOutputFileDoesntExist()

@@ -50,7 +50,7 @@ class FFMpegMovieTest extends TestCase
     }
 
     /**
-     * @expectException \Exception
+     * @expectException \UnexpectedValueException
      * @expectedExceptionCode 334561
      */
     public function testFileDoesNotExistException()
