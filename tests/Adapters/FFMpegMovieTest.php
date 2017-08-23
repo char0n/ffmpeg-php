@@ -49,19 +49,13 @@ class FFMpegMovieTest extends TestCase
         $this->audio = null;
     }
 
+    /**
+     * @expectException \Exception
+     * @expectedExceptionCode 334561
+     */
     public function testFileDoesNotExistException()
     {
-        try {
-            $movie = new FFMpegMovie(uniqid('test', true));
-        } catch (\Exception $ex) {
-            if ($ex->getCode() == 334561) {
-                return;
-            } else {
-                $this->fail('Expected exception raised with wrong code');
-            }
-        }
-
-        $this->fail('An expected exception with code 334561 has not been raised');
+        new FFMpegMovie(uniqid('test', true));
     }
 
     public function testPersistentResourceSimulation()

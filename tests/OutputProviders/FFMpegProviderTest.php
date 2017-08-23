@@ -41,21 +41,15 @@ class FFmpegProviderTest extends TestCase
         $this->assertEquals(1, preg_match('/FFmpeg version/i', $output));
     }
 
+    /**
+     * @expectException \Exception
+     * @expectedExceptionCode 334561
+     */
     public function testGetOutputFileDoesntExist()
     {
-        try {
-            $provider = new FFMpegProvider();
-            $provider->setMovieFile(uniqid('test', true));
-            $provider->getOutput();
-        } catch (\Exception $ex) {
-            if ($ex->getCode() == 334561) {
-                return;
-            } else {
-                $this->fail('Expected exception raise with wrong code');
-            }
-        }
-
-        $this->fail('An expected exception with code 334561 has not been raised');
+        $provider = new FFMpegProvider();
+        $provider->setMovieFile(uniqid('test', true));
+        $provider->getOutput();
     }
 
     public function testPersistentResourceSimulation()
