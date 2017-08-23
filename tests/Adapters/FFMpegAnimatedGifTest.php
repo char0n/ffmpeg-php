@@ -44,10 +44,10 @@ class FFMpegAnimatedGifTest extends TestCase
 
     public function setUp()
     {
-        $this->movie  = new ffmpeg_movie(self::$moviePath);
+        $this->movie  = new FFMpegMovie(self::$moviePath);
         $this->frame1 = $this->movie->getFrame(1);
         $this->frame2 = $this->movie->getFrame(2);
-        $this->anim   = new ffmpeg_animated_gif(self::$outFilePath, 100, 120, 1, 0);
+        $this->anim   = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
     }
 
     public function tearDown()
