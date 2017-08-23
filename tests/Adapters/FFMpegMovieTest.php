@@ -3,6 +3,7 @@ namespace Char0n\FFMpegPHP\Tests\Adapters;
 
 use PHPUnit\Framework\TestCase;
 use Char0n\FFMpegPHP\Adapters\FFMpegMovie;
+use Char0n\FFMpegPHP\Adapters\FFMpegFrame;
 
 class FFMpegMovieTest extends TestCase
 {
@@ -314,25 +315,25 @@ class FFMpegMovieTest extends TestCase
 
     public function testGetFrame()
     {
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getFrame(25), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getFrame(25), 'Frame is of FFmpegFrame type');
 
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getFrame(), 'Frame is of FFmpegFrame type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
     }
 
     public function testGetNextKeyFrame()
     {
         $this->assertInstanceOf(
-            'ffmpeg_frame',
+            FFMpegFrame::class,
             $this->movie->getNextKeyFrame(),
             'Next key frame is of FFmpegFrame type'
         );
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
         $this->assertInstanceOf(
-            'ffmpeg_frame',
+            FFMpegFrame::class,
             $this->movie->getNextKeyFrame(),
             'Next key frame is of FFmpegFrame type'
         );
