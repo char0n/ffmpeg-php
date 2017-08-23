@@ -11,29 +11,29 @@ use Char0n\FFMpegPHP\OutputProviders\OutputProvider;
 class Movie implements \Serializable
 {
 
-    protected static $REGEX_DURATION           = '/Duration: (\d{2}):(\d{2}):(\d{2})(\.(\d+))?/';
-    protected static $REGEX_FRAME_RATE         = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stb(?:r|n)/';
-    protected static $REGEX_COMMENT            = '/comment\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_TITLE              = '/title\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_ARTIST             = '/(artist|author)\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_COPYRIGHT          = '/copyright\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_GENRE              = '/genre\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_TRACK_NUMBER       = '/track\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_YEAR               = '/year\s*(:|=)\s*(.+)/i';
-    protected static $REGEX_FRAME_WH           = '/Video:.+?([1-9]\d*)x([1-9]\d*)/';
-    protected static $REGEX_PIXEL_FORMAT       = '/Video: [^,]+, ([^,]+)/';
+    protected static $REGEX_DURATION = '/Duration: (\d{2}):(\d{2}):(\d{2})(\.(\d+))?/';
+    protected static $REGEX_FRAME_RATE = '/([0-9\.]+\sfps,\s)?([0-9\.]+)\stb(?:r|n)/';
+    protected static $REGEX_COMMENT = '/comment\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TITLE = '/title\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_ARTIST = '/(artist|author)\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_COPYRIGHT = '/copyright\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_GENRE = '/genre\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_TRACK_NUMBER = '/track\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_YEAR = '/year\s*(:|=)\s*(.+)/i';
+    protected static $REGEX_FRAME_WH = '/Video:.+?([1-9]\d*)x([1-9]\d*)/';
+    protected static $REGEX_PIXEL_FORMAT = '/Video: [^,]+, ([^,]+)/';
     protected static $REGEX_PIXEL_ASPECT_RATIO = '/Video:.+DAR (\d+):(\d+)\]/';
-    protected static $REGEX_BITRATE            = '/bitrate: (\d+) kb\/s/';
-    protected static $REGEX_VIDEO_BITRATE      = '/Video:.+?(\d+) kb\/s/';
-    protected static $REGEX_AUDIO_BITRATE      = '/Audio:.+?(\d+) kb\/s/';
-    protected static $REGEX_AUDIO_SAMPLE_RATE  = '/Audio:.+?(\d+) Hz/';
-    protected static $REGEX_VIDEO_CODEC        = '/Video:\s([^,]+),/';
-    protected static $REGEX_AUDIO_CODEC        = '/Audio:\s([^,]+),/';
-    protected static $REGEX_AUDIO_CHANNELS     = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
-    protected static $REGEX_HAS_AUDIO          = '/Stream.+Audio/';
-    protected static $REGEX_HAS_VIDEO          = '/Stream.+Video/';
-    protected static $REGEX_ERRORS             = '/.*(Error|Permission denied|could not seek to position|Invalid pixel
-     format|Unknown encoder|could not find codec|does not contain any stream).*/i';
+    protected static $REGEX_BITRATE = '/bitrate: (\d+) kb\/s/';
+    protected static $REGEX_VIDEO_BITRATE = '/Video:.+?(\d+) kb\/s/';
+    protected static $REGEX_AUDIO_BITRATE = '/Audio:.+?(\d+) kb\/s/';
+    protected static $REGEX_AUDIO_SAMPLE_RATE = '/Audio:.+?(\d+) Hz/';
+    protected static $REGEX_VIDEO_CODEC = '/Video:\s([^,]+),/';
+    protected static $REGEX_AUDIO_CODEC = '/Audio:\s([^,]+),/';
+    protected static $REGEX_AUDIO_CHANNELS = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
+    protected static $REGEX_HAS_AUDIO = '/Stream.+Audio/';
+    protected static $REGEX_HAS_VIDEO = '/Stream.+Video/';
+    protected static $REGEX_ERRORS = '/.*(Error|Permission denied|could not seek to position|Invalid pixel
+         format|Unknown encoder|could not find codec|does not contain any stream).*/i';
 
     /**
      * Path to `ffmpeg` binary.
@@ -744,7 +744,7 @@ class Movie implements \Serializable
         $frameFilePath = null,
         &$output = null
     ) {
-        // Set frame position for frame extraction
+        // set frame position for frame extraction
         $frameTime = ($seconds === null) ? 0 : $seconds;
 
 

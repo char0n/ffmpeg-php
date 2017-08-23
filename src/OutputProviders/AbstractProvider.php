@@ -1,23 +1,14 @@
 <?php
-
-/**
- * AbstractProvider parent of all output providers
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @subpackage provider
- * @abstract
- * @license New BSD
- * @version 2.6
- */
-
 namespace Char0n\FFMpegPHP\OutputProviders;
 
+/**
+ * AbstractProvider parent of all output providers.
+ */
 abstract class AbstractProvider implements OutputProvider, \Serializable
 {
 
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
-    protected static $persistentBuffer       = array();
+    protected static $persistentBuffer = array();
     
     /**
      * Binary that returns info about movie file
@@ -43,8 +34,8 @@ abstract class AbstractProvider implements OutputProvider, \Serializable
     /**
      * Base constructor for every provider
      *
-     * @param string $binary binary that returns info about movie file
-     * @param boolean $persistent persistent functionality on/off
+     * @param string $binary Binary that returns info about movie file
+     * @param boolean $persistent Persistent functionality on/off
      */
     public function __construct($binary, $persistent)
     {

@@ -3,7 +3,7 @@
 namespace Char0n\FFMpegPHP;
 
 /**
- * AnimatedGif represents an animated gif object
+ * AnimatedGif represents an animated gif object.
  *
  * This class in implemented in rather un-orthodox way.
  * Reason is that ffmpeg doesn't provide satisfactory

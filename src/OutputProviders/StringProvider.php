@@ -1,27 +1,19 @@
 <?php
-
-/**
- * StringOutputProvider ffmpeg provider implementation
- *
- * @author funrob (Rob Walch, rwalch@gmail.com)
- * @package FFmpegPHP
- * @subpackage provider
- * @license New BSD
- * @version 2.6
- */
-
 namespace Char0n\FFMpegPHP\OutputProviders;
 
+/**
+ * StringOutputProvider ffmpeg provider implementation.
+ */
 class StringProvider extends AbstractProvider
 {
     
     protected $output;
 
     /**
-     * Constructor
+     * This class is handy for testing purposes.
      *
-     * @param string $ffmpegBinary path to ffmpeg executable
-     * @param boolean $persistent persistent functionality on/off
+     * @param string $ffmpegBinary Path to ffmpeg executable.
+     * @param boolean $persistent Persistent functionality on/off.
      */
     public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false)
     {
@@ -30,7 +22,7 @@ class StringProvider extends AbstractProvider
     }
     
     /**
-     * Getting parsable output from ffmpeg binary
+     * Getting parsable output from ffmpeg binary.
      *
      * @return string
      */
@@ -49,7 +41,7 @@ class StringProvider extends AbstractProvider
     }
 
     /**
-     * Setting parsable output
+     * Setting parsable output.
      *
      * @param string $output
      */

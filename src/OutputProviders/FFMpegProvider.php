@@ -1,17 +1,9 @@
 <?php
-
-/**
- * FFmpegOutputProvider ffmpeg provider implementation
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @subpackage provider
- * @license New BSD
- * @version 2.6
- */
-
 namespace Char0n\FFMpegPHP\OutputProviders;
 
+/**
+ * FFmpegOutputProvider ffmpeg provider implementation.
+ */
 class FFMpegProvider extends AbstractProvider
 {
     protected static $EX_CODE_NO_FFMPEG = 334560;
@@ -19,8 +11,8 @@ class FFMpegProvider extends AbstractProvider
     /**
      * Constructor
      *
-     * @param string $ffmpegBinary path to ffmpeg executable
-     * @param boolean $persistent persistent functionality on/off
+     * @param string $ffmpegBinary Path to ffmpeg executable.
+     * @param boolean $persistent Persistent functionality on/off.
      */
     public function __construct($ffmpegBinary = 'ffmpeg', $persistent = false)
     {
@@ -28,7 +20,7 @@ class FFMpegProvider extends AbstractProvider
     }
 
     /**
-     * Getting parsable output from ffmpeg binary
+     * Getting parsable output from ffmpeg binary.
      *
      * @return string
      */

@@ -1,17 +1,9 @@
 <?php
-
-/**
- * FFProbeProvider ffprobe provider implementation
- *
- * @author char0n (Vladimír Gorej, vladimir.gorej@gmail.com)
- * @package FFmpegPHP
- * @subpackage provider
- * @license New BSD
- * @version 2.6
- */
-
 namespace Char0n\FFMpegPHP\OutputProviders;
 
+/**
+ * FFProbeProvider ffprobe provider implementation.
+ */
 class FFProbeProvider extends AbstractProvider
 {
     protected static $EX_CODE_NO_FFPROBE = 334563;
@@ -19,8 +11,8 @@ class FFProbeProvider extends AbstractProvider
     /**
      * Constructor
      *
-     * @param string $ffprobeBinary path to ffprobe executable
-     * @param boolean $persistent persistent functionality on/off
+     * @param string $ffprobeBinary path to ffprobe executable.
+     * @param boolean $persistent persistent functionality on/off.
      */
     public function __construct($ffprobeBinary = 'ffprobe', $persistent = false)
     {
@@ -28,7 +20,7 @@ class FFProbeProvider extends AbstractProvider
     }
 
     /**
-     * Getting parsable output from ffprobe binary
+     * Getting parsable output from ffprobe binary.
      *
      * @return string
      */
