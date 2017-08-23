@@ -244,15 +244,15 @@ class FFMpegMovieTest extends TestCase
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(1, $this->movie->getFrameNumber(), 'Frame number should be int(1)');
 
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getNextKeyFrame());
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getNextKeyFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(2, $this->movie->getFrameNumber(), 'Frame number should be int(2)');
 
-        $this->assertInstanceOf('ffmpeg_frame', $this->movie->getFrame());
+        $this->assertInstanceOf(FFMpegFrame::class, $this->movie->getFrame());
         $this->assertInternalType('int', $this->movie->getFrameNumber(), 'Frame number is of integer type');
         $this->assertEquals(3, $this->movie->getFrameNumber(), 'Frame number should be int(3)');
     }
