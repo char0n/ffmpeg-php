@@ -1,6 +1,6 @@
 <?php
 
-namespace Char0n\FFMpegPHP\Adapter;
+namespace Char0n\FFMpegPHP\Adapters;
 
 use Char0n\FFMpegPHP\Movie;
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
