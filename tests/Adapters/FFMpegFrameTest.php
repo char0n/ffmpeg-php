@@ -41,12 +41,11 @@ class FFMpegFrameTest extends TestCase
         $this->frame = null;
     }
 
-    /**
-     * @expectException \UnexpectedValueException
-     * @expectedExceptionCode 334563
-     */
     public function testConstructor()
     {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(334563);
+
         new FFmpegFrame('test', 0.0);
     }
 

@@ -41,12 +41,11 @@ class FFProbeOutputProviderTest extends TestCase
         $this->assertEquals(1, preg_match('/FFprobe version/i', $output));
     }
 
-    /**
-     * @expectException \UnexpectedValueException
-     * @expectedExceptionCode 334561
-     */
     public function testGetOutputFileDoesntExist()
     {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(334561);
+
         $provider = new FFProbeProvider();
         $provider->setMovieFile(uniqid('test', true));
         $provider->getOutput();

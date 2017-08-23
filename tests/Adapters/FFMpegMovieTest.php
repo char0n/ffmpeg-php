@@ -49,12 +49,11 @@ class FFMpegMovieTest extends TestCase
         $this->audio = null;
     }
 
-    /**
-     * @expectException \UnexpectedValueException
-     * @expectedExceptionCode 334561
-     */
     public function testFileDoesNotExistException()
     {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(334561);
+
         new FFMpegMovie(uniqid('test', true));
     }
 
