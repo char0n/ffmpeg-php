@@ -190,6 +190,12 @@ class MovieTest extends TestCase
         );
     }
 
+    public function testGetRotation()
+    {
+        $this->assertInternalType('int', $this->movie->getRotation(), 'Frame rotation is of integer type');
+        $this->assertEquals(0, $this->movie->getRotation(), 'Frame rotation should be int(0)');
+    }
+
     public function testGetBitRate()
     {
         $this->assertInternalType('int', $this->movie->getBitRate(), 'BitRate is of integer type');

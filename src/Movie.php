@@ -32,6 +32,7 @@ class Movie implements \Serializable
     protected static $REGEX_AUDIO_CHANNELS = '/Audio:\s[^,]+,[^,]+,([^,]+)/';
     protected static $REGEX_HAS_AUDIO = '/Stream.+Audio/';
     protected static $REGEX_HAS_VIDEO = '/Stream.+Video/';
+    protected static $REGEX_ROTATION = '/rotate\s*[:=]\s*(-?[0-9]+)/';
     protected static $REGEX_ERRORS = '/.*(Error|Permission denied|could not seek to position|Invalid pixel
          format|Unknown encoder|could not find codec|does not contain any stream).*/i';
 
@@ -214,7 +215,15 @@ class Movie implements \Serializable
      *
      * @var int
      */
+
     protected $audioChannels;
+
+    /**
+     * Movie rotation.
+     *
+     * @var int
+     */
+    protected $rotation;
 
     /**
      * Open a video or audio file and return it as an Movie object.
@@ -525,6 +534,21 @@ class Movie implements \Serializable
         }
 
         return $this->pixelAspectRatio;
+    }
+
+    /**
+     * Return the rotation angle of the movie.
+     *
+     * @return int
+     */
+    public function getRotation()
+    {
+        if ($this->rotation === null) {
+            $match = array();
+            preg_match(self::$REGEX_ROTATION, $this->output, $match);
+            $this->rotation = (array_key_exists(1, $match)) ? intval(trim($match[1])) : 0;
+        }
+        return $this->rotation;
     }
 
     /**
