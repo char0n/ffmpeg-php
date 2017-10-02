@@ -85,7 +85,11 @@ class FFMpegAnimatedGifTest extends TestCase
         $saveResult = $this->anim->addFrame($this->frame1);
         $this->assertTrue($saveResult, 'Save result should be true');
         $this->assertTrue(file_exists(self::$outFilePath), 'File "'.self::$outFilePath.'" should exist after saving');
-        $this->assertEquals(31368, filesize(self::$outFilePath), 'Animation binary size should be int(31368)');
+        $this->assertGreaterThan(
+            30000,
+            filesize(self::$outFilePath),
+            'Animation binary size should be greater than int(30000)'
+        );
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');

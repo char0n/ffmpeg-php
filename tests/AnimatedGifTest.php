@@ -77,7 +77,11 @@ class FFmpegAnimatedGifTest extends TestCase
         $this->anim->addFrame($this->frame2);
 
         $animData = $this->anim->getAnimation();
-        $this->assertEquals(21439, strlen($animData), 'Animation binary size should be int(21439)');
+        $this->assertGreaterThan(
+            20000,
+            strlen($animData),
+            'Animation binary size should be greater then int(20000)'
+        );
     }
 
     public function testSave()
@@ -92,7 +96,11 @@ class FFmpegAnimatedGifTest extends TestCase
             file_exists(self::$outFilePath),
             'File "'.self::$outFilePath.'" should exist after saving'
         );
-        $this->assertEquals(21439, filesize(self::$outFilePath), 'Animation binary size should be int(21439)');
+        $this->assertGreaterThan(
+            20000,
+            filesize(self::$outFilePath),
+            'Animation binary size should be greater then int(20000)'
+        );
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
@@ -114,7 +122,11 @@ class FFmpegAnimatedGifTest extends TestCase
             file_exists(self::$outFilePath),
             'File "'.self::$outFilePath.'" should exist after saving'
         );
-        $this->assertEquals(21439, filesize(self::$outFilePath), 'Animation binary size should be int(21439)');
+        $this->assertGreaterThan(
+            20000,
+            filesize(self::$outFilePath),
+            'Animation binary size should be greater then int(20000)'
+        );
         $imageInfo = getimagesize(self::$outFilePath);
         $this->assertEquals(100, $imageInfo[0], 'Saved image width should be int(100)');
         $this->assertEquals(120, $imageInfo[1], 'Saved image height should be int(120)');
