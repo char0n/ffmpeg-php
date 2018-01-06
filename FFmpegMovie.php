@@ -739,7 +739,8 @@ class FFmpegMovie implements Serializable {
         }
         
         // Create gdimage and delete temporary image
-        switch (getimagesize($frameFilePath)[2]) {
+        $imageSize = getimagesize($frameFilePath);
+        switch ($imageSize[2]) {
             case IMAGETYPE_GIF:
                 $gdImage = imagecreatefromgif($frameFilePath);
                 break;
