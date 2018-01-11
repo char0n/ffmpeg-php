@@ -10,7 +10,7 @@ machine:
   timezone:
     Europe/Prague
   php:
-    version: 7.1.0
+    version: 7.0.27
 
 dependencies:
   cache_directories:
