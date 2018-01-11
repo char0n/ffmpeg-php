@@ -8,7 +8,7 @@ use Char0n\FFMpegPHP\Frame;
 /**
  * Serves as a compatibility adapter for old ffmpeg-php extension.
  */
-class FFmpegAnimatedGif
+class FFMpegAnimatedGif
 {
     /**
      * @var AnimatedGif

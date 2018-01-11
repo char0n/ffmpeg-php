@@ -4,7 +4,7 @@ namespace Char0n\FFMpegPHP\Tests\Adapters;
 use PHPUnit\Framework\TestCase;
 use Char0n\FFMpegPHP\Adapters\FFMpegMovie;
 use Char0n\FFMpegPHP\Adapters\FFMpegFrame;
-use Char0n\FFMpegPHP\Adapters\FFmpegAnimatedGif;
+use Char0n\FFMpegPHP\Adapters\FFMpegAnimatedGif;
 
 class FFMpegAnimatedGifTest extends TestCase
 {
@@ -24,7 +24,7 @@ class FFMpegAnimatedGifTest extends TestCase
      */
     protected $frame2;
     /**
-     * @var FFmpegAnimatedGif
+     * @var FFMpegAnimatedGif
      */
     protected $anim;
 
@@ -47,7 +47,7 @@ class FFMpegAnimatedGifTest extends TestCase
         $this->movie  = new FFMpegMovie(self::$moviePath);
         $this->frame1 = $this->movie->getFrame(1);
         $this->frame2 = $this->movie->getFrame(2);
-        $this->anim   = new FFmpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
+        $this->anim   = new FFMpegAnimatedGif(self::$outFilePath, 100, 120, 1, 0);
     }
 
     public function tearDown()
