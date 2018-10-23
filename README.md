@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/char0n/ffmpeg-php.svg?style=svg)](https://circleci.com/gh/char0n/ffmpeg-php)
+
 # FFmpegPHP
 
 FFmpegPHP is a pure OO [PSR-4 compatible](https://www.php-fig.org/psr/psr-4/) PHP port of [ffmpeg-php](http://ffmpeg-php.sourceforge.net/) library (written in C). It adds an easy to use,
