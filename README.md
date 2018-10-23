@@ -60,7 +60,7 @@ $movie->getDuration(); // => 24
 
 ## Author
 
-- char0n (Vladimír Gorej
+- char0n (Vladimír Gorej)
 - email: vladimir.gorej@gmail.com
 - web: https://www.linkedin.com/in/vladimirgorej/
 
