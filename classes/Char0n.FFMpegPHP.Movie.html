@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Char0n.html">\Char0n</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">113</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-518039395"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-518039395" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-588170864"></a>
+                                <a href="../namespaces/Char0n.html" style="margin-left: 30px; padding-left: 0">Char0n</a>
+            </div>
+            <div id="namespace-588170864" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1452765790"></a>
+                                <a href="../namespaces/Char0n.FFMpegPHP.html" style="margin-left: 30px; padding-left: 0">FFMpegPHP</a>
+            </div>
+            <div id="namespace-1452765790" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1542047769"></a>
+                                <a href="../namespaces/Char0n.FFMpegPHP.Adapters.html" style="margin-left: 30px; padding-left: 0">Adapters</a>
+            </div>
+            <div id="namespace-1542047769" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegAnimatedGif.html">FFMpegAnimatedGif</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html">FFMpegFrame</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegMovie.html">FFMpegMovie</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-604928112"></a>
+                                <a href="../namespaces/Char0n.FFMpegPHP.OutputProviders.html" style="margin-left: 30px; padding-left: 0">OutputProviders</a>
+            </div>
+            <div id="namespace-604928112" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">OutputProvider</a></li>
+                                                                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.OutputProviders.AbstractProvider.html">AbstractProvider</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.OutputProviders.FFMpegProvider.html">FFMpegProvider</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.OutputProviders.FFProbeProvider.html">FFProbeProvider</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.OutputProviders.StringProvider.html">StringProvider</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.AnimatedGif.html">AnimatedGif</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.Frame.html">Frame</a></li>
+                                                    <li class="class"><a href="../classes/Char0n.FFMpegPHP.Movie.html">Movie</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Char0n.FFMpegPHP.html">\Char0n\FFMpegPHP</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Char0n\FFMpegPHP</small>Movie</h1>
+                    <p><em>Represents a movie file.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_setProvider" class="">setProvider()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getProvider" class="">getProvider()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getDuration" class="">getDuration()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameCount" class="">getFrameCount()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameRate" class="">getFrameRate()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFilename" class="">getFilename()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getComment" class="">getComment()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getTitle" class="">getTitle()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getArtist" class="">getArtist()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getAuthor" class="">getAuthor()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getCopyright" class="">getCopyright()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getGenre" class="">getGenre()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getTrackNumber" class="">getTrackNumber()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getYear" class="">getYear()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameHeight" class="">getFrameHeight()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameWidth" class="">getFrameWidth()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getPixelFormat" class="">getPixelFormat()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getPixelAspectRatio" class="">getPixelAspectRatio()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getRotation" class="">getRotation()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getBitRate" class="">getBitRate()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getVideoBitRate" class="">getVideoBitRate()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getAudioBitRate" class="">getAudioBitRate()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getAudioSampleRate" class="">getAudioSampleRate()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameNumber" class="">getFrameNumber()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getVideoCodec" class="">getVideoCodec()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getAudioCodec" class="">getAudioCodec()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getAudioChannels" class="">getAudioChannels()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_hasAudio" class="">hasAudio()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_hasVideo" class="">hasVideo()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrame" class="">getFrame()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getFrameAtTime" class="">getFrameAtTime()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_getNextKeyFrame" class="">getNextKeyFrame()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method___clone" class="">__clone()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_serialize" class="">serialize()</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#method_unserialize" class="">unserialize()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_DURATION" class="">$REGEX_DURATION</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_FRAME_RATE" class="">$REGEX_FRAME_RATE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_COMMENT" class="">$REGEX_COMMENT</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_TITLE" class="">$REGEX_TITLE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_ARTIST" class="">$REGEX_ARTIST</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_COPYRIGHT" class="">$REGEX_COPYRIGHT</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_GENRE" class="">$REGEX_GENRE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_TRACK_NUMBER" class="">$REGEX_TRACK_NUMBER</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_YEAR" class="">$REGEX_YEAR</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_FRAME_WH" class="">$REGEX_FRAME_WH</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_PIXEL_FORMAT" class="">$REGEX_PIXEL_FORMAT</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_PIXEL_ASPECT_RATIO" class="">$REGEX_PIXEL_ASPECT_RATIO</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_BITRATE" class="">$REGEX_BITRATE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_VIDEO_BITRATE" class="">$REGEX_VIDEO_BITRATE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_AUDIO_BITRATE" class="">$REGEX_AUDIO_BITRATE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_AUDIO_SAMPLE_RATE" class="">$REGEX_AUDIO_SAMPLE_RATE</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_VIDEO_CODEC" class="">$REGEX_VIDEO_CODEC</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_AUDIO_CODEC" class="">$REGEX_AUDIO_CODEC</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_AUDIO_CHANNELS" class="">$REGEX_AUDIO_CHANNELS</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_HAS_AUDIO" class="">$REGEX_HAS_AUDIO</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_HAS_VIDEO" class="">$REGEX_HAS_VIDEO</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_ROTATION" class="">$REGEX_ROTATION</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_REGEX_ERRORS" class="">$REGEX_ERRORS</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_ffmpegBinary" class="">$ffmpegBinary</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_provider" class="">$provider</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_movieFile" class="">$movieFile</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_output" class="">$output</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_duration" class="">$duration</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_frameCount" class="">$frameCount</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_frameRate" class="">$frameRate</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_comment" class="">$comment</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_title" class="">$title</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_artist" class="">$artist</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_copyright" class="">$copyright</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_genre" class="">$genre</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_trackNumber" class="">$trackNumber</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_year" class="">$year</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_frameHeight" class="">$frameHeight</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_frameWidth" class="">$frameWidth</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_pixelFormat" class="">$pixelFormat</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_pixelAspectRatio" class="">$pixelAspectRatio</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_bitRate" class="">$bitRate</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_videoBitRate" class="">$videoBitRate</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_audioBitRate" class="">$audioBitRate</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_audioSampleRate" class="">$audioSampleRate</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_frameNumber" class="">$frameNumber</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_videoCodec" class="">$videoCodec</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_audioCodec" class="">$audioCodec</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_audioChannels" class="">$audioChannels</a><br />
+                                                                    <a href="../classes/Char0n.FFMpegPHP.Movie.html#property_rotation" class="">$rotation</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Movie.html"><div class="path-wrapper">Movie.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Char0n\FFMpegPHP\Movie</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_DURATION" name="property_REGEX_DURATION" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_DURATION</h3>
+                <pre class="signature">$REGEX_DURATION : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_FRAME_RATE" name="property_REGEX_FRAME_RATE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_FRAME_RATE</h3>
+                <pre class="signature">$REGEX_FRAME_RATE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_COMMENT" name="property_REGEX_COMMENT" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_COMMENT</h3>
+                <pre class="signature">$REGEX_COMMENT : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_TITLE" name="property_REGEX_TITLE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_TITLE</h3>
+                <pre class="signature">$REGEX_TITLE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_ARTIST" name="property_REGEX_ARTIST" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_ARTIST</h3>
+                <pre class="signature">$REGEX_ARTIST : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_COPYRIGHT" name="property_REGEX_COPYRIGHT" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_COPYRIGHT</h3>
+                <pre class="signature">$REGEX_COPYRIGHT : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_GENRE" name="property_REGEX_GENRE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_GENRE</h3>
+                <pre class="signature">$REGEX_GENRE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_TRACK_NUMBER" name="property_REGEX_TRACK_NUMBER" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_TRACK_NUMBER</h3>
+                <pre class="signature">$REGEX_TRACK_NUMBER : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_YEAR" name="property_REGEX_YEAR" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_YEAR</h3>
+                <pre class="signature">$REGEX_YEAR : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_FRAME_WH" name="property_REGEX_FRAME_WH" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_FRAME_WH</h3>
+                <pre class="signature">$REGEX_FRAME_WH : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_PIXEL_FORMAT" name="property_REGEX_PIXEL_FORMAT" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_PIXEL_FORMAT</h3>
+                <pre class="signature">$REGEX_PIXEL_FORMAT : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_PIXEL_ASPECT_RATIO" name="property_REGEX_PIXEL_ASPECT_RATIO" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_PIXEL_ASPECT_RATIO</h3>
+                <pre class="signature">$REGEX_PIXEL_ASPECT_RATIO : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_BITRATE" name="property_REGEX_BITRATE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_BITRATE</h3>
+                <pre class="signature">$REGEX_BITRATE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_VIDEO_BITRATE" name="property_REGEX_VIDEO_BITRATE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_VIDEO_BITRATE</h3>
+                <pre class="signature">$REGEX_VIDEO_BITRATE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_AUDIO_BITRATE" name="property_REGEX_AUDIO_BITRATE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_AUDIO_BITRATE</h3>
+                <pre class="signature">$REGEX_AUDIO_BITRATE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_AUDIO_SAMPLE_RATE" name="property_REGEX_AUDIO_SAMPLE_RATE" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_AUDIO_SAMPLE_RATE</h3>
+                <pre class="signature">$REGEX_AUDIO_SAMPLE_RATE : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_VIDEO_CODEC" name="property_REGEX_VIDEO_CODEC" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_VIDEO_CODEC</h3>
+                <pre class="signature">$REGEX_VIDEO_CODEC : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_AUDIO_CODEC" name="property_REGEX_AUDIO_CODEC" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_AUDIO_CODEC</h3>
+                <pre class="signature">$REGEX_AUDIO_CODEC : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_AUDIO_CHANNELS" name="property_REGEX_AUDIO_CHANNELS" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_AUDIO_CHANNELS</h3>
+                <pre class="signature">$REGEX_AUDIO_CHANNELS : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_HAS_AUDIO" name="property_REGEX_HAS_AUDIO" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_HAS_AUDIO</h3>
+                <pre class="signature">$REGEX_HAS_AUDIO : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_HAS_VIDEO" name="property_REGEX_HAS_VIDEO" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_HAS_VIDEO</h3>
+                <pre class="signature">$REGEX_HAS_VIDEO : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_ROTATION" name="property_REGEX_ROTATION" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_ROTATION</h3>
+                <pre class="signature">$REGEX_ROTATION : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_REGEX_ERRORS" name="property_REGEX_ERRORS" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$REGEX_ERRORS</h3>
+                <pre class="signature">$REGEX_ERRORS : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ffmpegBinary" name="property_ffmpegBinary" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$ffmpegBinary</h3>
+                <pre class="signature">$ffmpegBinary : string</pre>
+                <p><em>Path to `ffmpeg` binary.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_provider" name="property_provider" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$provider</h3>
+                <pre class="signature">$provider : \Char0n\FFMpegPHP\OutputProviders\OutputProvider</pre>
+                <p><em>Output provider instance.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">\Char0n\FFMpegPHP\OutputProviders\OutputProvider</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_movieFile" name="property_movieFile" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$movieFile</h3>
+                <pre class="signature">$movieFile : string</pre>
+                <p><em>Movie file path</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_output" name="property_output" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$output</h3>
+                <pre class="signature">$output : string</pre>
+                <p><em>Output providers output as string.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_duration" name="property_duration" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$duration</h3>
+                <pre class="signature">$duration : float</pre>
+                <p><em>Movie duration in seconds.</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_frameCount" name="property_frameCount" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$frameCount</h3>
+                <pre class="signature">$frameCount : integer</pre>
+                <p><em>Current frame index</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_frameRate" name="property_frameRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$frameRate</h3>
+                <pre class="signature">$frameRate : float</pre>
+                <p><em>Movie frame rate.</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_comment" name="property_comment" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$comment</h3>
+                <pre class="signature">$comment : string</pre>
+                <p><em>Comment ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_title" name="property_title" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$title</h3>
+                <pre class="signature">$title : string</pre>
+                <p><em>Title ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_artist" name="property_artist" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$artist</h3>
+                <pre class="signature">$artist : string</pre>
+                <p><em>Author ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_copyright" name="property_copyright" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$copyright</h3>
+                <pre class="signature">$copyright : string</pre>
+                <p><em>Copyright ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_genre" name="property_genre" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$genre</h3>
+                <pre class="signature">$genre : string</pre>
+                <p><em>Genre ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_trackNumber" name="property_trackNumber" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$trackNumber</h3>
+                <pre class="signature">$trackNumber : integer</pre>
+                <p><em>Track ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_year" name="property_year" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$year</h3>
+                <pre class="signature">$year : integer</pre>
+                <p><em>Year ID3 field.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_frameHeight" name="property_frameHeight" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$frameHeight</h3>
+                <pre class="signature">$frameHeight : integer</pre>
+                <p><em>Movie frame height.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_frameWidth" name="property_frameWidth" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$frameWidth</h3>
+                <pre class="signature">$frameWidth : integer</pre>
+                <p><em>Movie frame width.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_pixelFormat" name="property_pixelFormat" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$pixelFormat</h3>
+                <pre class="signature">$pixelFormat : string</pre>
+                <p><em>Movie pixel format.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_pixelAspectRatio" name="property_pixelAspectRatio" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$pixelAspectRatio</h3>
+                <pre class="signature">$pixelAspectRatio : float</pre>
+                <p><em>Movie pixel aspect ratio.</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_bitRate" name="property_bitRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$bitRate</h3>
+                <pre class="signature">$bitRate : integer</pre>
+                <p><em>Movie bit rate combined with audio bit rate.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_videoBitRate" name="property_videoBitRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$videoBitRate</h3>
+                <pre class="signature">$videoBitRate : integer</pre>
+                <p><em>Movie video stream bit rate.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_audioBitRate" name="property_audioBitRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$audioBitRate</h3>
+                <pre class="signature">$audioBitRate : integer</pre>
+                <p><em>Movie audio stream bit rate.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_audioSampleRate" name="property_audioSampleRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$audioSampleRate</h3>
+                <pre class="signature">$audioSampleRate : integer</pre>
+                <p><em>Audio sample rate.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_frameNumber" name="property_frameNumber" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$frameNumber</h3>
+                <pre class="signature">$frameNumber : integer</pre>
+                <p><em>Current frame number.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_videoCodec" name="property_videoCodec" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$videoCodec</h3>
+                <pre class="signature">$videoCodec : string</pre>
+                <p><em>Movie video codec.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_audioCodec" name="property_audioCodec" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$audioCodec</h3>
+                <pre class="signature">$audioCodec : string</pre>
+                <p><em>Movie audio codec.</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_audioChannels" name="property_audioChannels" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$audioChannels</h3>
+                <pre class="signature">$audioChannels : integer</pre>
+                <p><em>Movie audio channels.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_rotation" name="property_rotation" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$rotation</h3>
+                <pre class="signature">$rotation : integer</pre>
+                <p><em>Movie rotation.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$moviePath</span>, \Char0n\FFMpegPHP\OutputProviders\OutputProvider  <span class="argument">$outputProvider = null</span>, string  <span class="argument">$ffmpegBinary = &#039;ffmpeg&#039;</span>) </pre>
+                <p><em>Open a video or audio file and return it as an Movie object.</em></p>
+                <p>If ffmpeg and ffprobe are both installed on host system, ffmpeg
+gets priority in extracting info from the movie file. However
+to override this default behaviour use any implementation of OutputProviderInterface
+as the second constructor argument while instantiating</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$moviePath </td>
+                                <td><p>Full path to the movie file.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">\Char0n\FFMpegPHP\OutputProviders\OutputProvider</a></td>
+                                <td>$outputProvider </td>
+                                <td><p>Provides parsable output.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ffmpegBinary </td>
+                                <td><p><code>ffmpeg</code> executable, if $outputProvider not specified.</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProvider" name="method_setProvider" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProvider()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProvider(\Char0n\FFMpegPHP\OutputProviders\OutputProvider  <span class="argument">$outputProvider</span>) : $this</pre>
+                <p><em>Setting output provider implementation.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">\Char0n\FFMpegPHP\OutputProviders\OutputProvider</a></td>
+                                <td>$outputProvider </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProvider" name="method_getProvider" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProvider()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProvider() : \Char0n\FFMpegPHP\OutputProviders\OutputProvider</pre>
+                <p><em>Getting current output provider implementation.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">\Char0n\FFMpegPHP\OutputProviders\OutputProvider</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDuration" name="method_getDuration" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDuration()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDuration() : float</pre>
+                <p><em>Return the duration of a movie or audio file in seconds.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                            &mdash; <p>Movie duration in seconds.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameCount" name="method_getFrameCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameCount() : integer</pre>
+                <p><em>Return the number of frames in a movie or audio file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameRate" name="method_getFrameRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameRate() : float</pre>
+                <p><em>Return the frame rate of a movie in fps.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFilename" name="method_getFilename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFilename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFilename() : string</pre>
+                <p><em>Return the path and name of the movie file or audio file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getComment" name="method_getComment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getComment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getComment() : string</pre>
+                <p><em>Return the comment field from the movie or audio file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTitle" name="method_getTitle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTitle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTitle() : string</pre>
+                <p><em>Return the title field from the movie or audio file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getArtist" name="method_getArtist" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getArtist()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getArtist() : string</pre>
+                <p><em>Return the author field from the movie or the artist ID3 field from an mp3 file; alias $movie-&gt;getArtist()</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuthor" name="method_getAuthor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAuthor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuthor() : string</pre>
+                <p><em>Return the author field from the movie or the artist ID3 field from an mp3 file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCopyright" name="method_getCopyright" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCopyright()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCopyright() : string</pre>
+                <p><em>Return the copyright field from the movie or audio file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGenre" name="method_getGenre" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGenre()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGenre() : string</pre>
+                <p><em>Return the genre ID3 field from an mp3 file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTrackNumber" name="method_getTrackNumber" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTrackNumber()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTrackNumber() : integer</pre>
+                <p><em>Return the track ID3 field from an mp3 file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getYear" name="method_getYear" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getYear()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getYear() : integer</pre>
+                <p><em>Return the year ID3 field from an mp3 file.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameHeight" name="method_getFrameHeight" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameHeight()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameHeight() : integer</pre>
+                <p><em>Return the height of the movie in pixels.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameWidth" name="method_getFrameWidth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameWidth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameWidth() : integer</pre>
+                <p><em>Return the width of the movie in pixels.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPixelFormat" name="method_getPixelFormat" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPixelFormat()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPixelFormat() : string</pre>
+                <p><em>Return the pixel format of the movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPixelAspectRatio" name="method_getPixelAspectRatio" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPixelAspectRatio()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPixelAspectRatio() : float</pre>
+                <p><em>Return the pixel aspect ratio of the movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRotation" name="method_getRotation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRotation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRotation() : integer</pre>
+                <p><em>Return the rotation angle of the movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBitRate" name="method_getBitRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBitRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBitRate() : integer</pre>
+                <p><em>Return the bit rate of the movie or audio file in bits per second.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getVideoBitRate" name="method_getVideoBitRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getVideoBitRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getVideoBitRate() : integer</pre>
+                <p><em>Return the bit rate of the video in bits per second.</em></p>
+                <p>NOTE: This only works for files with constant bit rate.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAudioBitRate" name="method_getAudioBitRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAudioBitRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAudioBitRate() : integer</pre>
+                <p><em>Return the audio bit rate of the media file in bits per second.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAudioSampleRate" name="method_getAudioSampleRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAudioSampleRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAudioSampleRate() : integer</pre>
+                <p><em>Return the audio sample rate of the media file in bits per second.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameNumber" name="method_getFrameNumber" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameNumber()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameNumber() : integer</pre>
+                <p><em>Return the current frame index.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getVideoCodec" name="method_getVideoCodec" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getVideoCodec()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getVideoCodec() : string</pre>
+                <p><em>Return the name of the video codec used to encode this movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAudioCodec" name="method_getAudioCodec" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAudioCodec()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAudioCodec() : string</pre>
+                <p><em>Return the name of the audio codec used to encode this movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAudioChannels" name="method_getAudioChannels" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAudioChannels()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAudioChannels() : integer</pre>
+                <p><em>Return the number of audio channels in this movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasAudio" name="method_hasAudio" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasAudio()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasAudio() : boolean</pre>
+                <p><em>Return boolean value indicating whether the movie has an audio stream.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasVideo" name="method_hasVideo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasVideo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasVideo() : boolean</pre>
+                <p><em>Return boolean value indicating whether the movie has a video stream.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrame" name="method_getFrame" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrame()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrame(integer  <span class="argument">$frameNumber = null</span>, integer  <span class="argument">$width = null</span>, integer  <span class="argument">$height = null</span>, integer  <span class="argument">$quality = null</span>) : \Char0n\FFMpegPHP\Frame|boolean</pre>
+                <p><em>Returns a frame from the movie as an Frame object. Returns false if the frame was not found.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$frameNumber </td>
+                                <td><p>Frame from the movie to return. If no frame number is specified,
+returns the next frame of the movie.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$quality </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFrameAtTime" name="method_getFrameAtTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFrameAtTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFrameAtTime(float  <span class="argument">$seconds = null</span>, integer  <span class="argument">$width = null</span>, integer  <span class="argument">$height = null</span>, integer  <span class="argument">$quality = null</span>, string  <span class="argument">$frameFilePath = null</span>, array  <span class="argument">$output = null</span>) : \Char0n\FFMpegPHP\Frame|boolean</pre>
+                <p><em>Returns a frame from the movie as a Frame object. Returns false if the frame was not found.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$seconds </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$width </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$height </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$quality </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$frameFilePath </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$output </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\RuntimeException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNextKeyFrame" name="method_getNextKeyFrame" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNextKeyFrame()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNextKeyFrame() : \Char0n\FFMpegPHP\Frame|boolean</pre>
+                <p><em>Returns the next key frame from the movie as an Frame object. Returns false if the frame was not found.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___clone" name="method___clone" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__clone()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__clone() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_serialize" name="method_serialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">serialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">serialize() : string</pre>
+                <p><em>String representation of a Movie.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Rhe string representation of the object or null.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unserialize" name="method_unserialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unserialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unserialize(string  <span class="argument">$serialized</span>) : void</pre>
+                <p><em>Constructs the Movie from serialized data.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$serialized </td>
+                                <td><p>The string representation of Movie instance.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Movie.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Movie.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Char0n.html">\Char0n</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 23rd, 2018 at 16:53.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
