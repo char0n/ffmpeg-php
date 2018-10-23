@@ -69,6 +69,7 @@ $movie->getDuration(); // => 24
 
 ## References
 
+- https://packagist.org/packages/char0n/ffmpeg-php
 - http://github.com/char0n/ffmpeg-php
 - http://ffmpeg-php.sourceforge.net/
 - http://www.phpclasses.org/package/5977-PHP-Manipulate-video-files-using-the-ffmpeg-program.html
