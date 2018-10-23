@@ -9,6 +9,10 @@ using PHP image functions. This works well for automatically creating thumbnail 
 FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...).
 FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...) 
 
+## Drop-in replacement for ffmpeg-php
+
+FFmpegPHP can be used as a drop in replacement for [ffmpeg-php](http://ffmpeg-php.sourceforge.net/) library.
+
 
 ## Documentation
 
