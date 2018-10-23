@@ -5,7 +5,7 @@
     "version": "3.0.0",
     "keywords": ["ffmpeg", "video", "audio"],
     "homepage": "https://github.com/char0n/ffmpeg-php",
-    "license": "New BSD",
+    "license": "BSD 3-Clause License",
     "authors": [
         {
           "name": "char0n (Vladimír Gorej)",
