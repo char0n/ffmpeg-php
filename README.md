@@ -2,7 +2,7 @@
 
 # FFmpegPHP
 
-FFmpegPHP is a pure OO [PSR-4 compatible](https://www.php-fig.org/psr/psr-4/) PHP port of [ffmpeg-php](http://ffmpeg-php.sourceforge.net/) library (written in C). It adds an easy to use,
+FFmpegPHP is a pure OO [PSR-4 compatible](https://www.php-fig.org/psr/psr-4/) PHP port of [ffmpeg-php](http://ffmpeg-php.sourceforge.net/) library (that was written in C). It adds an easy to use,
 object-oriented API for accessing and retrieving information from video and audio files.
 It has methods for returning frames from movie files as images that can be manipulated
 using PHP image functions. This works well for automatically creating thumbnail images from movies.
@@ -28,7 +28,7 @@ FFmpegPHP API documentation can be found here http://char0n.github.io/ffmpeg-php
 
 ## Installation
 
-or to install via composer (http://getcomposer.org/) place the following in your `composer.json` file: ::
+Grab the source code located in `src/` directory or to install via composer (http://getcomposer.org/) place the following in your `composer.json` file:
 ```json
  {
     "require": {
