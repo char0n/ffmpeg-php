@@ -28,7 +28,7 @@ FFmpegPHP API documentation can be found here http://char0n.github.io/ffmpeg-php
 
 ## Installation
 
-Grab the source code located in `src/` directory or to install via composer (http://getcomposer.org/) place the following in your `composer.json` file:
+Grab the source code located in `src/` directory or install via composer (http://getcomposer.org/) place the following in your `composer.json` file:
 ```json
  {
     "require": {
