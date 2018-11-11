@@ -76,14 +76,25 @@ require_once './vendor/autoload.php';
 
 use Char0n\FFMpegPHP\Movie;
 
-$movie = new Movie('/path/to/media.mpeg');
+$movie = new Movie('./test.mp4');
 var_dump($movie->getDuration()); 
+```
+
+Before you run the script you need to also download the testing movie file:
+
+```bash
+$ wget https://github.com/char0n/ffmpeg-php/raw/master/tests/data/test.mp4
 ```
 
 Now run it.
 
 ```bash
 $ php test.php
+```
+
+The output should be something similar:
+```
+float(32.14)
 ```
 
 If the output of the script is number, then everything works as expected. Don't forget to provide
