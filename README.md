@@ -28,14 +28,72 @@ FFmpegPHP API documentation can be found here http://char0n.github.io/ffmpeg-php
 
 ## Installation
 
-Grab the source code located in `src/` directory or install via composer (http://getcomposer.org/) place the following in your `composer.json` file:
+### Source code
+ 
+Grab the source code located in `src/` directory and use it as you seem appropriate.
+ 
+ 
+### Composer installation
+
+Grab the `composer.phar` which can install packages published on [packagist](https://packagist.org/). 
+
+```bash
+ $ wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php
+```
+
+This command will create file called `composer.phar`.
+
+Create a file called `composer.json` and paste the following JSON into it:
+
 ```json
  {
     "require": {
-        "char0n/ffmpeg-php": "*"
+        "char0n/ffmpeg-php": "^3.0.0"
     }
  }
 ```
+
+Install the FFmpegPHP by running the following command:
+
+```bash
+$ php composer.phar install
+```
+
+After this command is successfully executed, the new directory called `vendor/` is created.
+File structure of your current working directory should now look like this:
+
+```
+ - composer.json
+ - composer.phar
+ - vendor/
+```
+
+To verify that everything works as expected create new file called `test.php` inside your current working 
+directory with the following content.
+
+```php
+require_once './vendor/autoload.php';
+
+use Char0n\FFMpegPHP\Movie;
+
+$movie = new Movie('/path/to/media.mpeg');
+var_dump($movie->getDuration()); 
+```
+
+Now run it.
+
+```bash
+$ php test.php
+```
+
+If the output of the script is number, then everything works as expected. Don't forget to provide
+movie constructor the path to a real movie file.
+
+**Note**
+
+Notice the first line (`require './vendor/autoload.php';`) in the above script. This line is 
+necessary because it configures how the FFmpegPHP will be included into your scripts and it 
+auto-magically knows where to look for FFmpegPHP.
 
 
 # Using FFmpegPHP
