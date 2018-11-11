@@ -72,6 +72,7 @@ To verify that everything works as expected create new file called `test.php` in
 directory with the following content.
 
 ```php
+<?php
 require_once './vendor/autoload.php';
 
 use Char0n\FFMpegPHP\Movie;
