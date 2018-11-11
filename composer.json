@@ -24,6 +24,16 @@
         ],
         "clean": "@php scripts/rimraf.php docs"
     },
+    "archive": {
+        "exclude": [
+            ".circleci/",
+            "scripts/",
+            "tests/",
+            ".editorconfig",
+            ".gitignore",
+            "phpcs.xml"
+        ]
+    },
     "require": {
         "php": ">=7",
         "ext-mbstring": "*",
