@@ -92,13 +92,11 @@ Now run it.
 $ php test.php
 ```
 
-The output should be something similar:
+The output should be something similar to the following:
 ```
 float(32.14)
 ```
 
-If the output of the script is number, then everything works as expected. Don't forget to provide
-movie constructor the path to a real movie file.
 
 **Note**
 
