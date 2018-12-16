@@ -132,6 +132,18 @@ $movie = new ffmpeg_movie('/path/to/media.mpeg');
 $movie->getDuration(); // => 24
 ```
 
+## Partnership with GoDaddy
+
+[GoDaddy](https://www.godaddy.com/) started to use FFmpegPHP as part of it's services
+from November 2018. If you need a server with [ffmpeg](https://www.ffmpeg.org/)
+and [FFmpegPHP](https://github.com/char0n/ffmpeg-php) installed on it
+contact GoDaddy and they'll do it for you as part of its "Expert Service".
+As author of FFmpegPHP I agreed to provide support for users coming
+from GoDaddy asking about FFmpegPHP. All incoming GoDaddy customers,
+please use [GitHub issues](https://github.com/char0n/ffmpeg-php/issues/new) 
+as a support channel.
+
+
 ## Author
 
 - char0n (Vladimír Gorej)
