@@ -2,6 +2,7 @@
 namespace Char0n\FFMpegPHP\Tests\OutputProviders;
 
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\Timer\Timer;
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
 
 class FFmpegProviderTest extends TestCase
@@ -53,7 +54,7 @@ class FFmpegProviderTest extends TestCase
 
     public function testPersistentResourceSimulation()
     {
-        \PHP_Timer::start();
+        Timer::start();
         $provider = new FFMpegProvider('ffmpeg', true);
         $provider->setMovieFile(self::$moviePath);
         $provider->getOutput();
@@ -61,9 +62,9 @@ class FFmpegProviderTest extends TestCase
         $provider->getOutput();
         $provider = clone $provider;
         $provider->getOutput();
-        $elapsed = \PHP_Timer::stop();
+        $elapsed = Timer::stop();
 
-        \PHP_Timer::start();
+        Timer::start();
         $provider = new FFMpegProvider('ffmpeg', false);
         $provider->setMovieFile(self::$moviePath);
         $provider->getOutput();
@@ -71,7 +72,7 @@ class FFmpegProviderTest extends TestCase
         $provider->getOutput();
         $provider = clone $provider;
         $provider->getOutput();
-        $elapsed1 = \PHP_Timer::stop();
+        $elapsed1 = Timer::stop();
         $this->assertGreaterThan($elapsed, $elapsed1, 'Persistent resource simulation should be faster');
     }
 
