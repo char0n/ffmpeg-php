@@ -6,6 +6,5 @@
 /junit.xml
 /docs/*
 /composer.phar
-/composer.lock
 /vendor
 .idea

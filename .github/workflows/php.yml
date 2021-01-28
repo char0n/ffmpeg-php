@@ -1,0 +1,71 @@
+name: PHP CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ['7.2', '7.3', '7.4']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, gd, xml
+          tools: phpcs
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Install ffmpeg
+        run: sudo apt-get install ffmpeg
+
+      - name: Lint
+        if: matrix.php-version == '7.2'
+        run: composer codesniffer
+
+      - name: Run tests
+        run: composer test
+
+      - name: Generate Documentation
+        if: matrix.php-version == '7.2'
+        run: composer docs
+
+      - name: Upload build artifacts
+        if: matrix.php-version == '7.2' && github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: ./docs
+
+
+  deploy:
+
+    name: Deploy
+    if: github.ref == 'refs/heads/master'
+
+    needs: [ test ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download documentation
+        uses: actions/download-artifact@v2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch

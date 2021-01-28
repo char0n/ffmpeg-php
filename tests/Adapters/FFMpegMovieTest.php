@@ -6,7 +6,6 @@ use SebastianBergmann\Timer\Timer;
 use Char0n\FFMpegPHP\Adapters\FFMpegMovie;
 use Char0n\FFMpegPHP\Adapters\FFMpegFrame;
 
-
 class FFMpegMovieTest extends TestCase
 {
 

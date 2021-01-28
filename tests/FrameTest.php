@@ -75,7 +75,7 @@ class FFmpegFrameTest extends TestCase
 
     public function testGetPresentationTimestamp()
     {
-        $this->assertIsFloat($this->frame->getPresentationTimestamp(),'Presentation timestamp is of integer type');
+        $this->assertIsFloat($this->frame->getPresentationTimestamp(), 'Presentation timestamp is of integer type');
         $this->assertEquals(
             0.0,
             $this->frame->getPresentationTimestamp(),
