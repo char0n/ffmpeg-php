@@ -24,7 +24,7 @@
     <script type="text/javascript">
     function loadExternalCodeSnippets() {
         Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-            var src = pre.getAttribute('data-src');
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
             var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
             var language = 'php';
 
@@ -144,37 +144,37 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1907660661"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1645354841"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1907660661" class="accordion-body collapse in">
+            <div id="namespace-1645354841" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1897811888"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-657137016"></a>
                                 <a href="../namespaces/Char0n.html" style="margin-left: 30px; padding-left: 0">Char0n</a>
             </div>
-            <div id="namespace-1897811888" class="accordion-body collapse ">
+            <div id="namespace-657137016" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1769185238"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1530939658"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.html" style="margin-left: 30px; padding-left: 0">FFMpegPHP</a>
             </div>
-            <div id="namespace-1769185238" class="accordion-body collapse ">
+            <div id="namespace-1530939658" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1264872209"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1082733283"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.Adapters.html" style="margin-left: 30px; padding-left: 0">Adapters</a>
             </div>
-            <div id="namespace-1264872209" class="accordion-body collapse ">
+            <div id="namespace-1082733283" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -191,10 +191,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1490236976"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1903133526"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.OutputProviders.html" style="margin-left: 30px; padding-left: 0">OutputProviders</a>
             </div>
-            <div id="namespace-1490236976" class="accordion-body collapse ">
+            <div id="namespace-1903133526" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -326,7 +326,7 @@
                         
                         
                         
-                        
+                                                
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
@@ -400,13 +400,15 @@
                                             </table>
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -426,13 +428,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -452,13 +456,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -478,13 +484,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -504,13 +512,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -563,13 +573,15 @@
                                             </table>
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -612,13 +624,15 @@
                                             </table>
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -638,13 +652,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -664,13 +680,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -690,13 +708,15 @@
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Adapters.FFMpegFrame.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Adapters\FFMpegFrame</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -754,7 +774,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 23rd, 2018 at 16:53.
+                    on January 28th, 2021 at 19:41.
                 </section>
             </section>
         </section>

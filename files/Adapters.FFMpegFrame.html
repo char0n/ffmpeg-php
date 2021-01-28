@@ -24,7 +24,7 @@
         <script type="text/javascript">
         function loadExternalCodeSnippets() {
             Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-                var src = pre.getAttribute('data-src');
+                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
                 var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
                 var language = 'php';
 
@@ -144,37 +144,37 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-506883843"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1092154594"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-506883843" class="accordion-body collapse in">
+            <div id="namespace-1092154594" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1296355930"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2023154248"></a>
                                 <a href="../namespaces/Char0n.html" style="margin-left: 30px; padding-left: 0">Char0n</a>
             </div>
-            <div id="namespace-1296355930" class="accordion-body collapse ">
+            <div id="namespace-2023154248" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1895399656"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1183646840"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.html" style="margin-left: 30px; padding-left: 0">FFMpegPHP</a>
             </div>
-            <div id="namespace-1895399656" class="accordion-body collapse ">
+            <div id="namespace-1183646840" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-72983146"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-208290458"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.Adapters.html" style="margin-left: 30px; padding-left: 0">Adapters</a>
             </div>
-            <div id="namespace-72983146" class="accordion-body collapse ">
+            <div id="namespace-208290458" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -191,10 +191,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-719315454"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1856427706"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.OutputProviders.html" style="margin-left: 30px; padding-left: 0">OutputProviders</a>
             </div>
-            <div id="namespace-719315454" class="accordion-body collapse ">
+            <div id="namespace-1856427706" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -329,7 +329,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 23rd, 2018 at 16:53.
+                    on January 28th, 2021 at 19:41.
                 </section>
             </section>
         </section>

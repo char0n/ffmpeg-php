@@ -24,7 +24,7 @@
     <script type="text/javascript">
     function loadExternalCodeSnippets() {
         Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
-            var src = pre.getAttribute('data-src');
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
             var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
             var language = 'php';
 
@@ -144,37 +144,37 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-518039395"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-687537579"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-518039395" class="accordion-body collapse in">
+            <div id="namespace-687537579" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-588170864"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1790549569"></a>
                                 <a href="../namespaces/Char0n.html" style="margin-left: 30px; padding-left: 0">Char0n</a>
             </div>
-            <div id="namespace-588170864" class="accordion-body collapse ">
+            <div id="namespace-1790549569" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1452765790"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-961588846"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.html" style="margin-left: 30px; padding-left: 0">FFMpegPHP</a>
             </div>
-            <div id="namespace-1452765790" class="accordion-body collapse ">
+            <div id="namespace-961588846" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1542047769"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-415779662"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.Adapters.html" style="margin-left: 30px; padding-left: 0">Adapters</a>
             </div>
-            <div id="namespace-1542047769" class="accordion-body collapse ">
+            <div id="namespace-415779662" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -191,10 +191,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-604928112"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1749092127"></a>
                                 <a href="../namespaces/Char0n.FFMpegPHP.OutputProviders.html" style="margin-left: 30px; padding-left: 0">OutputProviders</a>
             </div>
-            <div id="namespace-604928112" class="accordion-body collapse ">
+            <div id="namespace-1749092127" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -403,7 +403,7 @@
                         
                         
                         
-                        
+                                                
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
@@ -1666,13 +1666,15 @@ as the second constructor argument while instantiating</p>
                             <dd></dd>
                                                                     </dl>
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1702,13 +1704,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     $this
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1730,13 +1734,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     <a href="../classes/Char0n.FFMpegPHP.OutputProviders.OutputProvider.html">\Char0n\FFMpegPHP\OutputProviders\OutputProvider</a>
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1759,13 +1765,15 @@ as the second constructor argument while instantiating</p>
                                     <h4>Returns</h4>
                     float
                                             &mdash; <p>Movie duration in seconds.</p>
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1787,13 +1795,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1815,13 +1825,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     float
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1843,13 +1855,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1871,13 +1885,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1899,13 +1915,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1927,13 +1945,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1955,13 +1975,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -1983,13 +2005,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2011,13 +2035,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2039,13 +2065,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2067,13 +2095,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2095,13 +2125,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2123,13 +2155,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2151,13 +2185,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2179,13 +2215,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     float
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2207,13 +2245,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2235,13 +2275,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2263,13 +2305,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2291,13 +2335,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2319,13 +2365,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2347,13 +2395,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2375,13 +2425,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2403,13 +2455,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     string
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2431,13 +2485,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     integer
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2459,13 +2515,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     boolean
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2487,13 +2545,15 @@ as the second constructor argument while instantiating</p>
                 
                                     <h4>Returns</h4>
                     boolean
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2539,13 +2599,15 @@ returns the next frame of the movie.</p></td>
                 
                                     <h4>Returns</h4>
                     <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2605,13 +2667,15 @@ returns the next frame of the movie.</p></td>
                 
                                     <h4>Returns</h4>
                     <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2633,13 +2697,15 @@ returns the next frame of the movie.</p></td>
                 
                                     <h4>Returns</h4>
                     <a href="../classes/Char0n.FFMpegPHP.Frame.html">\Char0n\FFMpegPHP\Frame</a>|boolean
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2659,13 +2725,15 @@ returns the next frame of the movie.</p></td>
 
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2688,13 +2756,15 @@ returns the next frame of the movie.</p></td>
                                     <h4>Returns</h4>
                     string
                                             &mdash; <p>Rhe string representation of the object or null.</p>
-                                    				
+                                    
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2722,13 +2792,15 @@ returns the next frame of the movie.</p></td>
                                             </table>
                 
                 
-                				
+                
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Char0n.FFMpegPHP.Movie.html"><div class="path-wrapper">\Char0n\FFMpegPHP\Movie</div></a></dd>
+                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -2786,7 +2858,7 @@ returns the next frame of the movie.</p></td>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 23rd, 2018 at 16:53.
+                    on January 28th, 2021 at 19:41.
                 </section>
             </section>
         </section>
