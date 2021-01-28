@@ -56,29 +56,25 @@ class FFMpegFrameTest extends TestCase
 
     public function testGetWidth()
     {
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, $this->frame->getWidth(), 'Frame width should be int(640)');
     }
 
     public function testGetHeight()
     {
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt( $this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(272, $this->frame->getHeight(), 'Frame height should be int(272)');
     }
 
     public function testGetPts()
     {
-        $this->assertInternalType('float', $this->frame->getPts(), 'Pts is of integer type');
+        $this->assertIsFloat($this->frame->getPts(), 'Pts is of integer type');
         $this->assertEquals(0.0, $this->frame->getPts(), 'Pts should be float(0.0)');
     }
 
     public function testGetPresentationTimestamp()
     {
-        $this->assertInternalType(
-            'float',
-            $this->frame->getPresentationTimestamp(),
-            'Presentation timestamp is of integer type'
-        );
+        $this->assertIsFloat($this->frame->getPresentationTimestamp(), 'Presentation timestamp is of integer type');
         $this->assertEquals(
             0.0,
             $this->frame->getPresentationTimestamp(),
@@ -97,14 +93,14 @@ class FFMpegFrameTest extends TestCase
         $oldHeight = $this->frame->getHeight();
 
         $this->frame->resize(300, 300);
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(300, $this->frame->getWidth(), 'Frame width should be int(300)');
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(300, $this->frame->getHeight(), 'Frame height should be int(300)');
         $this->frame->resize($oldWidth, $oldHeight);
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, $this->frame->getWidth(), 'Frame width should be int(640)');
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(272, $this->frame->getHeight(), 'Frame height should be int(272)');
     }
 
@@ -114,20 +110,20 @@ class FFMpegFrameTest extends TestCase
         $oldHeight = $this->frame->getHeight();
 
         $this->frame->crop(100);
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, $this->frame->getWidth(), 'Frame width should be int(300)');
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(172, $this->frame->getHeight(), 'Frame height should be int(172)');
         $this->frame->resize($oldWidth, $oldHeight);
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, $this->frame->getWidth(), 'Frame width should be int(640)');
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(272, $this->frame->getHeight(), 'Frame height should be int(272)');
     }
 
     public function testToGdImage()
     {
-        $this->assertInternalType('resource', $this->frame->toGdImage(), 'GdImage is of resource(gd2) type');
+        $this->assertIsResource($this->frame->toGdImage(), 'GdImage is of resource(gd2) type');
     }
 
     public function testSerializeUnserialize()
@@ -135,9 +131,9 @@ class FFMpegFrameTest extends TestCase
         $serialized  = serialize($this->frame);
         $this->frame = null;
         $this->frame = unserialize($serialized);
-        $this->assertInternalType('int', $this->frame->getWidth(), 'Frame width is of integer type');
+        $this->assertIsInt($this->frame->getWidth(), 'Frame width is of integer type');
         $this->assertEquals(640, $this->frame->getWidth(), 'Frame width should be int(640)');
-        $this->assertInternalType('int', $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(272, $this->frame->getHeight(), 'Frame height should be int(272)');
     }
 
