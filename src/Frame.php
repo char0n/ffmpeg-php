@@ -48,7 +48,7 @@ class Frame implements \Serializable
      */
     public function __construct($gdImage, $pts = 0.0)
     {
-        if (!(is_resource($gdImage) && 'gd' === get_resource_type($gdImage))) {
+        if ((!(is_resource($gdImage) && 'gd' === get_resource_type($gdImage))) && !($gdImage instanceof \GdImage)) {
             throw new \UnexpectedValueException(
                 'Param given by constructor is not valid gd resource',
                 self::$EX_CODE_NO_VALID_RESOURCE
