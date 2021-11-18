@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Timer\Timer;
 use Char0n\FFMpegPHP\OutputProviders\FFMpegProvider;
 
-class FFmpegProviderTest extends TestCase
+class FFMpegProviderTest extends TestCase
 {
 
     protected static $moviePath;
