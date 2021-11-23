@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.2', '7.3', '7.4', '8.0']
+        php-version: ['7.2', '7.3', '7.4', '8.0', '8.1']
 
     steps:
       - name: Checkout
@@ -41,6 +41,7 @@ jobs:
 
       - name: Generate Documentation
         if: matrix.php-version == '8.0'
+        # phpdocumentor installed via composer doesn't work, so we're using this workaround
         run: |
           wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.2/phpDocumentor.phar
           php phpDocumentor.phar run -d ./src/ -t docs
