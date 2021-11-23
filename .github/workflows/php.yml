@@ -40,11 +40,11 @@ jobs:
         run: composer test
 
       - name: Generate Documentation
-        if: matrix.php-version == '7.2'
+        if: matrix.php-version == '8.0'
         run: composer docs
 
       - name: Upload build artifacts
-        if: matrix.php-version == '7.2' && github.ref == 'refs/heads/master'
+        if: matrix.php-version == '8.0' && github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@v2
         with:
           name: docs
