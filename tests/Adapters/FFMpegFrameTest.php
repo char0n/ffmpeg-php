@@ -148,10 +148,10 @@ class FFMpegFrameTest extends TestCase
         $cloned = clone $this->frame;
 
         if (is_resource($gdImage)) {
-            $uoid   = (string) $this->frame->toGdImage();
+            $uoid   = (string) $gdImage;
             $cuoid  = (string) $cloned->toGdImage();
         } else {
-            $uoid   = spl_object_id($this->frame->toGdImage());
+            $uoid   = spl_object_id($gdImage);
             $cuoid  = spl_object_id($cloned->toGdImage());
         }
 
