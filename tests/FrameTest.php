@@ -123,7 +123,9 @@ class FFmpegFrameTest extends TestCase
 
     public function testToGdImage()
     {
-        $this->assertIsResource($this->frame->toGdImage(), 'GdImage is of resource(gd2) type');
+        $gdImage = $this->frame->toGDImage();
+
+        $this->assertTrue(\is_resource($gdImage) || \get_class($gdImage) === 'GdImage');
     }
 
     public function testSerializeUnserialize()
