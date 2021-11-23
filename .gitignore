@@ -9,4 +9,5 @@
 /composer.phar
 /vendor
 /tests/.phpunit.result.cache
+/phpDocumentor.phar
 .idea
