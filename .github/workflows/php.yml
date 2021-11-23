@@ -31,8 +31,6 @@ jobs:
 
       - name: Install FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
 
       - name: Lint
