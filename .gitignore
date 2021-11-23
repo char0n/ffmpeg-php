@@ -2,6 +2,7 @@
 .buildpath
 .project
 .settings
+.phpdoc
 *.swp
 /junit.xml
 /docs/*

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7be3ee0ff222b7559152dd61ed11785",
+    "content-hash": "394c9a6fa47bc0db353b1af3e3c333ce",
     "packages": [],
     "packages-dev": [
         {
@@ -1547,16 +1547,16 @@
         },
         {
             "name": "phpdocumentor/phpdocumentor",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor.git",
-                "reference": "d4449d5d9765caa92c9647b2ac50131aa5a93106"
+                "reference": "888fd76678506f9638e955218465bada0048e40a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor/zipball/d4449d5d9765caa92c9647b2ac50131aa5a93106",
-                "reference": "d4449d5d9765caa92c9647b2ac50131aa5a93106",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor/zipball/888fd76678506f9638e955218465bada0048e40a",
+                "reference": "888fd76678506f9638e955218465bada0048e40a",
                 "shasum": ""
             },
             "require": {
@@ -1666,9 +1666,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpDocumentor/phpDocumentor/issues",
-                "source": "https://github.com/phpDocumentor/phpDocumentor/tree/v3.1.1"
+                "source": "https://github.com/phpDocumentor/phpDocumentor/tree/v3.1.2"
             },
-            "time": "2021-08-20T07:40:11+00:00"
+            "time": "2021-08-31T20:17:41+00:00"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -6276,7 +6276,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7",
+        "php": ">=7.2",
         "ext-mbstring": "*",
         "ext-gd": "*",
         "ext-xml": "*"
