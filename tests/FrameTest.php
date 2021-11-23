@@ -6,7 +6,7 @@ use Char0n\FFMpegPHP\Movie;
 use Char0n\FFMpegPHP\Frame;
 use PHPUnit\Framework\TestCase;
 
-class FFmpegFrameTest extends TestCase
+class FrameTest extends TestCase
 {
 
     protected static $moviePath;
