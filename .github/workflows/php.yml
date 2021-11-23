@@ -29,8 +29,11 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist
 
-      - name: Install ffmpeg
-        run: sudo apt-get install ffmpeg
+      - name: Install FFmpeg
+      - uses: FedericoCarboni/setup-ffmpeg@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        id: setup-ffmpeg
 
       - name: Lint
         if: matrix.php-version == '7.2'
