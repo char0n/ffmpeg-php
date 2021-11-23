@@ -18,24 +18,24 @@ class FFMpegFrameTest extends TestCase
      */
     protected $frame;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $path = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR;
         self::$moviePath = realpath($path.'test.mp4');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$moviePath = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->movie = new FFMpegMovie(self::$moviePath);
         $this->frame = $this->movie->getFrame(1);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->movie = null;
         $this->frame = null;

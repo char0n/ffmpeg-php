@@ -29,19 +29,19 @@ class FFmpegAnimatedGifTest extends TestCase
      */
     protected $anim;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$outFilePath = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid('anim', true).'.gif';
         self::$moviePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$outFilePath = null;
         self::$moviePath = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->movie = new Movie(self::$moviePath);
         $this->frame1 = $this->movie->getFrame(1);
@@ -49,7 +49,7 @@ class FFmpegAnimatedGifTest extends TestCase
         $this->anim = new AnimatedGif(self::$outFilePath, 100, 120, 1, 0);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->movie = null;
         $this->frame1 = null;
