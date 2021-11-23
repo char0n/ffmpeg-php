@@ -41,7 +41,9 @@ jobs:
 
       - name: Generate Documentation
         if: matrix.php-version == '8.0'
-        run: composer docs
+        run: |
+          wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.2/phpDocumentor.phar
+          php phpDocumentor.phar run -d ./src/ -t docs
 
       - name: Upload build artifacts
         if: matrix.php-version == '8.0' && github.ref == 'refs/heads/master'
