@@ -126,7 +126,7 @@ class FFmpegFrameTest extends TestCase
         $gdImage = $this->frame->toGDImage();
 
         $this->assertTrue(
-            \is_resource($gdImage) || \get_class($gdImage) === 'GdImage',
+            is_resource($gdImage) || get_class($gdImage) === 'GdImage',
             'GdImage is of resource(gd2) type or \GdImage class'
         );
     }
@@ -144,9 +144,17 @@ class FFmpegFrameTest extends TestCase
 
     public function testClone()
     {
-        $uoid   = (string) $this->frame->toGdImage();
+        $gdImage = $this->frame->toGdImage();
         $cloned = clone $this->frame;
-        $cuoid  = (string) $cloned->toGdImage();
+
+        if (is_resource($gdImage)) {
+            $uoid   = (string) $this->frame->toGdImage();
+            $cuoid  = (string) $cloned->toGdImage();
+        } else {
+            $uoid   = spl_object_id($this->frame->toGdImage());
+            $cuoid  = spl_object_id($cloned->toGdImage());
+        }
+
         $this->assertNotEquals($uoid, $cuoid);
     }
 }
