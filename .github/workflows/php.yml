@@ -34,7 +34,6 @@ jobs:
         id: setup-ffmpeg
 
       - name: Lint
-        if: matrix.php-version == '7.2'
         run: composer codesniffer
 
       - name: Run tests
