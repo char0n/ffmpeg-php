@@ -150,8 +150,8 @@ class AnimatedGif implements \Serializable
                     && ord($localsRgb{3 * $j + 2}) === (($col >> 0) & 0xFF)
                 ) {
                     $localsExt = "!\xF9\x04".chr(($dis << 2) + 1).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF).chr(
-                            $j
-                        )."\x0";
+                        $j
+                    )."\x0";
                     break;
                 }
             }

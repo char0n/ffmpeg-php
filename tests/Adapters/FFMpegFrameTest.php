@@ -62,7 +62,7 @@ class FFMpegFrameTest extends TestCase
 
     public function testGetHeight()
     {
-        $this->assertIsInt( $this->frame->getHeight(), 'Frame height is of integer type');
+        $this->assertIsInt($this->frame->getHeight(), 'Frame height is of integer type');
         $this->assertEquals(272, $this->frame->getHeight(), 'Frame height should be int(272)');
     }
 

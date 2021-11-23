@@ -528,9 +528,9 @@ class Movie implements \Serializable
             $match = [];
             preg_match(self::$REGEX_PIXEL_ASPECT_RATIO, $this->output, $match);
             $this->pixelAspectRatio = (array_key_exists(1, $match) && array_key_exists(
-                    2,
-                    $match
-                )) ? ($match[1] / $match[2]) : 0;
+                2,
+                $match
+            )) ? ($match[1] / $match[2]) : 0;
         }
 
         return $this->pixelAspectRatio;
