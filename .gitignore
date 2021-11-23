@@ -7,4 +7,5 @@
 /docs/*
 /composer.phar
 /vendor
+/tests/.phpunit.result.cache
 .idea
