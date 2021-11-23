@@ -25,38 +25,37 @@ class MovieTest extends TestCase
 
     protected static $noMediaPath;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
         self::$audioPath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.wav';
         self::$noMediaPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test1.txt';
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$moviePath   = null;
         self::$audioPath   = null;
         self::$noMediaPath = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->movie = new Movie(self::$moviePath);
         $this->audio = new Movie(self::$audioPath);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->movie = null;
         $this->audio = null;
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionCode 334561
-     */
     public function testFileDoesNotExistException()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionCode(334561);
+
         new Movie(uniqid('test', true));
     }
 
