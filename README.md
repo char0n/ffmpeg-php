@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/char0n/ffmpeg-php.svg?style=svg)](https://circleci.com/gh/char0n/ffmpeg-php)
+[![Build Status](https://github.com/char0n/ffmpeg-php/actions/workflows/php.yml/badge.svg)](https://github.com/char0n/ffmpeg-php/actions)
 
 # FFmpegPHP
 
@@ -7,7 +7,7 @@ object-oriented API for accessing and retrieving information from video and audi
 It has methods for returning frames from movie files as images that can be manipulated
 using PHP image functions. This works well for automatically creating thumbnail images from movies.
 FFmpegPHP is also useful for reporting the duration and bitrate of audio files (mp3, wma...).
-FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...) 
+FFmpegPHP can access many of the video formats supported by ffmpeg (mov, avi, mpg, wmv...)
 
 ## Drop-in replacement for ffmpeg-php
 
@@ -29,13 +29,13 @@ FFmpegPHP API documentation can be found here http://char0n.github.io/ffmpeg-php
 ## Installation
 
 ### Source code
- 
+
 Grab the source code located in `src/` directory and use it as you seem appropriate.
- 
- 
+
+
 ### Composer installation
 
-Grab the `composer.phar` which can install packages published on [packagist](https://packagist.org/). 
+Grab the `composer.phar` which can install packages published on [packagist](https://packagist.org/).
 
 ```bash
  $ wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php
@@ -68,7 +68,7 @@ File structure of your current working directory should now look like this:
  - vendor/
 ```
 
-To verify that everything works as expected create new file called `test.php` inside your current working 
+To verify that everything works as expected create new file called `test.php` inside your current working
 directory with the following content.
 
 ```php
@@ -78,7 +78,7 @@ require_once './vendor/autoload.php';
 use Char0n\FFMpegPHP\Movie;
 
 $movie = new Movie('./test.mp4');
-var_dump($movie->getDuration()); 
+var_dump($movie->getDuration());
 ```
 
 Before you run the script you need to also download the testing movie file:
@@ -101,8 +101,8 @@ float(32.14)
 
 **Note**
 
-Notice the first line (`require './vendor/autoload.php';`) in the above script. This line is 
-necessary because it configures how the FFmpegPHP will be included into your scripts and it 
+Notice the first line (`require './vendor/autoload.php';`) in the above script. This line is
+necessary because it configures how the FFmpegPHP will be included into your scripts and it
 auto-magically knows where to look for FFmpegPHP.
 
 
@@ -118,7 +118,7 @@ use Char0n\FFMpegPHP\Movie;
 
 $movie = new Movie('/path/to/media.mpeg');
 $movie->getDuration(); // => 24
-```  
+```
 
 
 ## Compatibility layer
@@ -140,7 +140,7 @@ and [FFmpegPHP](https://github.com/char0n/ffmpeg-php) installed on it
 contact GoDaddy and they'll do it for you as part of its "Expert Service".
 As author of FFmpegPHP I agreed to provide support for users coming
 from GoDaddy asking about FFmpegPHP. All incoming GoDaddy customers,
-please use [GitHub issues](https://github.com/char0n/ffmpeg-php/issues/new) 
+please use [GitHub issues](https://github.com/char0n/ffmpeg-php/issues/new)
 as a support channel.
 
 

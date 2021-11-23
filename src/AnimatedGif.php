@@ -106,8 +106,8 @@ class AnimatedGif implements \Serializable
      */
     protected function addGifHeader()
     {
-        if (ord($this->frames[0]{10}) & 0x80) {
-            $cMap = 3 * (2 << (ord($this->frames[0]{10}) & 0x07));
+        if (ord($this->frames[0][10]) & 0x80) {
+            $cMap = 3 * (2 << (ord($this->frames[0][10]) & 0x07));
 
             $this->gifData = 'GIF89a';
             $this->gifData .= substr($this->frames[0], 6, 7);
@@ -129,34 +129,34 @@ class AnimatedGif implements \Serializable
         $dis = 2;
         $col = 0;
 
-        $localsString = 13 + 3 * (2 << (ord($this->frames[$i]{10}) & 0x07));
+        $localsString = 13 + 3 * (2 << (ord($this->frames[$i][10]) & 0x07));
         $localsEnd = strlen($this->frames[$i]) - $localsString - 1;
         $localsTmp = substr($this->frames[$i], $localsString, $localsEnd);
 
-        $globalLength = 2 << (ord($this->frames[0]{10}) & 0x07);
-        $localsLength = 2 << (ord($this->frames[$i]{10}) & 0x07);
+        $globalLength = 2 << (ord($this->frames[0][10]) & 0x07);
+        $localsLength = 2 << (ord($this->frames[$i][10]) & 0x07);
 
-        $globalRbg = substr($this->frames[0], 13, 3 * (2 << (ord($this->frames[0]{10}) & 0x07)));
-        $localsRgb = substr($this->frames[$i], 13, 3 * (2 << (ord($this->frames[$i]{10}) & 0x07)));
+        $globalRbg = substr($this->frames[0], 13, 3 * (2 << (ord($this->frames[0][10]) & 0x07)));
+        $localsRgb = substr($this->frames[$i], 13, 3 * (2 << (ord($this->frames[$i][10]) & 0x07)));
 
         $localsExt = "!\xF9\x04".chr(($dis << 2) + 0).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF)."\x0\x0";
 
         $localsImg = null;
 
-        if ($col > -1 && ord($this->frames[$i]{10}) & 0x80) {
-            for ($j = 0; $j < (2 << (ord($this->frames[$i]{10}) & 0x07)); $j++) {
-                if (ord($localsRgb{3 * $j + 0}) === (($col >> 16) & 0xFF)
-                    && ord($localsRgb{3 * $j + 1}) === (($col >> 8) & 0xFF)
-                    && ord($localsRgb{3 * $j + 2}) === (($col >> 0) & 0xFF)
+        if ($col > -1 && ord($this->frames[$i][10]) & 0x80) {
+            for ($j = 0; $j < (2 << (ord($this->frames[$i][10]) & 0x07)); $j++) {
+                if (ord($localsRgb[3 * $j + 0]) === (($col >> 16) & 0xFF)
+                    && ord($localsRgb[3 * $j + 1]) === (($col >> 8) & 0xFF)
+                    && ord($localsRgb[3 * $j + 2]) === (($col >> 0) & 0xFF)
                 ) {
                     $localsExt = "!\xF9\x04".chr(($dis << 2) + 1).chr(($d >> 0) & 0xFF).chr(($d >> 8) & 0xFF).chr(
-                            $j
-                        )."\x0";
+                        $j
+                    )."\x0";
                     break;
                 }
             }
         }
-        switch ($localsTmp{0}) {
+        switch ($localsTmp[0]) {
             case '!':
                 $localsImg = substr($localsTmp, 8, 10);
                 $localsTmp = substr($localsTmp, 18);
@@ -166,24 +166,24 @@ class AnimatedGif implements \Serializable
                 $localsTmp = substr($localsTmp, 10);
                 break;
         }
-        if ($this->counter > -1 && ord($this->frames[$i]{10}) & 0x80) {
+        if ($this->counter > -1 && ord($this->frames[$i][10]) & 0x80) {
             if ($globalLength === $localsLength) {
                 if ($this->gifBlockCompare($globalRbg, $localsRgb, $globalLength)) {
                     $this->gifData .= ($localsExt.$localsImg.$localsTmp);
                 } else {
-                    $byte = ord($localsImg{9});
+                    $byte = ord($localsImg[9]);
                     $byte |= 0x80;
                     $byte &= 0xF8;
-                    $byte |= (ord($this->frames[0]{10}) & 0x07);
-                    $localsImg{9} = chr($byte);
+                    $byte |= (ord($this->frames[0][10]) & 0x07);
+                    $localsImg[9] = chr($byte);
                     $this->gifData .= ($localsExt.$localsImg.$localsRgb.$localsTmp);
                 }
             } else {
-                $byte = ord($localsImg{9});
+                $byte = ord($localsImg[9]);
                 $byte |= 0x80;
                 $byte &= 0xF8;
-                $byte |= (ord($this->frames[$i]{10}) & 0x07);
-                $localsImg{9} = chr($byte);
+                $byte |= (ord($this->frames[$i][10]) & 0x07);
+                $localsImg[9] = chr($byte);
                 $this->gifData .= ($localsExt.$localsImg.$localsRgb.$localsTmp);
             }
         } else {
@@ -227,9 +227,9 @@ class AnimatedGif implements \Serializable
     protected function gifBlockCompare($globalBlock, $localBlock, $len)
     {
         for ($i = 0; $i < $len; $i++) {
-            if ($globalBlock{3 * $i + 0} !== $localBlock{3 * $i + 0} ||
-                $globalBlock{3 * $i + 1} !== $localBlock{3 * $i + 1} ||
-                $globalBlock{3 * $i + 2} !== $localBlock{3 * $i + 2}
+            if ($globalBlock[3 * $i + 0] !== $localBlock[3 * $i + 0] ||
+                $globalBlock[3 * $i + 1] !== $localBlock[3 * $i + 1] ||
+                $globalBlock[3 * $i + 2] !== $localBlock[3 * $i + 2]
             ) {
                 return false;
             }

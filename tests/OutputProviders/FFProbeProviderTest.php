@@ -14,24 +14,24 @@ class FFProbeProviderTest extends TestCase
      */
     protected $provider;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $path = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR;
         self::$moviePath = realpath($path.'test.mp4');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$moviePath   = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->provider = new FFProbeProvider();
         $this->provider->setMovieFile(self::$moviePath);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->provider = null;
     }

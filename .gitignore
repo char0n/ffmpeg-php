@@ -2,9 +2,12 @@
 .buildpath
 .project
 .settings
+.phpdoc
 *.swp
 /junit.xml
 /docs/*
 /composer.phar
 /vendor
+/tests/.phpunit.result.cache
+/phpDocumentor.phar
 .idea

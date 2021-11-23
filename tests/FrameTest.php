@@ -19,34 +19,33 @@ class FrameTest extends TestCase
      */
     protected $frame;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$moviePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$moviePath = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->movie = new Movie(self::$moviePath);
         $this->frame = $this->movie->getFrame(1);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->movie = null;
         $this->frame = null;
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionCode 334563
-     */
     public function testConstructor()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionCode(334563);
+
         new Frame('test', 0.0);
     }
 
@@ -124,7 +123,12 @@ class FrameTest extends TestCase
 
     public function testToGdImage()
     {
-        $this->assertIsResource($this->frame->toGdImage(), 'GdImage is of resource(gd2) type');
+        $gdImage = $this->frame->toGDImage();
+
+        $this->assertTrue(
+            is_resource($gdImage) || get_class($gdImage) === 'GdImage',
+            'GdImage is of resource(gd2) type or \GdImage class'
+        );
     }
 
     public function testSerializeUnserialize()
@@ -140,9 +144,17 @@ class FrameTest extends TestCase
 
     public function testClone()
     {
-        $uoid   = (string) $this->frame->toGdImage();
+        $gdImage = $this->frame->toGdImage();
         $cloned = clone $this->frame;
-        $cuoid  = (string) $cloned->toGdImage();
+
+        if (is_resource($gdImage)) {
+            $uoid   = (string) $gdImage;
+            $cuoid  = (string) $cloned->toGdImage();
+        } else {
+            $uoid   = spl_object_id($gdImage);
+            $cuoid  = spl_object_id($cloned->toGdImage());
+        }
+
         $this->assertNotEquals($uoid, $cuoid);
     }
 }

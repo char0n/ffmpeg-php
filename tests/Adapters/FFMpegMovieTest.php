@@ -23,7 +23,7 @@ class FFMpegMovieTest extends TestCase
 
     protected static $noMediaPath;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $path = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR;
         self::$moviePath = realpath($path.'test.mp4');
@@ -31,20 +31,20 @@ class FFMpegMovieTest extends TestCase
         self::$noMediaPath = realpath($path.'test1.txt');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$moviePath   = null;
         self::$audioPath   = null;
         self::$noMediaPath = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->movie = new FFMpegMovie(self::$moviePath);
         $this->audio = new FFMpegMovie(self::$audioPath);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->movie = null;
         $this->audio = null;
