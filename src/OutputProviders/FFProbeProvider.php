@@ -34,7 +34,7 @@ class FFProbeProvider extends AbstractProvider
         }
 
         // File doesn't exist
-        if (file($this->movieFile) === false) {
+        if (@file_get_contents($this->movieFile, false, null, 0, 1) === false) {
             throw new \UnexpectedValueException('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
         }
 
