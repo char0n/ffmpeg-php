@@ -34,7 +34,7 @@ class FFMpegProvider extends AbstractProvider
         }
 
         // File doesn't exist
-        if (!file_exists($this->movieFile)) {
+        if (file($this->movieFile) === false) {
             throw new \UnexpectedValueException('Movie file not found', self::$EX_CODE_FILE_NOT_FOUND);
         }
 
