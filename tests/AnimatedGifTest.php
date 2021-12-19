@@ -7,7 +7,7 @@ use Char0n\FFMpegPHP\Movie;
 use Char0n\FFMpegPHP\Frame;
 use PHPUnit\Framework\TestCase;
 
-class FFmpegAnimatedGifTest extends TestCase
+class AnimatedGifTest extends TestCase
 {
 
     protected static $outFilePath;
