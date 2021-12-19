@@ -9,6 +9,8 @@ class FFMpegProviderTest extends TestCase
 {
 
     protected static $moviePath;
+
+    protected static $movieUrl;
     /**
      * @var FFMpegProvider
      */
@@ -18,6 +20,12 @@ class FFMpegProviderTest extends TestCase
     {
         $path = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR;
         self::$moviePath = realpath($path.'test.mp4');
+        self::$movieUrl = array(
+            'base' => 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/',
+            'fileName' => 'test',
+            'fileExtension' => '.mp4',
+            'query' => '?raw=true'
+        );
     }
 
     public static function tearDownAfterClass(): void
@@ -42,13 +50,39 @@ class FFMpegProviderTest extends TestCase
         $this->assertEquals(1, preg_match('/FFmpeg version/i', $output));
     }
 
-    public function testGetOutputFileDoesntExist()
+    public function testGetOutputFileDoesNotExist()
     {
         $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionCode(334561);
 
         $provider = new FFMpegProvider();
         $provider->setMovieFile(uniqid('test', true));
+        $provider->getOutput();
+    }
+
+    public function testGetOutputUrl()
+    {
+        $provider = new FFMpegProvider();
+        $provider->setMovieFile(implode(self::$movieUrl));
+        $output = $provider->getOutput();
+
+        $this->assertEquals(1, preg_match('/FFmpeg version/i', $output));
+    }
+
+    public function testGetOutputUrlFileDoesNotExist()
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(334561);
+
+        $provider = new FFMpegProvider();
+        $nonExistingUrlFile = sprintf(
+            '%s%s%s%s',
+            self::$movieUrl['base'],
+            uniqid('test', true),
+            self::$movieUrl['fileExtension'],
+            self::$movieUrl['query']
+        );
+        $provider->setMovieFile($nonExistingUrlFile);
         $provider->getOutput();
     }
 

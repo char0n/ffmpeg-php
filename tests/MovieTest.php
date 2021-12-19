@@ -12,6 +12,8 @@ class MovieTest extends TestCase
 {
 
     protected static $moviePath;
+
+    protected static $movieUrl;
     /**
      * @var Movie
      */
@@ -30,6 +32,12 @@ class MovieTest extends TestCase
         self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
         self::$audioPath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.wav';
         self::$noMediaPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test1.txt';
+        self::$movieUrl = array(
+            'base' => 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/',
+            'fileName' => 'test',
+            'fileExtension' => '.mp4',
+            'query' => '?raw=true'
+        );
     }
 
     public static function tearDownAfterClass(): void
@@ -57,6 +65,22 @@ class MovieTest extends TestCase
         $this->expectExceptionCode(334561);
 
         new Movie(uniqid('test', true));
+    }
+
+    public function testFileFromUrlDoesNotExistException()
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(334561);
+
+        $nonExistingUrlFile = sprintf(
+            '%s%s%s%s',
+            self::$movieUrl['base'],
+            uniqid('test', true),
+            self::$movieUrl['fileExtension'],
+            self::$movieUrl['query']
+        );
+
+        new Movie($nonExistingUrlFile);
     }
 
     public function testPersistentResourceSimulation()
