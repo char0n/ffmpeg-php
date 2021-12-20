@@ -32,12 +32,7 @@ class MovieTest extends TestCase
         self::$moviePath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.mp4';
         self::$audioPath   = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test.wav';
         self::$noMediaPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'test1.txt';
-        self::$movieUrl = array(
-            'base' => 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/',
-            'fileName' => 'test',
-            'fileExtension' => '.mp4',
-            'query' => '?raw=true'
-        );
+        self::$movieUrl = 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/test.mp4?raw=true';
     }
 
     public static function tearDownAfterClass(): void
@@ -67,20 +62,18 @@ class MovieTest extends TestCase
         new Movie(uniqid('test', true));
     }
 
-    public function testFileFromUrlDoesNotExistException()
+    public function testRemoteUrlMovieFile()
+    {
+        $movie = new Movie(self::$movieUrl);
+        $this->assertInstanceOf(Movie::class, $movie);
+    }
+
+    public function testRemoteUrlMovieFileDoesNotExistException()
     {
         $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionCode(334561);
 
-        $nonExistingUrlFile = sprintf(
-            '%s%s%s%s',
-            self::$movieUrl['base'],
-            uniqid('test', true),
-            self::$movieUrl['fileExtension'],
-            self::$movieUrl['query']
-        );
-
-        new Movie($nonExistingUrlFile);
+        new Movie('https://github.com/char0n/test.mp4');
     }
 
     public function testPersistentResourceSimulation()
