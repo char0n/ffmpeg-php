@@ -20,12 +20,7 @@ class FFMpegProviderTest extends TestCase
     {
         $path = dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR;
         self::$moviePath = realpath($path.'test.mp4');
-        self::$movieUrl = array(
-            'base' => 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/',
-            'fileName' => 'test',
-            'fileExtension' => '.mp4',
-            'query' => '?raw=true'
-        );
+        self::$movieUrl = 'https://github.com/char0n/ffmpeg-php/blob/master/tests/data/test.mp4?raw=true';
     }
 
     public static function tearDownAfterClass(): void
@@ -60,29 +55,22 @@ class FFMpegProviderTest extends TestCase
         $provider->getOutput();
     }
 
-    public function testGetOutputUrl()
+    public function testGetOutputFromRemoteUrl()
     {
         $provider = new FFMpegProvider();
-        $provider->setMovieFile(implode(self::$movieUrl));
+        $provider->setMovieFile(self::$movieUrl);
         $output = $provider->getOutput();
 
         $this->assertEquals(1, preg_match('/FFmpeg version/i', $output));
     }
 
-    public function testGetOutputUrlFileDoesNotExist()
+    public function testGetOutputFromRemoteUrlDoesNotExist()
     {
         $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionCode(334561);
 
         $provider = new FFMpegProvider();
-        $nonExistingUrlFile = sprintf(
-            '%s%s%s%s',
-            self::$movieUrl['base'],
-            uniqid('test', true),
-            self::$movieUrl['fileExtension'],
-            self::$movieUrl['query']
-        );
-        $provider->setMovieFile($nonExistingUrlFile);
+        $provider->setMovieFile('https://github.com/char0n/test.mp4');
         $provider->getOutput();
     }
 
