@@ -70,7 +70,7 @@ class Frame implements \Serializable
     protected function gdImageToBinaryData($gdImage)
     {
         ob_start();
-        imagegd2($gdImage);
+        imagejpeg($gdImage, null, 100);
 
         return ob_get_clean();
     }
