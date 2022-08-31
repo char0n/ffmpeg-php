@@ -40,6 +40,7 @@ jobs:
         run: composer test
 
       - name: Generate Documentation
+        if: matrix.php-version == '8.1'
         run: composer docs
 
       - name: Upload build artifacts
