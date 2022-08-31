@@ -5,7 +5,7 @@ namespace Char0n\FFMpegPHP;
 /**
  * Represents one frame from the movie.
  */
-class Frame implements \Serializable
+class Frame
 {
 
     protected static $EX_CODE_NO_VALID_RESOURCE = 334563;
@@ -198,34 +198,32 @@ class Frame implements \Serializable
     /**
      * Return string representation of a Frame.
      *
-     * @return string The string representation of the object or null.
+     * @return array The string representation of the object or null.
      */
-    public function serialize()
+    public function __serialize()
     {
-        $data = [
+        return [
             $this->gdImageData,
             $this->pts,
             $this->width,
             $this->height,
         ];
-
-        return serialize($data);
     }
 
     /**
      * Constructs the Frame from serialized data.
      *
-     * @param string $serialized The string representation of Frame instance.
+     * @param array $serialized The string representation of Frame instance.
      *
      * @return void
      */
-    public function unserialize($serialized)
+    public function __unserialize($serialized)
     {
         list(
             $this->gdImageData,
             $this->pts,
             $this->width,
             $this->height
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }

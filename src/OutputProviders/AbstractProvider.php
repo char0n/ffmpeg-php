@@ -4,33 +4,33 @@ namespace Char0n\FFMpegPHP\OutputProviders;
 /**
  * AbstractProvider parent of all output providers.
  */
-abstract class AbstractProvider implements OutputProvider, \Serializable
+abstract class AbstractProvider implements OutputProvider
 {
 
     protected static $EX_CODE_FILE_NOT_FOUND = 334561;
     protected static $persistentBuffer = array();
-    
+
     /**
      * Binary that returns info about movie file
      *
      * @var string
      */
     protected $binary;
-    
+
     /**
      * Movie File path
      *
      * @var string
      */
     protected $movieFile;
-    
+
     /**
      * Persistent functionality on/off
      *
      * @var boolean
      */
     protected $persistent;
-    
+
     /**
      * Base constructor for every provider
      *
@@ -42,7 +42,7 @@ abstract class AbstractProvider implements OutputProvider, \Serializable
         $this->binary     = $binary;
         $this->persistent = $persistent;
     }
-    
+
     /**
      * Setting movie file path
      *
@@ -52,22 +52,22 @@ abstract class AbstractProvider implements OutputProvider, \Serializable
     {
         $this->movieFile = $movieFile;
     }
-    
-    public function serialize()
+
+    public function __serialize()
     {
-        return serialize(array(
+        return [
             $this->binary,
             $this->movieFile,
             $this->persistent
-        ));
+        ];
     }
-    
-    public function unserialize($serialized)
+
+    public function __unserialize($serialized)
     {
         list(
             $this->binary,
             $this->movieFile,
             $this->persistent
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }

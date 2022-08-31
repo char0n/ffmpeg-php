@@ -11,7 +11,7 @@ namespace Char0n\FFMpegPHP;
  *
  * Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
  */
-class AnimatedGif implements \Serializable
+class AnimatedGif
 {
 
     /**
@@ -278,32 +278,30 @@ class AnimatedGif implements \Serializable
     /**
      * String representation of an AnimatedGif.
      *
-     * @return string The string representation of the object or null.
+     * @return array The string representation of the object or null.
      */
-    public function serialize()
+    public function __serialize()
     {
-        return serialize(
-            [
-                $this->outFilePath,
-                $this->width,
-                $this->height,
-                $this->frameRate,
-                $this->loopCount,
-                $this->gifData,
-                $this->frames,
-                $this->counter,
-            ]
-        );
+        return [
+            $this->outFilePath,
+            $this->width,
+            $this->height,
+            $this->frameRate,
+            $this->loopCount,
+            $this->gifData,
+            $this->frames,
+            $this->counter,
+        ];
     }
 
     /**
      * Constructs the AnimatedGif.
      *
-     * @param string $serialized The string representation of the object.
+     * @param array $serialized The string representation of the object.
      *
      * @return void
      */
-    public function unserialize($serialized)
+    public function __unserialize($serialized)
     {
         list(
             $this->outFilePath,
@@ -314,6 +312,6 @@ class AnimatedGif implements \Serializable
             $this->gifData,
             $this->frames,
             $this->counter
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }
