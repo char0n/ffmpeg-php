@@ -280,7 +280,7 @@ class AnimatedGif implements \Serializable
      *
      * @return string The string representation of the object or null.
      */
-    public function serialize()
+    public function __serialize()
     {
         return serialize(
             [
@@ -303,7 +303,7 @@ class AnimatedGif implements \Serializable
      *
      * @return void
      */
-    public function unserialize($serialized)
+    public function __unserialize($serialized)
     {
         list(
             $this->outFilePath,
