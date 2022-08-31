@@ -100,9 +100,6 @@
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\Serializable">Serializable</abbr>                    </span>
     
     </h2>
 
@@ -126,17 +123,6 @@ quality and compression of animated gifs.</p>
 
 
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\Serializable">Serializable</abbr></dt>
-        <dd></dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
@@ -209,6 +195,20 @@ quality and compression of animated gifs.</p>
 <dd>Create a new AnimatedGif object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method___serialize">__serialize()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>String representation of an AnimatedGif.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method___unserialize">__unserialize()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Constructs the AnimatedGif.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_addFrame">addFrame()</a>
     <span>
                         &nbsp;: mixed    </span>
@@ -228,20 +228,6 @@ quality and compression of animated gifs.</p>
                         &nbsp;: bool    </span>
 </dt>
 <dd>Saving animated gif to remote file.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_serialize">serialize()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>String representation of an AnimatedGif.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_unserialize">unserialize()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>Constructs the AnimatedGif.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_addFrameData">addFrameData()</a>
@@ -649,6 +635,86 @@ parameter to disable looping.</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method___serialize">
+        __serialize()
+        <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method___serialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/AnimatedGif.php"><a href="files/src-animatedgif.html"><abbr title="src/AnimatedGif.php">AnimatedGif.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">283</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">String representation of an AnimatedGif.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The string representation of the object or null.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___unserialize">
+        __unserialize()
+        <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method___unserialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/AnimatedGif.php"><a href="files/src-animatedgif.html"><abbr title="src/AnimatedGif.php">AnimatedGif.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">304</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Constructs the AnimatedGif.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$serialized</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string representation of the object.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_addFrame">
         addFrame()
         <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_addFrame" class="headerlink"><i class="fas fa-link"></i></a>
@@ -750,86 +816,6 @@ parameter to disable looping.</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_serialize">
-        serialize()
-        <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_serialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/AnimatedGif.php"><a href="files/src-animatedgif.html"><abbr title="src/AnimatedGif.php">AnimatedGif.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">283</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">String representation of an AnimatedGif.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>The string representation of the object or null.</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_unserialize">
-        unserialize()
-        <a href="classes/Char0n-FFMpegPHP-AnimatedGif.html#method_unserialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/AnimatedGif.php"><a href="files/src-animatedgif.html"><abbr title="src/AnimatedGif.php">AnimatedGif.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">306</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Constructs the AnimatedGif.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$serialized</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string representation of the object.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     

@@ -100,9 +100,6 @@
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\Serializable">Serializable</abbr>                    </span>
     
     </h2>
 
@@ -121,17 +118,6 @@
 
 
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\Serializable">Serializable</abbr></dt>
-        <dd></dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
@@ -183,6 +169,20 @@
 <dd>Create a Frame object from a GD image.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-Frame.html#method___serialize">__serialize()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Return string representation of a Frame.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-Frame.html#method___unserialize">__unserialize()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Constructs the Frame from serialized data.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Char0n-FFMpegPHP-Frame.html#method_crop">crop()</a>
     <span>
                         &nbsp;: void    </span>
@@ -226,25 +226,11 @@
 completeness.)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-Frame.html#method_serialize">serialize()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>Return string representation of a Frame.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Char0n-FFMpegPHP-Frame.html#method_toGDImage">toGDImage()</a>
     <span>
                         &nbsp;: resource    </span>
 </dt>
 <dd>Returns a truecolor GD image of the frame.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-Frame.html#method_unserialize">unserialize()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>Constructs the Frame from serialized data.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Char0n-FFMpegPHP-Frame.html#method_gdImageToBinaryData">gdImageToBinaryData()</a>
@@ -502,6 +488,86 @@ completeness.)</dd>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___serialize">
+        __serialize()
+        <a href="classes/Char0n-FFMpegPHP-Frame.html#method___serialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Frame.php"><a href="files/src-frame.html"><abbr title="src/Frame.php">Frame.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">203</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Return string representation of a Frame.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The string representation of the object or null.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___unserialize">
+        __unserialize()
+        <a href="classes/Char0n-FFMpegPHP-Frame.html#method___unserialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Frame.php"><a href="files/src-frame.html"><abbr title="src/Frame.php">Frame.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">220</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Constructs the Frame from serialized data.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$serialized</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string representation of Frame instance.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -811,41 +877,6 @@ completeness.)</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_serialize">
-        serialize()
-        <a href="classes/Char0n-FFMpegPHP-Frame.html#method_serialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Frame.php"><a href="files/src-frame.html"><abbr title="src/Frame.php">Frame.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">203</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Return string representation of a Frame.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>The string representation of the object or null.</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_toGDImage">
         toGDImage()
         <a href="classes/Char0n-FFMpegPHP-Frame.html#method_toGDImage" class="headerlink"><i class="fas fa-link"></i></a>
@@ -873,51 +904,6 @@ completeness.)</p>
             <section class="phpdocumentor-description"><p>Resource of type gd.</p>
 </section>
 
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_unserialize">
-        unserialize()
-        <a href="classes/Char0n-FFMpegPHP-Frame.html#method_unserialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Frame.php"><a href="files/src-frame.html"><abbr title="src/Frame.php">Frame.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">222</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Constructs the Frame from serialized data.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$serialized</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string representation of Frame instance.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
                     <article

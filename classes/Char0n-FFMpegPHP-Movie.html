@@ -100,9 +100,6 @@
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\Serializable">Serializable</abbr>                    </span>
     
     </h2>
 
@@ -121,17 +118,6 @@
 
 
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\Serializable">Serializable</abbr></dt>
-        <dd></dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
@@ -505,6 +491,20 @@
 <dd>Open a video or audio file and return it as an Movie object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-Movie.html#method___serialize">__serialize()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>String representation of a Movie.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Char0n-FFMpegPHP-Movie.html#method___unserialize">__unserialize()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Constructs the Movie from serialized data.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Char0n-FFMpegPHP-Movie.html#method_getArtist">getArtist()</a>
     <span>
                         &nbsp;: string    </span>
@@ -722,25 +722,11 @@
 <dd>Return boolean value indicating whether the movie has a video stream.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-Movie.html#method_serialize">serialize()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>String representation of a Movie.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Char0n-FFMpegPHP-Movie.html#method_setProvider">setProvider()</a>
     <span>
                         &nbsp;: $this    </span>
 </dt>
 <dd>Setting output provider implementation.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Char0n-FFMpegPHP-Movie.html#method_unserialize">unserialize()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>Constructs the Movie from serialized data.</dd>
 
         </dl>
 
@@ -2556,6 +2542,86 @@ as the second constructor argument while instantiating</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method___serialize">
+        __serialize()
+        <a href="classes/Char0n-FFMpegPHP-Movie.html#method___serialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Movie.php"><a href="files/src-movie.html"><abbr title="src/Movie.php">Movie.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">888</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">String representation of a Movie.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Rhe string representation of the object or null.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___unserialize">
+        __unserialize()
+        <a href="classes/Char0n-FFMpegPHP-Movie.html#method___unserialize" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Movie.php"><a href="files/src-movie.html"><abbr title="src/Movie.php">Movie.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">906</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Constructs the Movie from serialized data.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$serialized</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The string representation of Movie instance.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getArtist">
         getArtist()
         <a href="classes/Char0n-FFMpegPHP-Movie.html#method_getArtist" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3676,41 +3742,6 @@ returns the next frame of the movie.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_serialize">
-        serialize()
-        <a href="classes/Char0n-FFMpegPHP-Movie.html#method_serialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Movie.php"><a href="files/src-movie.html"><abbr title="src/Movie.php">Movie.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">888</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">String representation of a Movie.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">serialize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Rhe string representation of the object or null.</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_setProvider">
         setProvider()
         <a href="classes/Char0n-FFMpegPHP-Movie.html#method_setProvider" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3744,51 +3775,6 @@ returns the next frame of the movie.</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">$this</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_unserialize">
-        unserialize()
-        <a href="classes/Char0n-FFMpegPHP-Movie.html#method_unserialize" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Movie.php"><a href="files/src-movie.html"><abbr title="src/Movie.php">Movie.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">910</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Constructs the Movie from serialized data.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">unserialize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serialized</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$serialized</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The string representation of Movie instance.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     

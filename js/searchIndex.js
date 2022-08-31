@@ -306,15 +306,15 @@ Search.appendIndex(
             "summary": "Getting\u0020animation\u0020binary\u0020data.",
             "url": "classes/Char0n-FFMpegPHP-AnimatedGif.html#method_getAnimation"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\AnimatedGif\u003A\u003Aserialize\u0028\u0029",
-            "name": "serialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\AnimatedGif\u003A\u003A__serialize\u0028\u0029",
+            "name": "__serialize",
             "summary": "String\u0020representation\u0020of\u0020an\u0020AnimatedGif.",
-            "url": "classes/Char0n-FFMpegPHP-AnimatedGif.html#method_serialize"
+            "url": "classes/Char0n-FFMpegPHP-AnimatedGif.html#method___serialize"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\AnimatedGif\u003A\u003Aunserialize\u0028\u0029",
-            "name": "unserialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\AnimatedGif\u003A\u003A__unserialize\u0028\u0029",
+            "name": "__unserialize",
             "summary": "Constructs\u0020the\u0020AnimatedGif.",
-            "url": "classes/Char0n-FFMpegPHP-AnimatedGif.html#method_unserialize"
+            "url": "classes/Char0n-FFMpegPHP-AnimatedGif.html#method___unserialize"
         },                {
             "fqsen": "\\Char0n\\FFMpegPHP\\AnimatedGif\u003A\u003A\u0024outFilePath",
             "name": "outFilePath",
@@ -406,15 +406,15 @@ Search.appendIndex(
             "summary": "Return\u0020the\u0020height\u0020of\u0020the\u0020frame.",
             "url": "classes/Char0n-FFMpegPHP-Frame.html#method_getHeight"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\Frame\u003A\u003Aserialize\u0028\u0029",
-            "name": "serialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\Frame\u003A\u003A__serialize\u0028\u0029",
+            "name": "__serialize",
             "summary": "Return\u0020string\u0020representation\u0020of\u0020a\u0020Frame.",
-            "url": "classes/Char0n-FFMpegPHP-Frame.html#method_serialize"
+            "url": "classes/Char0n-FFMpegPHP-Frame.html#method___serialize"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\Frame\u003A\u003Aunserialize\u0028\u0029",
-            "name": "unserialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\Frame\u003A\u003A__unserialize\u0028\u0029",
+            "name": "__unserialize",
             "summary": "Constructs\u0020the\u0020Frame\u0020from\u0020serialized\u0020data.",
-            "url": "classes/Char0n-FFMpegPHP-Frame.html#method_unserialize"
+            "url": "classes/Char0n-FFMpegPHP-Frame.html#method___unserialize"
         },                {
             "fqsen": "\\Char0n\\FFMpegPHP\\Frame\u003A\u003A\u0024EX_CODE_NO_VALID_RESOURCE",
             "name": "EX_CODE_NO_VALID_RESOURCE",
@@ -616,15 +616,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Char0n-FFMpegPHP-Movie.html#method___clone"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\Movie\u003A\u003Aserialize\u0028\u0029",
-            "name": "serialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\Movie\u003A\u003A__serialize\u0028\u0029",
+            "name": "__serialize",
             "summary": "String\u0020representation\u0020of\u0020a\u0020Movie.",
-            "url": "classes/Char0n-FFMpegPHP-Movie.html#method_serialize"
+            "url": "classes/Char0n-FFMpegPHP-Movie.html#method___serialize"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\Movie\u003A\u003Aunserialize\u0028\u0029",
-            "name": "unserialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\Movie\u003A\u003A__unserialize\u0028\u0029",
+            "name": "__unserialize",
             "summary": "Constructs\u0020the\u0020Movie\u0020from\u0020serialized\u0020data.",
-            "url": "classes/Char0n-FFMpegPHP-Movie.html#method_unserialize"
+            "url": "classes/Char0n-FFMpegPHP-Movie.html#method___unserialize"
         },                {
             "fqsen": "\\Char0n\\FFMpegPHP\\Movie\u003A\u003A\u0024REGEX_DURATION",
             "name": "REGEX_DURATION",
@@ -891,15 +891,15 @@ Search.appendIndex(
             "summary": "Setting\u0020movie\u0020file\u0020path",
             "url": "classes/Char0n-FFMpegPHP-OutputProviders-AbstractProvider.html#method_setMovieFile"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\OutputProviders\\AbstractProvider\u003A\u003Aserialize\u0028\u0029",
-            "name": "serialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\OutputProviders\\AbstractProvider\u003A\u003A__serialize\u0028\u0029",
+            "name": "__serialize",
             "summary": "",
-            "url": "classes/Char0n-FFMpegPHP-OutputProviders-AbstractProvider.html#method_serialize"
+            "url": "classes/Char0n-FFMpegPHP-OutputProviders-AbstractProvider.html#method___serialize"
         },                {
-            "fqsen": "\\Char0n\\FFMpegPHP\\OutputProviders\\AbstractProvider\u003A\u003Aunserialize\u0028\u0029",
-            "name": "unserialize",
+            "fqsen": "\\Char0n\\FFMpegPHP\\OutputProviders\\AbstractProvider\u003A\u003A__unserialize\u0028\u0029",
+            "name": "__unserialize",
             "summary": "",
-            "url": "classes/Char0n-FFMpegPHP-OutputProviders-AbstractProvider.html#method_unserialize"
+            "url": "classes/Char0n-FFMpegPHP-OutputProviders-AbstractProvider.html#method___unserialize"
         },                {
             "fqsen": "\\Char0n\\FFMpegPHP\\OutputProviders\\AbstractProvider\u003A\u003A\u0024EX_CODE_FILE_NOT_FOUND",
             "name": "EX_CODE_FILE_NOT_FOUND",
