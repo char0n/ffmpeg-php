@@ -198,24 +198,22 @@ class Frame
     /**
      * Return string representation of a Frame.
      *
-     * @return string The string representation of the object or null.
+     * @return array The string representation of the object or null.
      */
     public function __serialize()
     {
-        $data = [
+        return [
             $this->gdImageData,
             $this->pts,
             $this->width,
             $this->height,
         ];
-
-        return serialize($data);
     }
 
     /**
      * Constructs the Frame from serialized data.
      *
-     * @param string $serialized The string representation of Frame instance.
+     * @param array $serialized The string representation of Frame instance.
      *
      * @return void
      */
@@ -226,6 +224,6 @@ class Frame
             $this->pts,
             $this->width,
             $this->height
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }

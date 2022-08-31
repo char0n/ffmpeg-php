@@ -278,28 +278,26 @@ class AnimatedGif
     /**
      * String representation of an AnimatedGif.
      *
-     * @return string The string representation of the object or null.
+     * @return array The string representation of the object or null.
      */
     public function __serialize()
     {
-        return serialize(
-            [
-                $this->outFilePath,
-                $this->width,
-                $this->height,
-                $this->frameRate,
-                $this->loopCount,
-                $this->gifData,
-                $this->frames,
-                $this->counter,
-            ]
-        );
+        return [
+            $this->outFilePath,
+            $this->width,
+            $this->height,
+            $this->frameRate,
+            $this->loopCount,
+            $this->gifData,
+            $this->frames,
+            $this->counter,
+        ];
     }
 
     /**
      * Constructs the AnimatedGif.
      *
-     * @param string $serialized The string representation of the object.
+     * @param array $serialized The string representation of the object.
      *
      * @return void
      */
@@ -314,6 +312,6 @@ class AnimatedGif
             $this->gifData,
             $this->frames,
             $this->counter
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }

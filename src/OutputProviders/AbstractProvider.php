@@ -55,11 +55,11 @@ abstract class AbstractProvider implements OutputProvider
 
     public function __serialize()
     {
-        return serialize(array(
+        return [
             $this->binary,
             $this->movieFile,
             $this->persistent
-        ));
+        ];
     }
 
     public function __unserialize($serialized)
@@ -68,6 +68,6 @@ abstract class AbstractProvider implements OutputProvider
             $this->binary,
             $this->movieFile,
             $this->persistent
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }

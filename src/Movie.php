@@ -883,27 +883,23 @@ class Movie
     /**
      * String representation of a Movie.
      *
-     * @return string Rhe string representation of the object or null.
+     * @return array Rhe string representation of the object or null.
      */
     public function __serialize()
     {
-        $data = serialize(
-            [
-                $this->ffmpegBinary,
-                $this->movieFile,
-                $this->output,
-                $this->frameNumber,
-                $this->provider,
-            ]
-        );
-
-        return $data;
+        return [
+            $this->ffmpegBinary,
+            $this->movieFile,
+            $this->output,
+            $this->frameNumber,
+            $this->provider,
+        ];
     }
 
     /**
      * Constructs the Movie from serialized data.
      *
-     * @param string $serialized The string representation of Movie instance.
+     * @param array $serialized The string representation of Movie instance.
      *
      * @return void
      */
@@ -915,6 +911,6 @@ class Movie
             $this->output,
             $this->frameNumber,
             $this->provider
-        ) = unserialize($serialized);
+        ) = $serialized;
     }
 }
