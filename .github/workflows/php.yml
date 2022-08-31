@@ -41,7 +41,10 @@ jobs:
 
       - name: Generate Documentation
         if: matrix.php-version == '8.1'
-        run: composer docs
+        # phpdocumentor installed via composer doesn't work, so we're using this workaround
+        run: |
+          wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.2/phpDocumentor.phar
+          php phpDocumentor.phar run -d ./src/ -t docs
 
       - name: Upload build artifacts
         if: matrix.php-version == '8.1' && github.ref == 'refs/heads/master'
