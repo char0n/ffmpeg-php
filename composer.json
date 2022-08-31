@@ -2,7 +2,7 @@
     "name": "char0n/ffmpeg-php",
     "type": "library",
     "description": "PHP wrapper for FFmpeg application",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "keywords": ["ffmpeg", "video", "audio"],
     "homepage": "https://github.com/char0n/ffmpeg-php",
     "license": "BSD-3-Clause",
