@@ -5,7 +5,7 @@ namespace Char0n\FFMpegPHP;
 /**
  * Represents one frame from the movie.
  */
-class Frame implements \Serializable
+class Frame
 {
 
     protected static $EX_CODE_NO_VALID_RESOURCE = 334563;

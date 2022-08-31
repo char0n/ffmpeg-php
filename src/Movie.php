@@ -8,7 +8,7 @@ use Char0n\FFMpegPHP\OutputProviders\OutputProvider;
 /**
  * Represents a movie file.
  */
-class Movie implements \Serializable
+class Movie
 {
 
     protected static $REGEX_DURATION = '/Duration: (\d{2}):(\d{2}):(\d{2})(\.(\d+))?/';

@@ -11,7 +11,7 @@ namespace Char0n\FFMpegPHP;
  *
  * Code fragments used from:  GIFEncoder Version 2.0 by László Zsidi
  */
-class AnimatedGif implements \Serializable
+class AnimatedGif
 {
 
     /**
